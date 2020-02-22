@@ -3,14 +3,14 @@ package io.javasmithy.view.factory;
 import javafx.scene.Scene;
 
 public class SceneFactory{
-    ViewFactory vb;
+    private ViewFactory vb;
 
     public SceneFactory(){
         vb = new ViewFactory();
     }
 
-    public Scene getScene(){
-        return new Scene(vb.getView(), 1080, 720);
+    public Scene getScene(String gvType){
+        return new Scene(vb.getView(gvType), 1080, 720);
     }
 
 }

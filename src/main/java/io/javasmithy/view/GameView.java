@@ -3,7 +3,7 @@ package io.javasmithy.view;
 import javafx.scene.layout.AnchorPane;
 
 public class GameView extends AnchorPane{
-    ButtonStack buttonStack;
+    private ButtonStack buttonStack;
 
     public GameView(){
         buttonStack = new ButtonStack();
@@ -12,7 +12,6 @@ public class GameView extends AnchorPane{
 
     private void init(){
         this.getChildren().add(buttonStack);
-        setButtonStackPosition();
         setSize();
     }
 

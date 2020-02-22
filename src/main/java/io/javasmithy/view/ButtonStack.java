@@ -11,6 +11,7 @@ public class ButtonStack extends VBox{
 
     private void init(){
         setUpButtons();
+        setSpacing();
     }
 
     private void setUpButtons(){
@@ -18,9 +19,13 @@ public class ButtonStack extends VBox{
         for (int i = 0; i < text.length; i++){
             this.getChildren().add(new Button(text[i]));
             ((Button)this.getChildren().get(i)).setMinHeight(40);
-            ((Button)this.getChildren().get(i)).setMinWidth(100);
+            ((Button)this.getChildren().get(i)).setMinWidth(200);
             ((Button)this.getChildren().get(i)).setMaxHeight(40);
-            ((Button)this.getChildren().get(i)).setMaxWidth(100);
+            ((Button)this.getChildren().get(i)).setMaxWidth(200);
         }
+    }
+
+    private void setSpacing(){
+        this.setSpacing(20);
     }
 }
