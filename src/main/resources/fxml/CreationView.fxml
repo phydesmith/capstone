@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane 
+id="creationPane" 
+prefWidth="1080"            
+prefHeight="720"
+xmlns:fx="https://google.com/"
+fx:controller="io.javasmithy.controller.viewcontroller.CreationViewController">
+        <top>
+            <Label text="Character Creation"/>
+        </top>
+        <left>
+            <VBox
+            alignment="CENTER"
+            id="buttonStack"
+            spacing="20">
+                <children>
+                    <Button text="Abilities"/>
+                    <Button text="Race"/>
+                    <Button text="Class"/>
+                    <Button text="Background"/>
+                </children>
+            </VBox>
+        </left>
+</BorderPane>
