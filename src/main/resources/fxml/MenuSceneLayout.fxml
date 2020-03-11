@@ -7,25 +7,27 @@
 <?import javafx.scene.control.Label?>
 
 
-<AnchorPane 
-fx:id="basePane" 
+<BorderPane 
+fx:id="menuPane" 
 prefWidth="1080"            
 prefHeight="720"
 xmlns:fx="https://google.com/"
-fx:controller="io.javasmithy.controller.viewcontroller.BaseViewController">
-    <children>
-    <BorderPane fx:id = "changePane" prefHeight="720" prefWidth="1080">   
+fx:controller="io.javasmithy.controller.scene.MenuSceneController">
+        <top>
+            <Label text="RPG GAME"/>
+        </top>
         <center>
             <VBox
             alignment="CENTER"
-            fx:id="buttonStack"
+            fx:id="menuButtons"
             spacing="20">
                 
                 <children>
                     <Button 
                     fx:id="newGameBtn"
                     text="New"
-                    onAction="#handleButtonAction"/>
+                    onAction="#openCreationScene"/>
+                    <Button text = "Continue" fx:id="continueBtn" onAction="#openGameScene"/>
                     <Button text="Load"/>
                     <Button text="Save"/>
                     <Button text="Exit"/>
@@ -33,6 +35,4 @@ fx:controller="io.javasmithy.controller.viewcontroller.BaseViewController">
 
             </VBox>
         </center>
-    </BorderPane>
-    </children>
-</AnchorPane>
+</BorderPane>

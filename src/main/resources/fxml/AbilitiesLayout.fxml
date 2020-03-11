@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+
+
+<BorderPane 
+fx:id="abilityPane" 
+prefWidth="1080"            
+prefHeight="720"
+xmlns:fx="https://google.com/"
+fx:controller="io.javasmithy.controller.scene.CreationSceneController">
+        <top>
+            <Label text="RPG GAME"/>
+        </top>
+        <center>
+            <GridPane>
+                <TextArea GridPane.rowIndex="0" GridPane.columnIndex="0" fx:id="scoreBankView" text="12,13,14,15,9,10"/>
+                <VBox
+                alignment="CENTER"
+                fx:id="abilLabels"
+                spacing="20"
+                GridPane.rowIndex="1"
+                GridPane.columnIndex="0">
+                    
+                    <children>
+                        <Label fx:id="strLabel" text="Strength: "/>
+                        <Label fx:id="dexLabel" text="Dexterity: "/>
+                        <Label fx:id="conLabel" text="Constitution: "/>
+                        <Label fx:id="intLabel" text="Intelligence: "/>
+                        <Label fx:id="wisLabel" text="Wisdom: "/>
+                        <Label fx:id="chaLabel" text="Charisma: "/>
+                    </children>
+                </VBox>
+                <VBox
+                alignment="CENTER"
+                fx:id="abilFields"
+                spacing="20"
+                GridPane.rowIndex="1"
+                GridPane.columnIndex="1">
+                    
+                    <children>
+                        <TextField fx:id="strField"/>
+                        <TextField fx:id="dexField"/>
+                        <TextField fx:id="conField"/>
+                        <TextField fx:id="intField"/>
+                        <TextField fx:id="wisField"/>
+                        <TextField fx:id="chaField"/>
+                    </children>
+                </VBox>
+        </GridPane>
+        </center>
+</BorderPane>

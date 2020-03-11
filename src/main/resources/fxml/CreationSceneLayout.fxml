@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
@@ -11,17 +12,23 @@ id="creationPane"
 prefWidth="1080"            
 prefHeight="720"
 xmlns:fx="https://google.com/"
-fx:controller="io.javasmithy.controller.viewcontroller.CreationViewController">
+fx:controller="io.javasmithy.controller.scene.CreationSceneController">
         <top>
-            <Label text="Character Creation"/>
+            <Button text = "Back" fx:id = "creationBack" onAction="#openMenuScene"/>
         </top>
+        <bottom>
+            <Button text = "Start Game" fx:id = "toGameBtn" onAction="#openGameScene"/>
+        </bottom>
+        <center>
+            <Pane fx:id = "centerChangePane"/>
+        </center>
         <left>
             <VBox
             alignment="CENTER"
-            id="buttonStack"
+            id="creationButtons"
             spacing="20">
                 <children>
-                    <Button text="Abilities"/>
+                    <Button text="Abilities" onAction="#showAbilityGeneration"/>
                     <Button text="Race"/>
                     <Button text="Class"/>
                     <Button text="Background"/>
