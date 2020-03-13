@@ -15,8 +15,7 @@
 xmlns:fx="http://javafx.com/fxml"
 fx:controller="io.javasmithy.controller.scene.AbilityGenerationController"
 stylesheets="@/style/AbilityGeneration.css"
-styleClass="root"
-GridPane.alignment="CENTER">
+styleClass="root">
     <fx:define>
         <Group fx:id="inputLabels">
             <Label fx:id="l1" text="Str"/>
@@ -39,11 +38,13 @@ GridPane.alignment="CENTER">
     <ListView fx:id="listView" 
     GridPane.rowIndex="0" 
     GridPane.columnIndex="0" 
-    prefHeight="150" 
-    maxHeight="150" 
-    prefWidth="50" 
-    maxWidth="50" 
-    editable="false"/>
+    GridPane.columnSpan="3"
+    prefHeight="50" 
+    maxHeight="50" 
+    prefWidth="175" 
+    maxWidth="175" 
+    editable="false"
+    orientation="HORIZONTAL"/>
 
     <fx:reference source="l1" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <fx:reference source="l2" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
