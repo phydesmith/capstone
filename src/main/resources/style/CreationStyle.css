@@ -1,7 +1,3 @@
 .creationPane{
-    -fx-background-color: rgb(255, 0, 0);
-}
-
-creationPaneTop{
-    -fx-background-color: rgb(255, 255, 128);
+    -fx-background-color: rgb(192, 192, 192);
 }

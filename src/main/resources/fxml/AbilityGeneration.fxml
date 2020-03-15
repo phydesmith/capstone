@@ -8,8 +8,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.Group?>
+<?import java.util.ArrayList?>
 <?import javafx.geometry.Pos?>
-
 
 <GridPane fx:id="abilGridPane" 
 xmlns:fx="http://javafx.com/fxml"
@@ -17,22 +17,14 @@ fx:controller="io.javasmithy.controller.scene.AbilityGenerationController"
 stylesheets="@/style/AbilityGeneration.css"
 styleClass="root">
     <fx:define>
-        <Group fx:id="inputLabels">
-            <Label fx:id="l1" text="Str"/>
-            <Label fx:id="l2" text="Dex"/>
-            <Label fx:id="l3" text="Con"/>
-            <Label fx:id="l4" text="Int"/>
-            <Label fx:id="l5" text="Wis"/>
-            <Label fx:id="l6" text="Cha"/>
-        </Group>
-        <Group fx:id="inputFields">
-            <TextField fx:id="txtF1"/>
-            <TextField fx:id="txtF2"/>
-            <TextField fx:id="txtF3"/>
-            <TextField fx:id="txtF4"/>
-            <TextField fx:id="txtF5"/>
-            <TextField fx:id="txtF6"/>
-        </Group>
+        <ArrayList fx:id="inputFields">
+                <TextField fx:id="txtF1"/>
+                <TextField fx:id="txtF2"/>
+                <TextField fx:id="txtF3"/>
+                <TextField fx:id="txtF4"/>
+                <TextField fx:id="txtF5"/>
+                <TextField fx:id="txtF6"/>
+        </ArrayList>
     </fx:define>
     
     <ListView fx:id="listView" 
@@ -46,12 +38,13 @@ styleClass="root">
     editable="false"
     orientation="HORIZONTAL"/>
 
-    <fx:reference source="l1" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <fx:reference source="l2" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-    <fx:reference source="l3" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-    <fx:reference source="l4" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-    <fx:reference source="l5" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-    <fx:reference source="l6" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+
+    <Label fx:id="l1" text="Str" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <Label fx:id="l2" text="Dex" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <Label fx:id="l3" text="Con" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <Label fx:id="l4" text="Int" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <Label fx:id="l5" text="Wis" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <Label fx:id="l6" text="Cha" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
 
     <fx:reference source="txtF1" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
     <fx:reference source="txtF2" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
@@ -59,6 +52,13 @@ styleClass="root">
     <fx:reference source="txtF4" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
     <fx:reference source="txtF5" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
     <fx:reference source="txtF6" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Button fx:id="genNewScoresBtn"
+    text="Reroll"
+    GridPane.rowIndex="7"
+    GridPane.columnIndex="1"
+    GridPane.columnSpan="2"
+    onAction="#generateNewScores"/>
 
     <Button fx:id="submitBtn"
     text="Submit"

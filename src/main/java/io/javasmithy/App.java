@@ -1,6 +1,7 @@
 package io.javasmithy;
 
 import io.javasmithy.controller.scene.MenuSceneController;
+import io.javasmithy.controller.game.GameController;
 import io.javasmithy.controller.scene.CreationSceneController;
 import io.javasmithy.controller.scene.GameSceneController;
 import javafx.application.Application;
@@ -16,6 +17,7 @@ public class App extends Application{
 
     @Override
     public void start(Stage stage) throws Exception{
+        GameController gc = new GameController();
         FXMLLoader menuSceneLoader, creationSceneLoader, gameSceneLoader;
         Parent menuSceneLayout, creationSceneLayout, gameSceneLayout;
         Scene menuScene, creationScene, gameScene;
@@ -33,14 +35,17 @@ public class App extends Application{
         gameScene = new Scene(gameSceneLayout, 1080, 720);
 
         MenuSceneController menu = (MenuSceneController) menuSceneLoader.getController();
+        menu.setGameController(gc);
         menu.setCreationScene(creationScene);
         menu.setGameScene(gameScene);
 
         CreationSceneController creation = (CreationSceneController) creationSceneLoader.getController();
+        creation.setGameController(gc);
         creation.setMenuScene(menuScene);
         creation.setGameScene(gameScene);
 
         GameSceneController gScene = (GameSceneController) gameSceneLoader.getController();
+        gScene.setGameController(gc);
         gScene.setMenuScene(menuScene);
 
         stage.setScene(menuScene);

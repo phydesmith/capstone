@@ -12,10 +12,12 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import io.javasmithy.controller.game.GameController;
 import javafx.event.ActionEvent;
 
-public class CreationSceneController implements Initializable {
+public class CreationSceneController implements Initializable, SceneController {
 
+    private GameController gc;
     private Scene menuScene;
     private Scene gameScene;
 
@@ -52,11 +54,17 @@ public class CreationSceneController implements Initializable {
     public void showAbilityGeneration(ActionEvent actionEvent) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AbilityGeneration.fxml"));
         /*
-        this.centerChangePane.getChildren().clear();
-        this.centerChangePane.getChildren().add(loader.load());
-        */
+         * this.centerChangePane.getChildren().clear();
+         * this.centerChangePane.getChildren().add(loader.load());
+         */
         this.centerChangePane.getChildren().set(0, loader.load());
+        ((AbilityGenerationController)loader.getController()).setGameController(this.gc);
         System.out.println(this.centerChangePane.getChildren());
+    }
+
+    @Override
+    public void setGameController(GameController gc) {
+        this.gc = gc;
     }
 
 

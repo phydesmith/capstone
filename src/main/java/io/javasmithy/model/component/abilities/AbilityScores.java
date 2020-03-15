@@ -13,4 +13,13 @@ public class AbilityScores{
         return (this.scores.get(ability)-10)/2;
     }
 
+    public String toString(){
+        String str = "\n Ability Scores" + "\n ---------------- ";
+        Abilities[] abilities = Abilities.values();
+        for(Abilities ability : abilities ){
+            str += "\n" + ability + " " + scores.get(ability) + " | " + getModifier(ability);
+        }
+        return str;
+    }
+
 }

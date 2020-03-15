@@ -1,9 +1,10 @@
 package io.javasmithy.model.entity;
 
-import io.javasmithy.model.component.abilities.*;
+import io.javasmithy.model.component.abilities.AbilityScores;
 import io.javasmithy.model.component.hitpoints.*;
 
-public class CharacterEntity{
+public class CharacterEntity implements Entity{
+    String charName = " def ";
     AbilityScores abilityScores;
     HitPoints hp;
 
@@ -23,7 +24,17 @@ public class CharacterEntity{
     }
 
     private void init(){
-        abilityScores = new AbilityScores(AbilityScoreFactory.generateScores());
+        
     }
 
+    public void setAbilityScores(AbilityScores abilityScores){
+        System.out.println("DEBUG " + abilityScores);
+        this.abilityScores = abilityScores;
+    }
+
+    public String toString(){
+        String str = "";
+        str += "\n" + this.charName + "\n" + this.abilityScores;
+        return str;
+    }
 }

@@ -7,13 +7,15 @@ import javafx.scene.Node;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import io.javasmithy.controller.game.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 
 import javafx.scene.control.Button;
 
-public class MenuSceneController implements Initializable {
+public class MenuSceneController implements Initializable, SceneController {
 
+    private GameController gc;
     private Scene creationScene;
     private Scene gameScene;
 
@@ -50,5 +52,10 @@ public class MenuSceneController implements Initializable {
 
     public void continueSetDisabled(boolean state){
         continueBtn.setDisable(state);
+    }
+
+    @Override
+    public void setGameController(GameController gc) {
+        this.gc = gc;
     }
 }

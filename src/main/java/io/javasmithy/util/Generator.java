@@ -12,16 +12,18 @@ public class Generator{
             total += random.nextInt(bound)+1; 
         }
         return total;
+        //  Post-Condtion
+        //  Generates a random number between 1 and Bound
     }
 
     public static int generateAbilityScore(){
         int[] arr = new int[4];
         for (int i = 0; i < arr.length; i++){
-            arr[i] = generate(6, 1)+1;
+            arr[i] = generate(6, 1);
         }
         Arrays.sort(arr);
         int total = 0;
-        for (int i = 0; i < 3; i++){
+        for (int i = 1; i <= 3; i++){
             total+= arr[i];
         }
         return total;
