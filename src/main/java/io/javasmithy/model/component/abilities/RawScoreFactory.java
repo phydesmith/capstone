@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class RawScoreFactory{
-    private static final Generator GENERATOR = new Generator();
     private static final int MIN_SCORE = 69; // 69 is total of standard array
 
     public static List<Integer> generateValidScoreList(){
@@ -19,7 +18,7 @@ public class RawScoreFactory{
     private static List<Integer> generateRawScoreList(){
         List<Integer> scoreList = new ArrayList<Integer>();
         for (int i = 0; i < 6; i++){
-            scoreList.add(GENERATOR.generateAbilityScore());
+            scoreList.add(Generator.generateAbilityScore());
         }
         return scoreList;
     }

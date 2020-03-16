@@ -14,14 +14,11 @@ import java.util.ArrayList;
 
 import javafx.fxml.*;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Button;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import javafx.scene.Group;
 
 public class AbilityGenerationController implements Initializable, SceneController {
 
