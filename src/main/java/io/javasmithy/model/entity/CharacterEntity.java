@@ -2,11 +2,13 @@ package io.javasmithy.model.entity;
 
 import io.javasmithy.model.component.abilities.AbilityScores;
 import io.javasmithy.model.component.hitpoints.*;
+import io.javasmithy.model.component.race.Race;
 
 public class CharacterEntity implements Entity{
     String charName = " def ";
     AbilityScores abilityScores;
     HitPoints hp;
+    private Race race;
 
 
     // hitpoints
