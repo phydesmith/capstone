@@ -53,10 +53,11 @@ alignment="CENTER_LEFT">
             GridPane.columnSpan="2">
             <children>
                 <Button 
+                    text="Race"
+                    onAction="#showRaceChoice"/>
+                <Button 
                     text="Abilities" 
                     onAction="#showAbilityGeneration"/>
-                <Button 
-                    text="Race"/>
                 <Button 
                     text="Class"/>
                 <Button 

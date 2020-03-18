@@ -61,6 +61,13 @@ public class CreationSceneController implements Initializable, SceneController {
         System.out.println(this.centerChangePane.getChildren());
     }
 
+    @FXML
+    public void showRaceChoice(ActionEvent actionEvent) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/RaceChoice.fxml"));
+        this.centerChangePane.getChildren().set(0, loader.load());
+        ((RaceChoiceController)loader.getController()).setGameController(this.gc);
+    }
+
     @Override
     public void setGameController(GameController gc) {
         this.gc = gc;

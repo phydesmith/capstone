@@ -5,9 +5,9 @@ import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
 
 public class CharacterEntity implements Entity{
-    String charName = " def ";
-    AbilityScores abilityScores;
-    HitPoints hp;
+    private String charName = " def ";
+    private AbilityScores abilityScores;
+    private HitPoints hp;
     private Race race;
 
 
@@ -33,10 +33,20 @@ public class CharacterEntity implements Entity{
         System.out.println("DEBUG " + abilityScores);
         this.abilityScores = abilityScores;
     }
+    public void applyRacialAbilityBonuses(){
+        
+    }
 
+    public void setRace(Race race){
+        this.race = race;
+    }
+    public Race getRace(){
+        return this.race;
+    }
+    
     public String toString(){
         String str = "";
-        str += "\n" + this.charName + "\n" + this.abilityScores;
+        str += "\n NAME: " + this.charName + "\n RACE: " + this.race + "\n" + this.abilityScores;
         return str;
     }
 }
