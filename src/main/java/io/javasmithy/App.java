@@ -57,16 +57,3 @@ public class App extends Application{
         launch();
     }
 }
-
-
-
-/*
-
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml\\MainMenuScene.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml\\BaseView.fxml"));
-        //FXMLLoader loader = new FXMLLoader(BaseViewController.class.getClassLoader().getResource("fxml\\BaseView.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-*/
