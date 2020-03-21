@@ -68,6 +68,13 @@ public class CreationSceneController implements Initializable, SceneController {
         ((RaceChoiceController)loader.getController()).setGameController(this.gc);
     }
 
+    @FXML
+    public void showBackgroundChoice(ActionEvent actionEvent) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/BackgroundChoice.fxml"));
+        this.centerChangePane.getChildren().set(0, loader.load());
+        ((BackgroundChoiceController)loader.getController()).setGameController(this.gc);
+    }
+
     @Override
     public void setGameController(GameController gc) {
         this.gc = gc;

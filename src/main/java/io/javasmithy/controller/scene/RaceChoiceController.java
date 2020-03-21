@@ -4,13 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import io.javasmithy.controller.game.GameController;
-import io.javasmithy.model.component.abilities.AbilityScoreFactory;
-import io.javasmithy.model.component.abilities.RawScoreFactory;
 
 import java.util.Arrays;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import io.javasmithy.model.component.race.*;
 
@@ -18,9 +15,8 @@ import javafx.fxml.*;
 import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.Label;
+
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

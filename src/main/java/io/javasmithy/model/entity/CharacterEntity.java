@@ -1,7 +1,9 @@
 package io.javasmithy.model.entity;
 
+import io.javasmithy.model.component.level.*;
 import io.javasmithy.model.component.abilities.AbilityScores;
 import io.javasmithy.model.component.archetype.Archetype;
+import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
 
@@ -17,11 +19,12 @@ public class CharacterEntity implements Entity{
     private Race race;
     private AbilityScores abilityScores;
     private Archetype archetype;
+    private Background background;
     private int speed;
 
     //  Character Counters
     private HitPoints hp;
-    private int level;
+    private Level level;
     private int currentXP;
     private int gold;
 
@@ -39,7 +42,7 @@ public class CharacterEntity implements Entity{
     }
 
     private void init(){
-        this.level = 1;
+        initLevel();
     }
 
     public void setAbilityScores(AbilityScores abilityScores){
@@ -57,14 +60,18 @@ public class CharacterEntity implements Entity{
         this.race = race;
     }
     
-    public int getLevel(){
+    public Level getLevel(){
         return this.level;
     }
-    public void setLevel(int i ){
-        this.level = i;
+    private void initLevel(){
+        //  Sets level to Level 1
+        this.level = Level.getNewLevel(1);
     }
-    public void levelUp(){
-        this.level++;
+    private void setLevel(int i ){
+        this.level = Level.getNewLevel(i);
+    }
+    private void levelUp(){
+        this.level = Level.getNewLevel(this.level.getLevelValue()+1);
     }
     
     public String getCharName() {
@@ -86,6 +93,13 @@ public class CharacterEntity implements Entity{
     }
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Background getBackground(){
+        return this.background;
+    }
+    public void setBackground(Background background){
+        this.background = background;
     }
 
     public String getDescription() {
@@ -132,7 +146,10 @@ public class CharacterEntity implements Entity{
 
     public String toString(){
         String str = "";
-        str += "\n NAME: " + this.charName + "\n RACE: " + this.race + "\n" + this.abilityScores;
+        str += "\n NAME: " + this.charName 
+            + "\n RACE: " + this.race
+            + "\n Background: " + this.background 
+            + "\n" + this.abilityScores;
         return str;
     }
 }

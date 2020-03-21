@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.geometry.Pos?>
+
+<GridPane fx:id="backgroundChoiceGridPane" 
+xmlns:fx="http://javafx.com/fxml"
+fx:controller="io.javasmithy.controller.scene.BackgroundChoiceController"
+stylesheets="@/style/RaceChoice.css"
+styleClass="root">
+    
+    <ListView fx:id="listView" 
+    GridPane.rowIndex="0" 
+    GridPane.columnIndex="0" 
+    GridPane.rowSpan="5"
+    GridPane.columnSpan="3"
+    prefHeight="200" 
+    maxHeight="200" 
+    prefWidth="125" 
+    maxWidth="125" 
+    editable="false"
+    orientation="VERTICAL"/>
+
+    <TextArea fx:id="backgroundDescription"
+    GridPane.rowIndex="0"
+    GridPane.columnIndex="3"
+    GridPane.rowSpan="5"/>
+
+    <Button fx:id="submitBtn"
+    text="Submit"
+    GridPane.rowIndex="7" 
+    GridPane.columnIndex="0" 
+    onAction="#submitBackground"/>
+    
+</GridPane>

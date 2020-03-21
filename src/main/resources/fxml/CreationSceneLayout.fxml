@@ -61,7 +61,8 @@ alignment="CENTER_LEFT">
                 <Button 
                     text="Class"/>
                 <Button 
-                    text="Background"/>
+                    text="Background"
+                    onAction="#showBackgroundChoice"/>
             </children>
         </VBox>
 
