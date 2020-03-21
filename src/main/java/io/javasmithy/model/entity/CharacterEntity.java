@@ -146,9 +146,10 @@ public class CharacterEntity implements Entity{
 
     public String toString(){
         String str = "";
-        str += "\n NAME: " + this.charName 
-            + "\n RACE: " + this.race
-            + "\n Background: " + this.background 
+        str += "\n Name: \t" + this.charName 
+            + "\n Race: \t" + this.race
+            + "\n Background: \t" + this.background
+            + "\n Class: \t" 
             + "\n" + this.abilityScores;
         return str;
     }

@@ -9,7 +9,7 @@
 
 <GridPane fx:id="archChoiceGridPane" 
 xmlns:fx="http://javafx.com/fxml"
-fx:controller="io.javasmithy.controller.scene.RaceChoiceController"
+fx:controller="io.javasmithy.controller.scene.ArchetypeChoiceController"
 stylesheets="@/style/RaceChoice.css"
 styleClass="root">
     
@@ -25,7 +25,7 @@ styleClass="root">
     editable="false"
     orientation="VERTICAL"/>
 
-    <TextArea fx:id="archeTypeDescription"
+    <TextArea fx:id="archetypeDescription"
     GridPane.rowIndex="0"
     GridPane.columnIndex="3"
     GridPane.rowSpan="5"/>

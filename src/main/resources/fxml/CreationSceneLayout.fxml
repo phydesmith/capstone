@@ -56,13 +56,14 @@ alignment="CENTER_LEFT">
                     text="Race"
                     onAction="#showRaceChoice"/>
                 <Button 
-                    text="Abilities" 
-                    onAction="#showAbilityGeneration"/>
-                <Button 
-                    text="Class"/>
+                    text="Class"
+                    onAction="#showArchetypeChoice"/>
                 <Button 
                     text="Background"
                     onAction="#showBackgroundChoice"/>
+                <Button 
+                    text="Abilities" 
+                    onAction="#showAbilityGeneration"/>
             </children>
         </VBox>
 
