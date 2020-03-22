@@ -76,10 +76,10 @@ public class CreationSceneController implements Initializable, SceneController {
     }
 
     @FXML
-    public void showArchetypeChoice(ActionEvent actionEvent) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ArchetypeChoice.fxml"));
+    public void showCClassChoice(ActionEvent actionEvent) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CClassChoice.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
-        ((ArchetypeChoiceController)loader.getController()).setGameController(this.gc);
+        ((CClassChoiceController)loader.getController()).setGameController(this.gc);
     }
 
     @Override

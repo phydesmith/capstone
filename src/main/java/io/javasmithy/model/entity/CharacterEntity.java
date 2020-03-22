@@ -2,7 +2,7 @@ package io.javasmithy.model.entity;
 
 import io.javasmithy.model.component.level.*;
 import io.javasmithy.model.component.ability.AbilityScores;
-import io.javasmithy.model.component.archetype.Archetype;
+import io.javasmithy.model.component.cclass.CClass;
 import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
@@ -18,7 +18,7 @@ public class CharacterEntity implements Entity{
     //  Character Base Mechanics and Stats
     private Race race;
     private AbilityScores abilityScores;
-    private Archetype archetype;
+    private CClass cClass;
     private Background background;
     private int speed;
 
@@ -68,11 +68,11 @@ public class CharacterEntity implements Entity{
         this.age = age;
     }
 
-    public Archetype getArchetype() {
-        return archetype;
+    public CClass getCClass() {
+        return cClass;
     }
-    public void setArchetype(Archetype archetype) {
-        this.archetype = archetype;
+    public void setCClass(CClass charclass) {
+        this.cClass = cClass;
     }
 
     public Background getBackground(){
@@ -150,7 +150,7 @@ public class CharacterEntity implements Entity{
         str += "\n Name: \t" + this.charName 
             + "\n Race: \t" + this.race
             + "\n Background: \t" + this.background
-            + "\n Class: \t" + this.archetype
+            + "\n Class: \t" + this.cClass
             + "\n" + this.abilityScores;
         return str;
     }

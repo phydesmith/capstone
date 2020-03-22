@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.geometry.Pos?>
 
-<GridPane fx:id="archChoiceGridPane" 
+<GridPane fx:id="cClassChoiceGridPane" 
 xmlns:fx="http://javafx.com/fxml"
-fx:controller="io.javasmithy.controller.scene.ArchetypeChoiceController"
+fx:controller="io.javasmithy.controller.scene.CClassChoiceController"
 stylesheets="@/style/RaceChoice.css"
 styleClass="root">
     
@@ -25,7 +25,7 @@ styleClass="root">
     editable="false"
     orientation="VERTICAL"/>
 
-    <TextArea fx:id="archetypeDescription"
+    <TextArea fx:id="cClassDescription"
     GridPane.rowIndex="0"
     GridPane.columnIndex="3"
     GridPane.rowSpan="5"/>
@@ -34,6 +34,6 @@ styleClass="root">
     text="Submit"
     GridPane.rowIndex="7" 
     GridPane.columnIndex="0" 
-    onAction="#submitArchetype"/>
+    onAction="#submitCClass"/>
     
 </GridPane>

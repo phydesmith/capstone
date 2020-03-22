@@ -60,7 +60,7 @@ styleClass="creationPane">
                     prefHeight="20"
                     prefWidth="80"  
                     text="Class"
-                    onAction="#showArchetypeChoice"/>
+                    onAction="#showCClassChoice"/>
                 <Button
                     prefHeight="20"
                     prefWidth="80"  

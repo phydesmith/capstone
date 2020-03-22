@@ -1,4 +1,4 @@
-package io.javasmithy.model.component.archetype;
+package io.javasmithy.model.component.cclass;
 
 import io.javasmithy.model.component.ability.Ability;
 import io.javasmithy.model.component.skill.Skill;
@@ -6,7 +6,7 @@ import io.javasmithy.model.component.skill.Skill;
 
 import java.util.List;
 
-public enum Archetype {
+public enum CClass {
     CLERIC("Cleric", "A priestly champion who wields divine magic in service of a higher power", 8, 
             List.of(Ability.WISDOM, Ability.CHARISMA), 
             List.of(Skill.HISTORY, Skill.INSIGHT, Skill.MEDICINE, Skill.PERSUASION, Skill.RELIGION)
@@ -39,10 +39,10 @@ public enum Archetype {
     private String description;
     private int hitDie;
 
-    private List<Ability> proficientSavingThrows;
-    private List<Skill> skills;
+    private List<Ability> proficientSavingThrows; // saving throws that the character class is proficient in
+    private List<Skill> skills; // list of possible skills the character class can choose from
 
-    private Archetype(String name, String description, int hitDie, List<Ability> savingThrows, List<Skill> skills){
+    private CClass(String name, String description, int hitDie, List<Ability> savingThrows, List<Skill> skills){
         this.name = name;
         this.description = description;
         this.hitDie = hitDie;
