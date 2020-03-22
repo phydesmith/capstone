@@ -3,68 +3,79 @@
 
 <!--?import java.net.URL?-->
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<GridPane 
+
+<AnchorPane 
 id="creationPane" 
 prefWidth="1080"            
 prefHeight="720"
 xmlns:fx="https://javafx.com/"
 fx:controller="io.javasmithy.controller.scene.CreationSceneController"
 stylesheets="@/style/CreationStyle.css"
-styleClass="creationPane"
-alignment="CENTER_LEFT">
+styleClass="creationPane">
 
+    <children>
         <Button 
             text = "Back" 
             fx:id = "creationBack" 
             onAction="#openMenuScene"
-            GridPane.rowIndex="0"
-            GridPane.columnIndex="0"/>
+            AnchorPane.topAnchor="20"
+            AnchorPane.leftAnchor="20"/>
 
         <Button 
             text = "Start Game" 
             fx:id = "toGameBtn" 
             onAction="#openGameScene"
-            GridPane.rowIndex="10"
-            GridPane.columnIndex="0"/>
+            AnchorPane.bottomAnchor="20"
+            AnchorPane.leftAnchor="20"/>
 
 
         <Pane 
             fx:id = "centerChangePane"  
-            GridPane.rowIndex="2"
-            GridPane.columnIndex="2"
-            GridPane.columnSpan="5"
-            GridPane.rowSpan="8"/>
+            AnchorPane.topAnchor="200"
+            AnchorPane.leftAnchor="200"/>
 
 
         <VBox
             alignment="CENTER"
             id="creationButtons"
             spacing="20"
-            GridPane.rowIndex="2"
-            GridPane.columnIndex="0"
-            GridPane.rowSpan="8"
-            GridPane.columnSpan="2">
+            AnchorPane.topAnchor="300"
+            AnchorPane.leftAnchor="20">
             <children>
-                <Button 
+                <Button
+                    prefHeight="20"
+                    prefWidth="80" 
                     text="Race"
                     onAction="#showRaceChoice"/>
-                <Button 
+                <Button
+                    prefHeight="20"
+                    prefWidth="80"  
                     text="Class"
                     onAction="#showArchetypeChoice"/>
-                <Button 
+                <Button
+                    prefHeight="20"
+                    prefWidth="80"  
                     text="Background"
                     onAction="#showBackgroundChoice"/>
                 <Button 
+                    prefHeight="20"
+                    prefWidth="80" 
                     text="Abilities" 
                     onAction="#showAbilityGeneration"/>
+                <Button
+                    prefHeight="20"
+                    prefWidth="80"
+                    text="Character"/> 
             </children>
         </VBox>
-
-    </GridPane>
+    </children>
+</AnchorPane>
