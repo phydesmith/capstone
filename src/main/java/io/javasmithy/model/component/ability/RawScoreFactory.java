@@ -1,4 +1,4 @@
-package io.javasmithy.model.component.abilities;
+package io.javasmithy.model.component.ability;
 
 import io.javasmithy.util.Generator;
 

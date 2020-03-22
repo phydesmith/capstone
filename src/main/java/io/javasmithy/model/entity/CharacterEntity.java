@@ -1,7 +1,7 @@
 package io.javasmithy.model.entity;
 
 import io.javasmithy.model.component.level.*;
-import io.javasmithy.model.component.abilities.AbilityScores;
+import io.javasmithy.model.component.ability.AbilityScores;
 import io.javasmithy.model.component.archetype.Archetype;
 import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
@@ -32,6 +32,7 @@ public class CharacterEntity implements Entity{
     //private ArmorClass ac;
     
     //  Character Calculated Interaction and Combat Mechanics
+    //  saving throws
     //  attack rolls bonus
     //  initiative bonus
     //  skill modifiers
@@ -49,38 +50,10 @@ public class CharacterEntity implements Entity{
         System.out.println("DEBUG " + abilityScores);
         this.abilityScores = abilityScores;
     }
-    public AbilityScores AbilityScores(){
+    public AbilityScores getAbilityScores(){
         return this.abilityScores;
     }
-
-    public Race getRace(){
-        return this.race;
-    }
-    public void setRace(Race race){
-        this.race = race;
-    }
     
-    public Level getLevel(){
-        return this.level;
-    }
-    private void initLevel(){
-        //  Sets level to Level 1
-        this.level = Level.getNewLevel(1);
-    }
-    private void setLevel(int i ){
-        this.level = Level.getNewLevel(i);
-    }
-    private void levelUp(){
-        this.level = Level.getNewLevel(this.level.getLevelValue()+1);
-    }
-    
-    public String getCharName() {
-        return charName;
-    }
-    public void setCharName(String charName) {
-        this.charName = charName;
-    }
-
     public String getAlignment() {
         return alignment;
     }
@@ -95,11 +68,25 @@ public class CharacterEntity implements Entity{
         this.age = age;
     }
 
+    public Archetype getArchetype() {
+        return archetype;
+    }
+    public void setArchetype(Archetype archetype) {
+        this.archetype = archetype;
+    }
+
     public Background getBackground(){
         return this.background;
     }
     public void setBackground(Background background){
         this.background = background;
+    }
+
+    public String getCharName() {
+        return charName;
+    }
+    public void setCharName(String charName) {
+        this.charName = charName;
     }
 
     public String getDescription() {
@@ -109,11 +96,18 @@ public class CharacterEntity implements Entity{
         this.description = description;
     }
 
-    public Archetype getArchetype() {
-        return archetype;
+    public Level getLevel(){
+        return this.level;
     }
-    public void setArchetype(Archetype archetype) {
-        this.archetype = archetype;
+    private void initLevel(){
+        //  Sets level to Level 1
+        this.level = Level.getNewLevel(1);
+    }
+    private void setLevel(int i ){
+        this.level = Level.getNewLevel(i);
+    }
+    private void levelUp(){
+        this.level = Level.getNewLevel(this.level.getLevelValue()+1);
     }
 
     public int getSpeed() {
@@ -144,12 +138,19 @@ public class CharacterEntity implements Entity{
         this.gold = gold;
     }
 
+    public Race getRace(){
+        return this.race;
+    }
+    public void setRace(Race race){
+        this.race = race;
+    }
+
     public String toString(){
         String str = "";
         str += "\n Name: \t" + this.charName 
             + "\n Race: \t" + this.race
             + "\n Background: \t" + this.background
-            + "\n Class: \t" 
+            + "\n Class: \t" + this.archetype
             + "\n" + this.abilityScores;
         return str;
     }

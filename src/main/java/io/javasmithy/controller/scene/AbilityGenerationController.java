@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import io.javasmithy.controller.game.GameController;
-import io.javasmithy.model.component.abilities.AbilityScoreFactory;
-import io.javasmithy.model.component.abilities.RawScoreFactory;
+import io.javasmithy.model.component.ability.AbilityScoreFactory;
+import io.javasmithy.model.component.ability.RawScoreFactory;
 
 import java.util.Arrays;
 

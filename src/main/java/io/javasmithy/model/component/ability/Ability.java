@@ -1,6 +1,6 @@
-package io.javasmithy.model.component.abilities;
+package io.javasmithy.model.component.ability;
 
-public enum Abilities{
+public enum Ability{
     STRENGTH("Strength", "Str"),
     DEXTERITY("Dexterity", "Dex"),
     CONSTITUTION("Constitution", "Con"),
@@ -11,7 +11,7 @@ public enum Abilities{
     private String fullName;
     private String shortName;
 
-    private Abilities(String fullName, String shortName){
+    private Ability(String fullName, String shortName){
         this.fullName = fullName;
         this.shortName = shortName;
     }
