@@ -10,8 +10,8 @@ import io.javasmithy.model.component.race.Race;
 public class CharacterEntity implements Entity{
     
     //  Biographical Information
-    private String charName = " def ";
-    private String alignment;
+    private String charName = "DEFAULT";
+    private String alignment = "DEFAULT";
     private int age;
     private String description;
 
@@ -71,7 +71,7 @@ public class CharacterEntity implements Entity{
     public CClass getCClass() {
         return cClass;
     }
-    public void setCClass(CClass charclass) {
+    public void setCClass(CClass cClass) {
         this.cClass = cClass;
     }
 
@@ -102,6 +102,7 @@ public class CharacterEntity implements Entity{
     private void initLevel(){
         //  Sets level to Level 1
         this.level = Level.getNewLevel(1);
+        this.setCurrentXP(this.level.getReqExp());
     }
     private void setLevel(int i ){
         this.level = Level.getNewLevel(i);
@@ -129,6 +130,9 @@ public class CharacterEntity implements Entity{
     }
     public void setCurrentXP(int currentXP) {
         this.currentXP = currentXP;
+    }
+    public void addXP(int delta){
+        this.currentXP += delta;
     }
 
     public int getGold() {

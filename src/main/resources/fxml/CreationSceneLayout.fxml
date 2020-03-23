@@ -74,7 +74,8 @@ styleClass="creationPane">
                 <Button
                     prefHeight="20"
                     prefWidth="80"
-                    text="Character"/> 
+                    text="Character"
+                    onAction="#showCharacterSheet"/> 
             </children>
         </VBox>
     </children>

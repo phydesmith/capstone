@@ -74,12 +74,20 @@ public class CreationSceneController implements Initializable, SceneController {
         this.centerChangePane.getChildren().set(0, loader.load());
         ((BackgroundChoiceController)loader.getController()).setGameController(this.gc);
     }
-
     @FXML
     public void showCClassChoice(ActionEvent actionEvent) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CClassChoice.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((CClassChoiceController)loader.getController()).setGameController(this.gc);
+    }
+    @FXML
+    public void showCharacterSheet(ActionEvent actionEvent) throws Exception {
+        System.out.println(this.gc);
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CharacterSheet.fxml"));
+        this.centerChangePane.getChildren().set(0, loader.load());
+        ((CharacterSheetController)loader.getController()).setGameController(this.gc);
+        ((CharacterSheetController)loader.getController()).populate();
+        
     }
 
     @Override

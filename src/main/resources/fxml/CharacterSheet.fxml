@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+
+<GridPane
+    xmlns:fx="https://javafx.com/"
+    stylesheets="@/style/CharacterSheetStyle.css"
+    styleClass="root"
+    fx:controller="io.javasmithy.controller.scene.CharacterSheetController"
+    fx:id = "characterSheetRoot"
+    hgap="5"
+    vgap="5"
+    prefWidth = "300"
+    prefHeight = "400"
+    gridLinesVisible="false">
+
+    <Label 
+        fx:id = "name"
+        GridPane.rowIndex="0"
+        GridPane.columnIndex="0"
+        GridPane.columnSpan="4"
+        prefWidth="40"
+        maxWidth="150"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Testing"
+        styleClass="name-label"/>
+    
+    <Label 
+        fx:id = "race"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="0"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Human"/>
+    
+    <Label 
+        fx:id = "cClass"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="1"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Fighter"/>        
+    
+    <Label 
+        fx:id = "level"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="2"
+        prefWidth="20"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="1"/>
+    
+    <Label 
+        fx:id = "alignment"
+        GridPane.rowIndex = "2"
+        GridPane.columnIndex = "0"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Chaotic Evil"
+    />
+
+    <Label 
+        fx:id = "background"
+        GridPane.rowIndex="2"
+        GridPane.columnIndex="1"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Charlatan"/>
+
+    <Label
+        fx:id = "experience"
+        GridPane.rowIndex = "2"
+        GridPane.columnIndex = "2"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="5200"
+    />
+    
+</GridPane>
