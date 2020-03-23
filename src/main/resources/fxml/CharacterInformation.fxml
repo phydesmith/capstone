@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+
+<GridPane
+    xmlns:fx="https://javafx.com/"
+    stylesheets="@/style/CharacterSheetStyle.css"
+    styleClass="root"
+    fx:controller="io.javasmithy.controller.scene.CharacterInformationController"
+    fx:id = "cInformationRoot"
+    hgap="5"
+    vgap="5"
+    prefWidth = "300"
+    prefHeight = "400"
+    gridLinesVisible="false">
+
+    <Label 
+        fx:id = "nameLabel"
+        GridPane.rowIndex="0"
+        GridPane.columnIndex="1"
+        prefWidth="40"
+        maxWidth="150"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Name: "/>
+    <TextField
+        fx:id = "nameInput"
+        GridPane.rowIndex="0"
+        GridPane.columnIndex="1"
+        prefWidth ="40"
+        maxWidth = "150"
+        GridPane.hgrow="ALWAYS"
+        prefHeight = "20"
+    />
+    
+    <Label 
+        fx:id = "description"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="0"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Description"/>
+    <TextArea
+        fx:id = "descriptionInput"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="1"
+        GridPane.columnSpan="3"
+        prefWidth ="80"
+        maxWidth = "150"
+        GridPane.hgrow="ALWAYS"
+        prefHeight = "100"
+    />
+    
+    <Label 
+        fx:id = "alignment"
+        GridPane.rowIndex = "2"
+        GridPane.columnIndex = "0"
+        prefWidth="40"
+        maxWidth="80"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="20"
+        text="Alignment"
+    />
+    
+</GridPane>

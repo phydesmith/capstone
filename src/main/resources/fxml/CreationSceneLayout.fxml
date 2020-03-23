@@ -71,6 +71,11 @@ styleClass="creationPane">
                     prefWidth="80" 
                     text="Abilities" 
                     onAction="#showAbilityGeneration"/>
+                <Button 
+                    prefHeight="20"
+                    prefWidth="120"
+                    text="Information"
+                    onAction="#showCharacterInformation"/>
                 <Button
                     prefHeight="20"
                     prefWidth="80"

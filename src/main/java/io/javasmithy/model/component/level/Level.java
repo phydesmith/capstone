@@ -50,4 +50,8 @@ public enum Level{
         }
         return newLevel;
     }
+
+    public String toString(){
+        return this.levelValue+"";
+    }
 }
