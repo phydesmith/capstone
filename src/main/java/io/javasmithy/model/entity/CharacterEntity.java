@@ -2,6 +2,7 @@ package io.javasmithy.model.entity;
 
 import io.javasmithy.model.component.level.*;
 import io.javasmithy.model.component.ability.AbilityScores;
+import io.javasmithy.model.component.alignment.Alignment;
 import io.javasmithy.model.component.cclass.CClass;
 import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
@@ -11,7 +12,7 @@ public class CharacterEntity implements Entity{
     
     //  Biographical Information
     private String charName = "DEFAULT";
-    private String alignment = "DEFAULT";
+    private Alignment alignment;
     private int age;
     private String description;
 
@@ -54,10 +55,10 @@ public class CharacterEntity implements Entity{
         return this.abilityScores;
     }
     
-    public String getAlignment() {
-        return alignment;
+    public Alignment getAlignment() {
+        return this.alignment;
     }
-    public void setAlignment(String alignment) {
+    public void setAlignment(Alignment alignment) {
         this.alignment = alignment;
     }
 

@@ -1,28 +1,29 @@
 package io.javasmithy.model.component.alignment;
 
 public enum Alignment{
-    LG("Lawful Good", ""),
-    CG("Chaotic Good", ""),
-    NG("Neutral Good", ""),
-    LN("Lawful Neutral", ""),
-    TN("True Neutral", ""),
-    CN("Chaotic Neutral", ""),
-    NE("Neutral Evil", ""),
-    CE("Chaotic Evil", ""),
-    LE("Lawful Evil", "");
+    LG("Lawful Good", "1"),
+    CG("Chaotic Good", "2"),
+    NG("Neutral Good", "3"),
+    LN("Lawful Neutral", "4"),
+    TN("True Neutral", "5"),
+    CN("Chaotic Neutral", "6"),
+    NE("Neutral Evil", "7"),
+    CE("Chaotic Evil", "8"),
+    LE("Lawful Evil", "9");
 
     private String name;
     private String description;
 
     private Alignment(String name, String description){
         this.name = name;
+        this.description = description;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public String toString(){

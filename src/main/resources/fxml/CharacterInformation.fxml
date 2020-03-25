@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
 
 <GridPane
     xmlns:fx="https://javafx.com/"
@@ -13,21 +15,21 @@
     fx:id = "cInformationRoot"
     hgap="5"
     vgap="5"
-    prefWidth = "300"
+    prefWidth = "332"
     prefHeight = "400"
     gridLinesVisible="false">
 
     <Label 
         fx:id = "nameLabel"
         GridPane.rowIndex="0"
-        GridPane.columnIndex="1"
+        GridPane.columnIndex="0"
         prefWidth="40"
         maxWidth="150"
         GridPane.hgrow="ALWAYS"
         prefHeight="20"
         text="Name: "/>
     <TextField
-        fx:id = "nameInput"
+        fx:id = "name"
         GridPane.rowIndex="0"
         GridPane.columnIndex="1"
         prefWidth ="40"
@@ -37,34 +39,59 @@
     />
     
     <Label 
-        fx:id = "description"
+        fx:id = "descriptionLabel"
         GridPane.rowIndex="1"
         GridPane.columnIndex="0"
         prefWidth="40"
         maxWidth="80"
         GridPane.hgrow="ALWAYS"
         prefHeight="20"
-        text="Description"/>
+        text="Description: "/>
+
     <TextArea
         fx:id = "descriptionInput"
         GridPane.rowIndex="1"
         GridPane.columnIndex="1"
-        GridPane.columnSpan="3"
         prefWidth ="80"
         maxWidth = "150"
         GridPane.hgrow="ALWAYS"
         prefHeight = "100"
     />
+
+    <Button
+        fx:id="descSubmitBtn"
+        GridPane.rowIndex="2"
+        GridPane.columnIndex="0"
+        onAction="#submitBio"
+        text="Submit"/>
+
     
-    <Label 
-        fx:id = "alignment"
-        GridPane.rowIndex = "2"
-        GridPane.columnIndex = "0"
-        prefWidth="40"
-        maxWidth="80"
-        GridPane.hgrow="ALWAYS"
-        prefHeight="20"
-        text="Alignment"
-    />
+    <ListView 
+        fx:id="listView" 
+        GridPane.rowIndex="3" 
+        GridPane.columnIndex="0" 
+        prefHeight="200" 
+        maxHeight="200" 
+        prefWidth="125" 
+        maxWidth="125" 
+        editable="false"
+        orientation="VERTICAL"/>
+    <TextArea 
+        fx:id="alignmentDescription"
+        GridPane.rowIndex="3"
+        GridPane.columnIndex="1"
+        prefWidth ="80"
+        maxWidth = "150"
+        prefHeight="200" 
+        maxHeight="200" 
+        GridPane.hgrow="ALWAYS"/>
+
+
+    <Button
+        fx:id="submitAlignmentBtn"
+        GridPane.rowIndex="4"
+        GridPane.columnIndex="0"
+        onAction="#submitAlignment"
+        text="Submit"/>
     
 </GridPane>
