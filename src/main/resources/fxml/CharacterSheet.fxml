@@ -2,6 +2,7 @@
 
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 
 <GridPane
     xmlns:fx="https://javafx.com/"
@@ -27,7 +28,7 @@
         text="Testing"
         styleClass="name-label"/>
     
-    <Label 
+    <!--Label 
         fx:id = "race"
         GridPane.rowIndex="1"
         GridPane.columnIndex="0"
@@ -87,6 +88,19 @@
         GridPane.hgrow="ALWAYS"
         prefHeight="20"
         text="5200"
+    /-->
+
+    <TextArea
+        fx:id = "characterSheet"
+        GridPane.rowIndex = "3"
+        GridPane.columnIndex = "0"
+        prefWidth="200"
+        maxWidth="300"
+        GridPane.hgrow="ALWAYS"
+        prefHeight="300"
+        text="5200"
+        editable="false"
+        wrapText="true"
     />
     
 </GridPane>

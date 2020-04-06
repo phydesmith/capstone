@@ -79,7 +79,7 @@ public class CharacterInformationController implements Initializable, SceneContr
     }
     @FXML
     public void submitName(){
-        this.gc.getPlayerCharacter().setCharName(this.name.getText());
+        this.gc.getPlayerCharacter().setName(this.name.getText());
     }
     @FXML
     public void submitAlignment(){

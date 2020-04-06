@@ -1,12 +1,22 @@
 package io.javasmithy.model.entity;
 
 import io.javasmithy.model.component.level.*;
+import io.javasmithy.model.component.ability.Ability;
 import io.javasmithy.model.component.ability.AbilityScores;
 import io.javasmithy.model.component.alignment.Alignment;
 import io.javasmithy.model.component.cclass.CClass;
 import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
+import io.javasmithy.model.item.Armor;
+import io.javasmithy.model.item.Item;
+import io.javasmithy.model.item.Weapon;
+import io.javasmithy.model.item.WeaponType;
+import io.javasmithy.util.Distance;
+import io.javasmithy.util.Generator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterEntity implements Entity{
     
@@ -38,6 +48,17 @@ public class CharacterEntity implements Entity{
     //  initiative bonus
     //  skill modifiers
 
+    //  Inventory and Items
+    private List<Item> items;
+    private Armor armor;
+    private Weapon weapon;
+
+    //  Positional
+    private int xPos;
+    private int yPos;
+
+    // status
+    private boolean isDead=false;
 
     public CharacterEntity(){
         init();
@@ -45,6 +66,7 @@ public class CharacterEntity implements Entity{
 
     private void init(){
         initLevel();
+        this.items = new ArrayList<Item>();
     }
 
     public void setAbilityScores(AbilityScores abilityScores){
@@ -74,6 +96,10 @@ public class CharacterEntity implements Entity{
     }
     public void setCClass(CClass cClass) {
         this.cClass = cClass;
+        initHP();
+    }
+    public void initHP(){
+        this.hp = new HitPoints(this.abilityScores.getModifier(Ability.CONSTITUTION), this.cClass.getHitDie());
     }
 
     public Background getBackground(){
@@ -83,10 +109,10 @@ public class CharacterEntity implements Entity{
         this.background = background;
     }
 
-    public String getCharName() {
+    public String getName() {
         return charName;
     }
-    public void setCharName(String charName) {
+    public void setName(String charName) {
         this.charName = charName;
     }
 
@@ -148,15 +174,136 @@ public class CharacterEntity implements Entity{
     }
     public void setRace(Race race){
         this.race = race;
+        this.speed = race.getSpeed();
+    }
+
+    @Override
+    public void attack(Entity entity){
+        int atkRoll = Generator.generate(20, 1);
+        atkRoll += getAttackBonus();
+        System.out.println(this.charName + " rolled a " + atkRoll + ".");
+        if (atkRoll+getAttackBonus() >= entity.getArmorClass()){
+            int dmg = this.getDamage();
+            System.out.println("Hit! " + entity.getName() + " takes " + dmg + " damage!");
+            entity.takeDamage(dmg);
+        }  else {
+            System.out.println("Miss!");
+        }
+
+        /*
+        int atkRoll = Generator.generate(20, 1);
+        if (atkRoll+getAttackBonus() >= entity.getArmorClass()){
+            entity.takeDamage(this.getDamage());
+        }
+        */
+    }
+    public int getArmorClass(){
+        return 10 + this.abilityScores.getModifier(Ability.DEXTERITY);
+        // get armor AC modifiers
+    }
+
+    @Override
+    public int getAttackBonus(){
+        if (this.weapon != null){
+            if (this.weapon.getType() == WeaponType.MELEE){
+                return getMeleeAttackBonus();
+            } else {
+                return getRangedAttackBonus();
+            }
+        } else {
+            return getMeleeAttackBonus();
+        }
+    }
+    private int getMeleeAttackBonus(){
+        return this.level.getProfBonus() + this.abilityScores.getModifier(Ability.STRENGTH);
+    }
+    private int getRangedAttackBonus(){
+        return this.level.getProfBonus() + this.abilityScores.getModifier(Ability.DEXTERITY);
+    }
+
+    @Override
+    public int getDamage(){
+        if ( this.weapon != null){
+            return Generator.generate(this.weapon.getDmgDie(), this.weapon.getDmgDieQty());
+        } else {
+            return Generator.generate(2, 1);
+        }
+
+    }
+
+    public void takeDamage(int dmg){
+        this.hp.decreaseCurrentHitPoints(dmg);
+        if (this.hp.getCurrentHP()<= 0){
+            this.isDead = true;
+        }
+    }
+
+    public boolean canAttackTarget(Entity entity){
+        return Distance.compute(getX(), getY(), entity.getX(), getY()) <= this.weapon.getAtkRange();
+    }
+
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+    public Item getItem(int index){
+        return this.items.get(index);
+    }
+
+    public Armor getArmor(){
+        return this.armor;
+    }
+    public void setArmor(Armor armor){
+        this.armor = armor;
+    }
+    public Weapon getWeapon(){
+        return this.weapon;
+    }
+    public void setWeapon(Weapon weapon){
+        this.weapon = weapon;
+    }
+
+    @Override
+    public void move(int deltaX, int deltaY) {
+        this.xPos += deltaX;
+        this.yPos += deltaY;
+    }
+
+    public int getX() {
+        return xPos;
+    }
+    public void setX(int xPos){
+        this.xPos = xPos;
+    }
+    public int getY(){
+        return yPos;
+    }
+    public void setY(){
+        this.yPos = yPos;
+    }
+
+    public boolean isDead(){
+        return this.isDead;
+    }
+    public void setIsDead(Boolean status){
+        this.isDead = status;
+    }
+
+    public String toStringNoName(){
+        String str = "";
+        str += "\n Alignment: " + this.alignment
+            +"\n Race: \t" + this.race
+            + "\n Background: \t" + this.background
+            + "\n Class: \t" + this.cClass
+            + "\n\n HP: " + this.hp
+            + "\n" + this.abilityScores
+            + "\n\n\tDescription:\n" + this.description;
+        return str;
     }
 
     public String toString(){
         String str = "";
         str += "\n Name: \t" + this.charName 
-            + "\n Race: \t" + this.race
-            + "\n Background: \t" + this.background
-            + "\n Class: \t" + this.cClass
-            + "\n" + this.abilityScores;
+            + toStringNoName();
         return str;
     }
 }

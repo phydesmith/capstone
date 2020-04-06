@@ -23,11 +23,14 @@ public class GameSceneController implements SceneController {
         this.menuScene = scene;
     }
 
+    //   TESTING
     @FXML
     public void gameCtrPress(ActionEvent actionEvent) {
+        gc.run(); //  TESTING
         gCtr++;
         System.out.println(gCtr);
     }
+    //  TESTING
 
     @FXML
     public void openMenuScene(ActionEvent actionEvent) {

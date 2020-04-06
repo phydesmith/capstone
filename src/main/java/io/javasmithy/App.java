@@ -4,6 +4,7 @@ import io.javasmithy.controller.scene.MenuSceneController;
 import io.javasmithy.controller.game.GameController;
 import io.javasmithy.controller.scene.CreationSceneController;
 import io.javasmithy.controller.scene.GameSceneController;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,6 +12,10 @@ import javafx.scene.Parent;
 
 import javafx.fxml.FXMLLoader;
 
+//  testing and debugging imports
+import io.javasmithy.model.entity.monster.Monster;
+import io.javasmithy.model.entity.monster.MonsterFactory;
+import io.javasmithy.model.entity.monster.MonsterType;
 
 
 public class App extends Application{
@@ -18,6 +23,8 @@ public class App extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         GameController gc = new GameController();
+        gc.init();
+
         FXMLLoader menuSceneLoader, creationSceneLoader, gameSceneLoader;
         Parent menuSceneLayout, creationSceneLayout, gameSceneLayout;
         Scene menuScene, creationScene, gameScene;
@@ -52,8 +59,8 @@ public class App extends Application{
         stage.show();
     }
 
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
+
         launch();
     }
 }

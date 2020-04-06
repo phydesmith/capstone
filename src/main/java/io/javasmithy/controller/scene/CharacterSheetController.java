@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 public class CharacterSheetController implements Initializable, SceneController {
 
@@ -27,6 +28,8 @@ public class CharacterSheetController implements Initializable, SceneController 
     Label background;
     @FXML
     Label experience;
+    @FXML
+    TextArea characterSheet;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,13 +42,17 @@ public class CharacterSheetController implements Initializable, SceneController 
     }
 
     public void populate(){
-        name.setText(gc.getPlayerCharacter().getCharName());
+        name.setText(gc.getPlayerCharacter().getName());
+        characterSheet.setText(gc.getPlayerCharacter().toStringNoName());
+
+        /*
         race.setText(this.gc.getPlayerCharacter().getRace().toString());
         cClass.setText(this.gc.getPlayerCharacter().getCClass().toString());
         level.setText(this.gc.getPlayerCharacter().getLevel().toString());
         alignment.setText(this.gc.getPlayerCharacter().getAlignment().toString());
         background.setText(this.gc.getPlayerCharacter().getBackground().toString());
         experience.setText("" + this.gc.getPlayerCharacter().getCurrentXP());
+        */
     }
 
 

@@ -56,6 +56,7 @@
         maxWidth = "150"
         GridPane.hgrow="ALWAYS"
         prefHeight = "100"
+        wrapText="true"
     />
 
     <Button

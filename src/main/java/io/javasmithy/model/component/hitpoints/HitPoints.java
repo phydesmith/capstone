@@ -7,6 +7,12 @@ public class HitPoints{
     int currentHitPoints;
     int hitDie;
 
+    public HitPoints(int hitDie, int hitDieQty, int hitPointBonus){
+        this.hitDie = hitDie;
+        this.maxHitPoints = Generator.generate(this.hitDie, hitDieQty) + hitPointBonus;
+        this.currentHitPoints = maxHitPoints;
+    }
+
     public HitPoints(int conMod, int hitDie){
         this.maxHitPoints = hitDie + conMod;
         this.currentHitPoints = maxHitPoints;

@@ -1,0 +1,32 @@
+[
+  {
+    "monsterType": "ZOMBIE",
+    "name": "zombie",
+    "speed": 4,
+    "hitDie": 8,
+    "hitDieQty" : 3,
+    "hpBonus": 9,
+    "armorClass" : 8,
+    "atkRange": 1,
+    "atkBonus": 3,
+    "dmgDie": 6,
+    "dmgDieQty": 1,
+    "dmgBonus": 1,
+    "xpValue": 50
+  },
+  {
+    "monsterType": "GOBLIN",
+    "name": "goblin",
+      "speed": 4,
+      "hitDie": 8,
+      "hitDieQty" : 3,
+      "hpBonus": 9,
+      "armorClass" : 8,
+      "atkRange": 1,
+      "atkBonus": 3,
+      "dmgDie": 6,
+      "dmgDieQty": 1,
+      "dmgBonus": 1,
+      "xpValue": 5
+  }
+]
