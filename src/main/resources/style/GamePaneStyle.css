@@ -1,0 +1,5 @@
+.background{
+    -fx-background-color: rgb(192, 192, 192);
+    -fx-background-image: url('../assets/img/grid-overlay-500px.png');
+    -fx-background-size: 100% 100%;
+}
