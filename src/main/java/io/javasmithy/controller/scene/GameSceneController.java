@@ -23,11 +23,8 @@ import java.util.ResourceBundle;
 public class GameSceneController implements Initializable, SceneController {
 
     private GameController gc;
-    private Sprite charSprite;
     private Scene menuScene;
-    private Scene gameScene;
     private String[] panePaths = {"fxml/Room1.fxml", "fxml/Room2.fxml", "fxml/Room3.fxml"};
-    private GamePaneController gPaneController;
 
     // testing
     int gCtr = 0;
@@ -47,15 +44,11 @@ public class GameSceneController implements Initializable, SceneController {
     public void setMenuScene(Scene scene) {
         this.menuScene = scene;
     }
-    public void setGameScene(Scene scene){
-        this.gameScene = scene;
-    }
-
 
     //   TESTING
     @FXML
     public void gCtrInc() {
-        //gc.run(); //  TESTING
+        //gc.run();
         if (gCtr < 2){
             gCtr++;
         } else {
@@ -74,27 +67,15 @@ public class GameSceneController implements Initializable, SceneController {
     @Override
     public void setGameController(GameController gc) {
         this.gc = gc;
-        setSprite();
-    }
-    public void setSprite(){
-        this.charSprite = this.gc.getSprite();
     }
 
     @FXML
     public void setGamePane(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(panePaths[this.gCtr]));
         this.gamePane.getChildren().set(0, loader.load());
-        gPaneController = loader.getController();
-        gPaneController.setGameController(this.gc);
-        gPaneController.setGameScene(this.gameScene);
+        System.out.println("DEBUG - setGamePane() GAME CONTROLLER OBJECT -> " + this.gc);
+        ((GamePaneController)loader.getController()).setGameController(this.gc);
         gCtrInc();
-    }
-
-    @FXML
-    public void moveBtn(ActionEvent actionEvent){
-        System.out.println("DEBUG: " +   ((AnchorPane)this.gamePane.getChildren().get(0)).getChildren());
-        System.out.println(gPaneController.getSprite());
-        gPaneController.getSprite().moveColumn(1);
     }
 
 }

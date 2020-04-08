@@ -21,6 +21,7 @@ public class Sprite extends Rectangle{
         setWidth(32.0);
         setHeight(32.0);
         setPos();
+        setFocusTraversable(true);
     }
 
     public void moveRow(int delta){

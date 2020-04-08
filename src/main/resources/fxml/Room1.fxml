@@ -12,8 +12,7 @@
             fx:controller="io.javasmithy.controller.scene.GamePaneController"
             prefHeight="600.0" prefWidth="800.0"
             stylesheets="@/style/GamePaneStyle.css"
-            styleClass="background"
-            onKeyPressed="#handleOnKeyPressed">
+            styleClass="background">
 
 <children>
     <Label text="Room 1" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="25"/>
