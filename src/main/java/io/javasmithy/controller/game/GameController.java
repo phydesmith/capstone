@@ -1,36 +1,25 @@
 package io.javasmithy.controller.game;
 
-import io.javasmithy.model.component.hitpoints.HitPoints;
 import io.javasmithy.model.entity.*;
 
 //  Testing Purposes
 import io.javasmithy.model.entity.monster.Monster;
 import io.javasmithy.model.entity.monster.MonsterFactory;
 import io.javasmithy.model.entity.monster.MonsterType;
-import io.javasmithy.model.position.PointGrid;
-import io.javasmithy.view.Sprite;
+//import io.javasmithy.view.Sprite;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController{
     Entity playerCharacter;
-    Sprite charSprite;
+
     List<Entity> monsters;
-    PointGrid pGrid;
+
     
     public GameController(){
-        PointGrid pGrid = new PointGrid(12, 16, 0, 0,  50);
         this.playerCharacter = new CharacterEntity();
-        this.charSprite = new Sprite(pGrid);
         this.monsters = new ArrayList<Entity>();
-    }
-
-    public Sprite getSprite(){
-        return charSprite;
-    }
-    public PointGrid getPointGrid(){
-        return this.pGrid;
     }
 
     public void init(){

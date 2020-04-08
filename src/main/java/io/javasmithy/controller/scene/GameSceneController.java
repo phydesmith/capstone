@@ -1,6 +1,6 @@
 package io.javasmithy.controller.scene;
 
-import io.javasmithy.view.Sprite;
+//import io.javasmithy.view.Sprite;
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.input.KeyCode;
