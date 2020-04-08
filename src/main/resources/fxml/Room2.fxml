@@ -14,7 +14,7 @@
             styleClass="background">
 
     <children>
-        <Label text="Testing" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="25"/>
+        <Label text="Room 2" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="25"/>
     </children>
 
 </AnchorPane>

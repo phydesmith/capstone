@@ -5,18 +5,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane 
-fx:id="gameScene"
+<AnchorPane
 prefWidth="1080"            
 prefHeight="720"
 xmlns:fx="https://google.com/"
-fx:controller="io.javasmithy.controller.scene.GameSceneController">
+fx:controller="io.javasmithy.controller.scene.GameSceneController"
+>
     <children>
-        <AnchorPane fx:id = "gamePane" AnchorPane.leftAnchor="100" AnchorPane.topAnchor="100" prefHeight="500" prefWidth="500"/>
+        <AnchorPane fx:id = "gamePane" AnchorPane.leftAnchor="100" AnchorPane.topAnchor="100" prefHeight="600" prefWidth="800"/>
         <Label text="Game SCENE" fx:id="gameSceneTitle" AnchorPane.leftAnchor="310" AnchorPane.topAnchor="10"/>
-        <Button fx:id="gCtrPress" text="inc Ctr" onAction="#gameCtrPress" AnchorPane.leftAnchor="310" AnchorPane.topAnchor="540"/>
+        <Button fx:id="gCtrPress" text="inc Ctr" onAction="#moveBtn" AnchorPane.leftAnchor="800" AnchorPane.topAnchor="800"/>
         <Button fx:id="menuButton" text="mainMenu" onAction="#openMenuScene" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10"/>
-        <Button fx:id="nextRoomButton" text="Next Room" onAction="#nextGamePane" AnchorPane.leftAnchor="700" AnchorPane.topAnchor="700"/>
+        <Button fx:id="nextRoomButton" text="Next Room" onAction="#setGamePane" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="600"/>
     </children>
 
 </AnchorPane>

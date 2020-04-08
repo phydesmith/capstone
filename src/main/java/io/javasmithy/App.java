@@ -54,6 +54,8 @@ public class App extends Application{
         GameSceneController gScene = (GameSceneController) gameSceneLoader.getController();
         gScene.setGameController(gc);
         gScene.setMenuScene(menuScene);
+        gScene.setGameScene(gameScene);
+
 
         stage.setScene(menuScene);
         stage.show();

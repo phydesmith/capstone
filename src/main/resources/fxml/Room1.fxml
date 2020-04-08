@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import java.lang.*?>
+        <?import java.util.*?>
+        <?import javafx.scene.*?>
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="gamePane"
+            fx:controller="io.javasmithy.controller.scene.GamePaneController"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@/style/GamePaneStyle.css"
+            styleClass="background"
+            onKeyPressed="#handleOnKeyPressed">
+
+<children>
+    <Label text="Room 1" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="25"/>
+</children>
+
+</AnchorPane>
