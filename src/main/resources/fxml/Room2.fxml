@@ -9,7 +9,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="gamePane"
-            fx:controller="io.javasmithy.controller.scene.GamePaneController"
+            fx:controller="io.javasmithy.controller.scene.game.GamePaneController"
             prefHeight="500.0" prefWidth="500.0"
             stylesheets="@/style/GamePaneStyle.css"
             styleClass="background">

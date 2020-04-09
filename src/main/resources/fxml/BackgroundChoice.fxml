@@ -9,7 +9,7 @@
 
 <GridPane fx:id="backgroundChoiceGridPane" 
 xmlns:fx="http://javafx.com/fxml"
-fx:controller="io.javasmithy.controller.scene.BackgroundChoiceController"
+fx:controller="io.javasmithy.controller.scene.creation.BackgroundChoiceController"
 stylesheets="@/style/RaceChoice.css"
 styleClass="root">
     

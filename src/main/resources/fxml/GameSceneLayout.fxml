@@ -9,7 +9,7 @@
 prefWidth="1080"            
 prefHeight="720"
 xmlns:fx="https://google.com/"
-fx:controller="io.javasmithy.controller.scene.GameSceneController"
+fx:controller="io.javasmithy.controller.scene.game.GameSceneController"
 >
     <children>
         <AnchorPane fx:id = "gamePane" AnchorPane.leftAnchor="100" AnchorPane.topAnchor="100" prefHeight="600" prefWidth="800"/>

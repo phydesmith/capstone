@@ -1,5 +1,6 @@
-package io.javasmithy.controller.scene;
+package io.javasmithy.controller.scene.main;
 
+import io.javasmithy.controller.scene.SceneController;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Node;

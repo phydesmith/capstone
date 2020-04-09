@@ -1,10 +1,6 @@
-package io.javasmithy.controller.scene;
+package io.javasmithy.controller.scene.game;
 
-import io.javasmithy.view.Sprite;
-import javafx.event.Event;
-import javafx.event.EventType;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import io.javasmithy.controller.scene.SceneController;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;

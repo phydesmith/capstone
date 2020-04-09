@@ -12,7 +12,7 @@ fx:id="menuPane"
 prefWidth="1080"            
 prefHeight="720"
 xmlns:fx="https://google.com/"
-fx:controller="io.javasmithy.controller.scene.MenuSceneController">
+fx:controller="io.javasmithy.controller.scene.main.MenuSceneController">
         <top>
             <Label text="RPG GAME"/>
         </top>

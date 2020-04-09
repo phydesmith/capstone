@@ -1,4 +1,4 @@
-package io.javasmithy.controller.scene;
+package io.javasmithy.controller.scene.game;
 
 import io.javasmithy.controller.game.GameController;
 import io.javasmithy.view.Sprite;

@@ -1,9 +1,10 @@
-package io.javasmithy.controller.scene;
+package io.javasmithy.controller.scene.creation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import io.javasmithy.controller.game.GameController;
+import io.javasmithy.controller.scene.SceneController;
 import io.javasmithy.model.component.ability.AbilityScoreFactory;
 import io.javasmithy.model.component.ability.RawScoreFactory;
 

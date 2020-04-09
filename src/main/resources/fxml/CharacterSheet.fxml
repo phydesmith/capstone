@@ -8,7 +8,7 @@
     xmlns:fx="https://javafx.com/"
     stylesheets="@/style/CharacterSheetStyle.css"
     styleClass="root"
-    fx:controller="io.javasmithy.controller.scene.CharacterSheetController"
+    fx:controller="io.javasmithy.controller.scene.creation.CharacterSheetController"
     fx:id = "characterSheetRoot"
     hgap="5"
     vgap="5"

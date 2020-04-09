@@ -1,9 +1,9 @@
 package io.javasmithy;
 
-import io.javasmithy.controller.scene.MenuSceneController;
+import io.javasmithy.controller.scene.main.MenuSceneController;
 import io.javasmithy.controller.game.GameController;
-import io.javasmithy.controller.scene.CreationSceneController;
-import io.javasmithy.controller.scene.GameSceneController;
+import io.javasmithy.controller.scene.creation.CreationSceneController;
+import io.javasmithy.controller.scene.game.GameSceneController;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -13,9 +13,6 @@ import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 
 //  testing and debugging imports
-import io.javasmithy.model.entity.monster.Monster;
-import io.javasmithy.model.entity.monster.MonsterFactory;
-import io.javasmithy.model.entity.monster.MonsterType;
 
 
 public class App extends Application{

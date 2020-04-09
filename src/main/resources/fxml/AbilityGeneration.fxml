@@ -13,7 +13,7 @@
 
 <GridPane fx:id="abilGridPane" 
 xmlns:fx="http://javafx.com/fxml"
-fx:controller="io.javasmithy.controller.scene.AbilityGenerationController"
+fx:controller="io.javasmithy.controller.scene.creation.AbilityGenerationController"
 stylesheets="@/style/AbilityGeneration.css"
 styleClass="root">
     <fx:define>

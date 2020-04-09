@@ -1,4 +1,4 @@
-package io.javasmithy.controller.scene;
+package io.javasmithy.controller.scene.creation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Arrays;
 
 import io.javasmithy.controller.game.GameController;
+import io.javasmithy.controller.scene.SceneController;
 import io.javasmithy.model.component.alignment.Alignment;
 
 import javafx.fxml.Initializable;

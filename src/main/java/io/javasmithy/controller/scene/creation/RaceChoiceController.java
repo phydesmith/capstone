@@ -1,4 +1,4 @@
-package io.javasmithy.controller.scene;
+package io.javasmithy.controller.scene.creation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import java.util.List;
 
+import io.javasmithy.controller.scene.SceneController;
 import io.javasmithy.model.component.race.*;
 
 import javafx.fxml.*;
