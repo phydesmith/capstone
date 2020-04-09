@@ -1,6 +1,5 @@
 package io.javasmithy.controller.game;
 
-import io.javasmithy.model.component.hitpoints.HitPoints;
 import io.javasmithy.model.entity.*;
 
 //  Testing Purposes
@@ -9,6 +8,7 @@ import io.javasmithy.model.entity.monster.MonsterFactory;
 import io.javasmithy.model.entity.monster.MonsterType;
 import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.view.Sprite;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,14 @@ public class GameController{
     Entity playerCharacter;
     Sprite charSprite;
     List<Entity> monsters;
+    List<Sprite> monsterSprites;
     PointGrid pGrid;
     
     public GameController(){
         PointGrid pGrid = new PointGrid(12, 16, 0, 0,  50);
         this.playerCharacter = new CharacterEntity();
         this.charSprite = new Sprite(pGrid);
+        this.charSprite.setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
         this.monsters = new ArrayList<Entity>();
     }
 

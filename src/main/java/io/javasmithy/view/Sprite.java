@@ -2,14 +2,16 @@ package io.javasmithy.view;
 
 import io.javasmithy.model.position.PointGrid;
 
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
 import java.util.Random;
 
-
-public class Sprite extends Rectangle{
+public class Sprite extends ImageView {
     private static final Random random = new Random();
-    int row;
-    int column;
+
+    private int row;
+    private int column;
 
     PointGrid grid;
 
@@ -18,10 +20,15 @@ public class Sprite extends Rectangle{
         this.grid = grid;
         this.row = 0;
         this.column = 0;
-        setWidth(50.0);
-        setHeight(50.0);
-        setPos();
+
+        this.setFitHeight(50.0);
+        this.setFitWidth(50.0);
+
         setFocusTraversable(true);
+    }
+
+    public void setSpriteParent(Pane pane){
+        pane.getChildren().add(this);
     }
 
     public void moveRow(int delta){

@@ -4,3 +4,5 @@ multi-scene fxml - https://github.com/ksnortum/javafx-multi-scene-fxml
 group things in fxml - https://stackoverflow.com/questions/34469447/grouping-together-javafx-fxml-objects
 action listener on listview for selection - https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2
 json - https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/Gson.html
+
+imageview sprite - https://stackoverflow.com/questions/29057870/in-javafx-how-do-i-move-a-sprite-across-the-screen
