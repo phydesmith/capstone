@@ -17,22 +17,23 @@ public class PointGrid{
     int height;
 
     public PointGrid(int height, int width, int yOffset, int xOffset, int cellSize){
-        this.grid = new Point2D[width][height];
+        this.grid = new Point2D[height][width];
         this.cellSize = cellSize;
         this.yOffset = yOffset;
         this.xOffset = xOffset;
         this.width = width;
         this.height = height;
 
-        for (int row = 0; row < height; row++){
-            for (int column = 0; column < width; column++) {
-                System.out.println("Column/x/width=" + column + " Row/y/height = " + row);
-                this.grid[column][row] = new Point2D(xOffset+(cellSize*column), yOffset+(cellSize*row));
-                //System.out.println(this.grid[column][row]);
+        initGrid();
+        System.out.println(toString());
+    }
 
+    public void initGrid(){
+        for (int row = 0; row < this.height; row++){
+            for (int column = 0; column < this.width; column++) {
+                this.grid[row][column] = new Point2D(xOffset+(cellSize*column), yOffset+(cellSize*row));
             }
         }
-
     }
 
     /**
@@ -79,8 +80,9 @@ public class PointGrid{
 
         for (int row = 0; row < height; row++){
             for (int column = 0; column < width; column++) {
-                str += "\n\tPoint: (" + this.grid[row][column].getX() + "," + this.grid[row][column].getY() + ")";
+                str += "[" + this.grid[row][column].getX() + "," + this.grid[row][column].getY() + "] ";
             }
+            str+="\n";
         }
 
         return str;

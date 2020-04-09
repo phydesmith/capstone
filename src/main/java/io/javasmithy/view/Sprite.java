@@ -18,8 +18,8 @@ public class Sprite extends Rectangle{
         this.grid = grid;
         this.row = 0;
         this.column = 0;
-        setWidth(32.0);
-        setHeight(32.0);
+        setWidth(50.0);
+        setHeight(50.0);
         setPos();
         setFocusTraversable(true);
     }
