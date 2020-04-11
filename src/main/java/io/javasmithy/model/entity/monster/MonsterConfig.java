@@ -36,4 +36,7 @@ public class MonsterConfig {
         return monster;
     }
 
+    public MonsterType getMonsterType() {
+        return monsterType;
+    }
 }

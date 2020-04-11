@@ -21,12 +21,12 @@ import java.util.Scanner;
 public class MonsterFactory {
     private static String path = "target\\classes\\data\\monsters.json";
     private static Gson gson = new Gson();
-    private static Map<MonsterType, Monster> monsterMap;
+    private static Map<MonsterType, MonsterConfig> monsterMap;
     static {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(path));
-            Monster[] monsters = gson.fromJson(reader, Monster[].class);
-            monsterMap = new HashMap<MonsterType, Monster>();
+            MonsterConfig[] monsters = gson.fromJson(reader, MonsterConfig[].class);
+            monsterMap = new HashMap<MonsterType, MonsterConfig>();
 
             for (int i = 0; i < monsters.length; i++){
                 monsterMap.put(monsters[i].getMonsterType(), monsters[i] );
@@ -38,7 +38,7 @@ public class MonsterFactory {
     }
 
     public static Monster createMonster(MonsterType type){
-        Monster monster = monsterMap.get(type).copy();
+        Monster monster = monsterMap.get(type).generate();
         monster.initHP();
         return monster;
     }
