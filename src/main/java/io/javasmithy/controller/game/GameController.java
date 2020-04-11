@@ -23,16 +23,22 @@ public class GameController{
     public GameController(){
         PointGrid pGrid = new PointGrid(12, 16, 0, 0,  50);
         this.playerCharacter = new CharacterEntity();
-        this.charSprite = new Sprite(pGrid);
-        this.charSprite.setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
+        this.playerCharacter.setSprite(new Sprite(pGrid));
+        this.playerCharacter.getSprite().setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
         this.monsters = new ArrayList<Entity>();
     }
 
-    public Sprite getSprite(){
-        return charSprite;
-    }
     public PointGrid getPointGrid(){
         return this.pGrid;
+    }
+
+    public CharacterEntity getPlayerCharacter(){
+        return (CharacterEntity)this.playerCharacter;
+    }
+
+    public List<Entity> getMonsters() { return monsters;}
+    public void setMonsters(List<Entity> monsters){
+        this.monsters = monsters;
     }
 
     public void init(){
@@ -53,14 +59,6 @@ public class GameController{
         }
     }
 
-    public CharacterEntity getPlayerCharacter(){
-        return (CharacterEntity)this.playerCharacter;
-    }
-
-    public void setMonsters(List<Entity> monsters){
-        this.monsters = monsters;
-    }
-    
     public void processMonstersAttacks(){
         for (Entity entity : monsters) {
             if(entity.canAttackTarget(playerCharacter)){

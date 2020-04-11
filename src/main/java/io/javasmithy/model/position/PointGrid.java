@@ -6,15 +6,17 @@ import java.util.Arrays;
 
 public class PointGrid{
 
-    Point2D[][] grid;
+    private Point2D[][] grid;
 
-    int xOffset;
-    int yOffset;
+    private int xOffset;
+    private int yOffset;
 
-    int cellSize;
+    private int cellSize;
 
-    int width;
-    int height;
+    private int width;
+    private int height;
+
+    public PointGrid(){}
 
     public PointGrid(int height, int width, int yOffset, int xOffset, int cellSize){
         this.grid = new Point2D[height][width];

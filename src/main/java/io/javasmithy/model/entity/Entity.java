@@ -1,5 +1,7 @@
 package io.javasmithy.model.entity;
 
+import io.javasmithy.view.Sprite;
+
 public interface Entity{
     public String getName();
 
@@ -15,4 +17,8 @@ public interface Entity{
     public void move(int deltaX, int deltaY);
     public int getX();
     public int getY();
+
+    public void setSprite(Sprite sprite);
+    public Sprite getSprite();
+
 }

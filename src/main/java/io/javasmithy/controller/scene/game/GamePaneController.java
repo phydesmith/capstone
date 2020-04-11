@@ -32,8 +32,9 @@ public class GamePaneController implements Initializable {
     }
 
     public void initPlayerSprite(){
-        this.gc.getSprite().setSpriteParent(this.gamePane);
-        setUserKeyInput(this.gc.getSprite());
+        this.gc.getPlayerCharacter().getSprite().setSpriteParent(this.gamePane);
+        // this could be gc.getPcSprite.setSpriteParent()
+        setUserKeyInput(this.gc.getPlayerCharacter().getSprite());
     }
 
     public void setUserKeyInput(Sprite charSprite){

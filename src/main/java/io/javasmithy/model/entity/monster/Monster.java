@@ -2,8 +2,10 @@ package io.javasmithy.model.entity.monster;
 
 import io.javasmithy.model.component.hitpoints.HitPoints;
 import io.javasmithy.model.entity.Entity;
+import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.util.Distance;
 import io.javasmithy.util.Generator;
+import io.javasmithy.view.Sprite;
 
 
 public class Monster implements Entity {
@@ -28,6 +30,7 @@ public class Monster implements Entity {
     private int xpValue;
     private int atkBonus;
     private int atkRange;
+    private Sprite sprite;
 
     public void initHP(){
         this.hitPoints = new HitPoints(hitDie, hitDieQty, hpBonus);
@@ -184,6 +187,15 @@ public class Monster implements Entity {
     public HitPoints getHp() {
         return this.hitPoints;
     }
+
+    public Sprite getSprite(){
+        return new Sprite(new PointGrid(1,1,1,1,1));
+        //return this.sprite;
+    }
+    public void setSprite(Sprite sprite){
+        //this.sprite = sprite;
+    }
+
 
 
 

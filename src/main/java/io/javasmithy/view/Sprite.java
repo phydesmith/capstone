@@ -13,7 +13,7 @@ public class Sprite extends ImageView {
     private int row;
     private int column;
 
-    PointGrid grid;
+    private PointGrid grid;
 
     public Sprite(PointGrid grid){
         super();

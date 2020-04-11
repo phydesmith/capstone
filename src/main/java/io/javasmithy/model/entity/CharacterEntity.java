@@ -14,6 +14,8 @@ import io.javasmithy.model.item.Weapon;
 import io.javasmithy.model.item.WeaponType;
 import io.javasmithy.util.Distance;
 import io.javasmithy.util.Generator;
+import io.javasmithy.view.Sprite;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,6 @@ public class CharacterEntity implements Entity{
     private int gold;
 
     //  Character Static Combat Mechanics
-    //private ArmorClass ac;
     
     //  Character Calculated Interaction and Combat Mechanics
     //  saving throws
@@ -59,6 +60,9 @@ public class CharacterEntity implements Entity{
 
     // status
     private boolean isDead=false;
+
+    //  GUI-related
+    private Sprite sprite;
 
     public CharacterEntity(){
         init();
@@ -286,6 +290,13 @@ public class CharacterEntity implements Entity{
     }
     public void setIsDead(Boolean status){
         this.isDead = status;
+    }
+
+    public Sprite getSprite(){ return this.sprite;}
+    @Override
+    public void setSprite(Sprite sprite){ this.sprite = sprite;}
+    public void setSpriteImage(Image image){
+        this.sprite.setImage(image);
     }
 
     public String toStringNoName(){
