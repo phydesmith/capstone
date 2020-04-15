@@ -1,6 +1,7 @@
 package io.javasmithy.controller.scene.game;
 
 import io.javasmithy.controller.game.GameController;
+import io.javasmithy.model.entity.Entity;
 import io.javasmithy.view.Sprite;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -12,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GamePaneController implements Initializable {
@@ -29,12 +31,20 @@ public class GamePaneController implements Initializable {
     public void setGameController(GameController gc) {
         this.gc = gc;
         initPlayerSprite();
+        //initMonsterSprites();
     }
 
     public void initPlayerSprite(){
         this.gc.getPlayerCharacter().getSprite().setSpriteParent(this.gamePane);
         // this could be gc.getPcSprite.setSpriteParent()
         setUserKeyInput(this.gc.getPlayerCharacter().getSprite());
+    }
+
+    public void initMonsterSprites(){
+        List<Entity> monsters = this.gc.getMonsters();
+        for (int i = 0; i < monsters.size(); i++){
+            monsters.get(i).getSprite().setSpriteParent(this.gamePane);
+        }
     }
 
     public void setUserKeyInput(Sprite charSprite){

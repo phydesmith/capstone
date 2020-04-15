@@ -189,11 +189,14 @@ public class Monster implements Entity {
     }
 
     public Sprite getSprite(){
-        return new Sprite(new PointGrid(1,1,1,1,1));
-        //return this.sprite;
+        return this.sprite;
     }
     public void setSprite(Sprite sprite){
-        //this.sprite = sprite;
+        this.sprite = sprite;
+    }
+    public void setSpriteGrid(PointGrid grid){
+        System.out.println("DEBUG - MONSTER SPRITE" + this.sprite);
+        this.sprite.setGrid(grid);
     }
 
 

@@ -1,0 +1,21 @@
+[
+  {
+    "roomType": "ROOM_1",
+    "monsterTypes": [
+      "ZOMBIE",
+      "GOBLIN"
+    ],
+    "monsterCounts": [
+      1,2
+    ]
+  },
+  {
+    "roomType": "ROOM_2",
+    "monsterTypes": [
+      "ZOMBIE"
+    ],
+    "monsterCounts": [
+      2
+    ]
+  }
+]

@@ -7,6 +7,8 @@ import io.javasmithy.model.entity.monster.Monster;
 import io.javasmithy.model.entity.monster.MonsterFactory;
 import io.javasmithy.model.entity.monster.MonsterType;
 import io.javasmithy.model.position.PointGrid;
+import io.javasmithy.model.room.EncounterRoom;
+import io.javasmithy.model.room.Room;
 import io.javasmithy.view.Sprite;
 import javafx.scene.image.Image;
 
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController{
+    Room currentRoom;
     Entity playerCharacter;
     Sprite charSprite;
     List<Entity> monsters;
@@ -21,7 +24,7 @@ public class GameController{
     PointGrid pGrid;
     
     public GameController(){
-        PointGrid pGrid = new PointGrid(12, 16, 0, 0,  50);
+        this.pGrid = new PointGrid(12, 16, 0, 0,  50);
         this.playerCharacter = new CharacterEntity();
         this.playerCharacter.setSprite(new Sprite(pGrid));
         this.playerCharacter.getSprite().setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
@@ -39,6 +42,12 @@ public class GameController{
     public List<Entity> getMonsters() { return monsters;}
     public void setMonsters(List<Entity> monsters){
         this.monsters = monsters;
+    }
+
+    public void setCurrentRoom(Room room){
+        this.currentRoom = room;
+        //System.out.println("DEBUG - GC PGRID" + this.pGrid);
+        //((EncounterRoom)this.currentRoom).setMonsterSpriteGrid();
     }
 
     public void init(){
@@ -69,6 +78,13 @@ public class GameController{
 
     public void processMonsterMoves(){
 
+    }
+
+    public String toString(){
+        String str = "";
+        str += this.playerCharacter.toString();
+        str += this.currentRoom.toString();
+        return str;
     }
 
 

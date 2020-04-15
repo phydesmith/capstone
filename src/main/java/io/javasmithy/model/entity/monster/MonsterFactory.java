@@ -1,6 +1,8 @@
 package io.javasmithy.model.entity.monster;
 
 import com.google.gson.Gson;
+import io.javasmithy.view.Sprite;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -38,7 +40,10 @@ public class MonsterFactory {
     }
 
     public static Monster createMonster(MonsterType type){
+        System.out.println("DEBUG - Creating Monster");
         Monster monster = monsterMap.get(type).generate();
+        monster.setSprite(new Sprite());
+        monster.getSprite().setImage(new Image(MonsterFactory.class.getClassLoader().getResource( type.getImgPath() ).toExternalForm()) );
         monster.initHP();
         return monster;
     }

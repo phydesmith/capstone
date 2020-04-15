@@ -1,6 +1,8 @@
 package io.javasmithy.controller.scene.game;
 
 import io.javasmithy.controller.scene.SceneController;
+import io.javasmithy.model.room.RoomFactory;
+import io.javasmithy.model.room.RoomType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -68,11 +70,26 @@ public class GameSceneController implements Initializable, SceneController {
 
     @FXML
     public void setGamePane(ActionEvent actionEvent) throws IOException {
+        setEncounterRoom();
+
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(panePaths[this.gCtr]));
         this.gamePane.getChildren().set(0, loader.load());
-        System.out.println("DEBUG - setGamePane() GAME CONTROLLER OBJECT -> " + this.gc);
+
         ((GamePaneController)loader.getController()).setGameController(this.gc);
+
+        System.out.println("DEBUG - : " + this.gc);
+
         gCtrInc();
+    }
+
+    public void setEncounterRoom(){
+        if (gCtr == 0){
+            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
+        } else if (gCtr ==1){
+            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_2));
+        } else {
+            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
+        }
     }
 
 }
