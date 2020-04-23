@@ -5,6 +5,7 @@ import io.javasmithy.controller.game.GameController;
 import io.javasmithy.controller.scene.creation.CreationSceneController;
 import io.javasmithy.controller.scene.game.GameSceneController;
 
+import io.javasmithy.util.GameThread;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -21,6 +22,8 @@ public class App extends Application{
     public void start(Stage stage) throws Exception{
         GameController gc = new GameController();
         gc.init();
+        GameThread gameThread = new GameThread(gc);
+        //gameThread.start();
 
         FXMLLoader menuSceneLoader, creationSceneLoader, gameSceneLoader;
         Parent menuSceneLayout, creationSceneLayout, gameSceneLayout;
@@ -50,6 +53,7 @@ public class App extends Application{
 
         GameSceneController gScene = (GameSceneController) gameSceneLoader.getController();
         gScene.setGameController(gc);
+        gScene.setGameThread(gameThread);
         gScene.setMenuScene(menuScene);
 
 

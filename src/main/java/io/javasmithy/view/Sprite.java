@@ -23,9 +23,9 @@ public class Sprite extends ImageView {
         this.setFitHeight(50.0);
         this.setFitWidth(50.0);
 
-        setFocusTraversable(true);
+    setFocusTraversable(true);
 
-    }
+}
 
     public Sprite(PointGrid grid){
         super();
@@ -63,6 +63,14 @@ public class Sprite extends ImageView {
     public void setGrid(PointGrid grid){
         this.grid = grid;
     }
+
+    public double getGridX(){
+        return this.grid.getPoint2D(row, column).getX();
+    }
+    public double getGridY(){
+        return this.grid.getPoint2D(row, column).getY();
+    }
+
 
     public void moveRandomly(){
         int axis = random.nextInt(2);

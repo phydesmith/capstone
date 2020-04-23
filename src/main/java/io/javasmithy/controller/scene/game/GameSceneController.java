@@ -3,6 +3,7 @@ package io.javasmithy.controller.scene.game;
 import io.javasmithy.controller.scene.SceneController;
 import io.javasmithy.model.room.RoomFactory;
 import io.javasmithy.model.room.RoomType;
+import io.javasmithy.util.GameThread;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 public class GameSceneController implements Initializable, SceneController {
 
     private GameController gc;
+    private GameThread gameThread;
     private Scene menuScene;
     private String[] panePaths = {"fxml/Room1.fxml", "fxml/Room2.fxml", "fxml/Room3.fxml"};
     private String[] roomConfig = {"room1.json", "room2.json", "room3.json"};
@@ -67,6 +69,9 @@ public class GameSceneController implements Initializable, SceneController {
     public void setGameController(GameController gc) {
         this.gc = gc;
     }
+    public void setGameThread(GameThread gameThread){
+        this.gameThread = gameThread;
+    }
 
     @FXML
     public void setGamePane(ActionEvent actionEvent) throws IOException {
@@ -78,6 +83,8 @@ public class GameSceneController implements Initializable, SceneController {
         ((GamePaneController)loader.getController()).setGameController(this.gc);
 
         System.out.println("DEBUG - : " + this.gc);
+
+        this.gameThread.start();
 
         gCtrInc();
     }

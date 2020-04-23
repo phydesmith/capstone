@@ -40,7 +40,6 @@ public class MonsterFactory {
     }
 
     public static Monster createMonster(MonsterType type){
-        System.out.println("DEBUG - Creating Monster");
         Monster monster = monsterMap.get(type).generate();
         monster.setSprite(new Sprite());
         monster.getSprite().setImage(new Image(MonsterFactory.class.getClassLoader().getResource( type.getImgPath() ).toExternalForm()) );

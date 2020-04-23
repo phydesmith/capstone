@@ -30,7 +30,7 @@ public class EncounterRoom implements Room {
 
     @Override
     public List<Entity> getEntities() {
-        return null;
+        return this.monsters;
     }
     @Override
     public void setEntities(List<Entity> entityList){

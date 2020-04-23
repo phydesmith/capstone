@@ -1,6 +1,7 @@
 package io.javasmithy.controller.scene.game;
 
 import io.javasmithy.controller.game.GameController;
+import io.javasmithy.model.entity.CharacterEntity;
 import io.javasmithy.model.entity.Entity;
 import io.javasmithy.view.Sprite;
 import javafx.event.ActionEvent;
@@ -31,36 +32,44 @@ public class GamePaneController implements Initializable {
     public void setGameController(GameController gc) {
         this.gc = gc;
         initPlayerSprite();
-        //initMonsterSprites();
+        initMonsterSprites();
     }
 
     public void initPlayerSprite(){
         this.gc.getPlayerCharacter().getSprite().setSpriteParent(this.gamePane);
         // this could be gc.getPcSprite.setSpriteParent()
-        setUserKeyInput(this.gc.getPlayerCharacter().getSprite());
+        setUserKeyInput(this.gc.getPlayerCharacter());
     }
 
     public void initMonsterSprites(){
-        List<Entity> monsters = this.gc.getMonsters();
+        System.out.println("DEBUG - CURRENT ROOM" + this.gc.getCurrentRoom());
+        System.out.println("DEBUG - ROOM ENTITIES" + this.gc.getCurrentRoom().getEntities());
+        List<Entity> monsters = this.gc.getCurrentRoom().getEntities();
         for (int i = 0; i < monsters.size(); i++){
             monsters.get(i).getSprite().setSpriteParent(this.gamePane);
         }
     }
 
-    public void setUserKeyInput(Sprite charSprite){
+    public void setUserKeyInput(CharacterEntity playerCharacter){
+        Sprite charSprite = playerCharacter.getSprite();
         this.gamePane.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.UP) {
-                System.out.println("UP");
-                charSprite.moveRow(-1);
-            } else if (e.getCode() == KeyCode.DOWN) {
-                System.out.println("down");
-                charSprite.moveRow(1);
-            } else if (e.getCode() == KeyCode.LEFT) {
-                System.out.println("left");
-                charSprite.moveColumn(-1);
-            } else {//(e.getCode() == KeyCode.RIGHT){
-                System.out.println("right");
-                charSprite.moveColumn(1);
+            System.out.println("DEBUG CAN MOVE: " + playerCharacter.canMove());
+            System.out.println("DEBUG PLAYER MOVE POINTS: " + playerCharacter.getMovePoints());
+            if (playerCharacter.canMove()) {
+                if (e.getCode() == KeyCode.UP) {
+                    System.out.println("UP");
+                    charSprite.moveRow(-1);
+                } else if (e.getCode() == KeyCode.DOWN) {
+                    System.out.println("down");
+                    charSprite.moveRow(1);
+                } else if (e.getCode() == KeyCode.LEFT) {
+                    System.out.println("left");
+                    charSprite.moveColumn(-1);
+                } else {//(e.getCode() == KeyCode.RIGHT){
+                    System.out.println("right");
+                    charSprite.moveColumn(1);
+                }
+                playerCharacter.decMovePoints();
             }
         });
     }

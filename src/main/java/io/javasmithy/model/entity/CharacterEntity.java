@@ -34,6 +34,7 @@ public class CharacterEntity implements Entity{
     private CClass cClass;
     private Background background;
     private int speed;
+    private int movePoints;
 
     //  Character Counters
     private HitPoints hp;
@@ -179,6 +180,8 @@ public class CharacterEntity implements Entity{
     public void setRace(Race race){
         this.race = race;
         this.speed = race.getSpeed();
+        this.movePoints = this.speed;
+        System.out.println("DEBUG SETTING MOVE POINTS: " + this.movePoints);
     }
 
     @Override
@@ -297,6 +300,21 @@ public class CharacterEntity implements Entity{
     public void setSprite(Sprite sprite){ this.sprite = sprite;}
     public void setSpriteImage(Image image){
         this.sprite.setImage(image);
+    }
+
+    @Override
+    public boolean canMove(){
+        return this.movePoints > 0;
+    }
+    @Override
+    public void decMovePoints(){
+        this.movePoints--;
+    }
+    public void resetMovePoints(){
+        this.movePoints = this.speed;
+    }
+    public int getMovePoints(){
+        return this.movePoints;
     }
 
     public String toStringNoName(){

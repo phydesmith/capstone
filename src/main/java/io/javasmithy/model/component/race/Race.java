@@ -3,7 +3,7 @@ package io.javasmithy.model.component.race;
 public enum Race{
     DRAGONBORN("Dragonborn", "Half-Man, Half-Dragon, charismatic with an affinity towards sorcery.", 6),
     DWARF("Dwarf", "Gruff and stout. Militant and industrious tendancies",5),
-    ELF("Elf", "Graceful and feylike forest dwellers.", 30),
+    ELF("Elf", "Graceful and feylike forest dwellers.", 5),
     GNOME("Gnome", "Short and stocky. Tend towards inquisitiveness, curiosity and eclecticism.", 5),
     HALFLING("Halfling", "Short and slight. Simple agrarian lives centered around hearth and harvest. Some have an adventurous streak.", 5),
     HALFELF("Half-Elf", "The best features of humans and elves- but the ability to fit in with neither fully. Tend to be restless and long for adventure.", 6),
@@ -15,7 +15,7 @@ public enum Race{
     private String description;
     private int speed;
 
-    Race(String name, String description, int Speed){
+    Race(String name, String description, int speed){
         this.name = name;
         this.description = description;
         this.speed = speed;

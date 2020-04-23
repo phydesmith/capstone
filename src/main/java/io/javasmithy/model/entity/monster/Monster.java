@@ -17,6 +17,7 @@ public class Monster implements Entity {
     private MonsterType monsterType;
     private String name;
     private int speed;
+    private int movePoints;
     private int hitDie;
     private int hitDieQty;
     private int hpBonus;
@@ -31,6 +32,7 @@ public class Monster implements Entity {
     private int atkBonus;
     private int atkRange;
     private Sprite sprite;
+
 
     public void initHP(){
         this.hitPoints = new HitPoints(hitDie, hitDieQty, hpBonus);
@@ -125,6 +127,7 @@ public class Monster implements Entity {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+        this.movePoints = this.speed;
     }
 
     public void setHitDie(int hitDie) {
@@ -195,12 +198,23 @@ public class Monster implements Entity {
         this.sprite = sprite;
     }
     public void setSpriteGrid(PointGrid grid){
-        System.out.println("DEBUG - MONSTER SPRITE" + this.sprite);
         this.sprite.setGrid(grid);
     }
 
-
-
+    @Override
+    public boolean canMove(){
+        return this.movePoints > 0;
+    }
+    @Override
+    public void decMovePoints(){
+        this.movePoints--;
+    }
+    public void holdMove(){
+        this.movePoints = 0;
+    }
+    public void resetMovePoints(){
+        this.movePoints = this.speed;
+    }
 
     public Monster copy(){
         Monster monster = new Monster();

@@ -83,7 +83,7 @@ public class CreationSceneController implements Initializable, SceneController {
     }
     @FXML
     public void showCharacterSheet(ActionEvent actionEvent) throws Exception {
-        System.out.println(this.gc);
+        //System.out.println(this.gc);
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CharacterSheet.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((CharacterSheetController)loader.getController()).setGameController(this.gc);
