@@ -246,7 +246,7 @@ public class CharacterEntity implements Entity{
     }
 
     public boolean canAttackTarget(Entity entity){
-        return Distance.compute(getX(), getY(), entity.getX(), getY()) <= this.weapon.getAtkRange();
+        return Distance.compute(getColumn(), getRow(), entity.getColumn(), getRow()) <= this.weapon.getAtkRange();
     }
 
     public void addItem(Item item){
@@ -275,18 +275,20 @@ public class CharacterEntity implements Entity{
         this.yPos += deltaY;
     }
 
-    public int getX() {
-        return xPos;
-    }
     public void setX(int xPos){
         this.xPos = xPos;
-    }
-    public int getY(){
-        return yPos;
     }
     public void setY(){
         this.yPos = yPos;
     }
+
+    public int getColumn() {
+        return this.sprite.getColumn();
+    }
+    public int getRow(){
+        return this.sprite.getRow();
+    }
+
 
     public boolean isDead(){
         return this.isDead;
@@ -304,6 +306,7 @@ public class CharacterEntity implements Entity{
 
     @Override
     public boolean canMove(){
+        //System.out.println("Player can move: " + (this.movePoints > 0));
         return this.movePoints > 0;
     }
     @Override

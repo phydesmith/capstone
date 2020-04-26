@@ -68,7 +68,7 @@ public class Monster implements Entity {
 
     @Override
     public boolean canAttackTarget(Entity entity) {
-        return Distance.compute(getX(), getY(), entity.getX(), getY()) <= this.atkRange;
+        return Distance.compute(getColumn(), getRow(), entity.getColumn(), getRow()) <= this.atkRange;
     }
 
     @Override
@@ -91,18 +91,11 @@ public class Monster implements Entity {
         this.xPos += deltaX;
         this.yPos += deltaY;
     }
-    public int getX() {
-        return xPos;
+
+    public int getColumn() {
+        return this.sprite.getColumn();
     }
-    public void setX(int xPos){
-        this.xPos = xPos;
-    }
-    public int getY(){
-        return yPos;
-    }
-    public void setY(){
-        this.yPos = yPos;
-    }
+    public int getRow(){ return this.sprite.getRow(); }
 
     @Override
     public boolean isDead(){
@@ -170,7 +163,6 @@ public class Monster implements Entity {
     public void setxPos(int xPos) {
         this.xPos = xPos;
     }
-
     public void setyPos(int yPos) {
         this.yPos = yPos;
     }

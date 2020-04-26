@@ -53,8 +53,8 @@ public class GamePaneController implements Initializable {
     public void setUserKeyInput(CharacterEntity playerCharacter){
         Sprite charSprite = playerCharacter.getSprite();
         this.gamePane.setOnKeyPressed(e -> {
-            System.out.println("DEBUG CAN MOVE: " + playerCharacter.canMove());
-            System.out.println("DEBUG PLAYER MOVE POINTS: " + playerCharacter.getMovePoints());
+            System.out.println("DEBUG - Game Pane Controller- CAN MOVE: " + playerCharacter.canMove());
+            System.out.println("DEBUG - Game Pane Controller- PLAYER MOVE POINTS: " + playerCharacter.getMovePoints());
             if (playerCharacter.canMove()) {
                 if (e.getCode() == KeyCode.UP) {
                     System.out.println("UP");

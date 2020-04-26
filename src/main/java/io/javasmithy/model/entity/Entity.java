@@ -18,8 +18,8 @@ public interface Entity{
     public void decMovePoints();
     public void resetMovePoints();
     public void move(int deltaX, int deltaY);
-    public int getX();
-    public int getY();
+    public int getColumn();
+    public int getRow();
 
     public void setSprite(Sprite sprite);
     public Sprite getSprite();

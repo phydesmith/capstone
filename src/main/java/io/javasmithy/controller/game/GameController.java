@@ -1,5 +1,9 @@
 package io.javasmithy.controller.game;
 
+import io.javasmithy.model.component.ability.AbilityScoreFactory;
+import io.javasmithy.model.component.background.Background;
+import io.javasmithy.model.component.cclass.CClass;
+import io.javasmithy.model.component.race.Race;
 import io.javasmithy.model.entity.*;
 
 //  Testing Purposes
@@ -10,6 +14,7 @@ import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.model.room.EncounterRoom;
 import io.javasmithy.model.room.Room;
 import io.javasmithy.view.Sprite;
+import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -21,8 +26,10 @@ public class GameController{
     PointGrid pGrid;
     
     public GameController(){
-        this.pGrid = new PointGrid(12, 16, 0, 0,  50);
-        this.playerCharacter = new CharacterEntity();
+        this.pGrid = new PointGrid(16, 16, 0, 0,  50);
+        //this.playerCharacter = new CharacterEntity();
+        //  FOR DEBUGGING
+        this.playerCharacter = createDebugChar();
         this.playerCharacter.setSprite(new Sprite(pGrid));
         this.playerCharacter.getSprite().setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
     }
@@ -61,9 +68,8 @@ public class GameController{
     }
 
     public void run(){
-        while (!this.currentRoom.getEntities().get(0).isDead() && !this.playerCharacter.isDead()) {
+        while (!this.playerCharacter.isDead()) {
             System.out.println("Running");
-            System.out.println("Handling Player Movement");
             handlePlayerMovement();
             handleMonsterMovement();
             resetAllMovePoints();
@@ -72,49 +78,73 @@ public class GameController{
 
     public void handlePlayerMovement(){
         System.out.println("DEBUG Handling Player Movement");
-        while (playerCharacter.canMove()){
-            System.out.println("DEBUG Move Points " + ((CharacterEntity)playerCharacter).getMovePoints());
+        while (this.playerCharacter.canMove()){
+            //System.out.println("DEBUG Move Points " + ((CharacterEntity)playerCharacter).getMovePoints());
+            System.out.print("");
         }
         System.out.println("Reset Player MovePoints");
     }
     public void handleMonsterMovement(){
         System.out.println("DEBUG Handling Monster Movement");
-        double targetX = this.playerCharacter.getSprite().getGridX();
-        double targetY = this.playerCharacter.getSprite().getGridY();
         for (Entity monster : this.currentRoom.getEntities()){
-            System.out.println("DEBUG: looping through monster");
+            System.out.println("DEBUG: looping through monsters");
+
             while(monster.canMove() && !monster.isDead()){
-                if (detectCollision(monster, this.playerCharacter)){
-                    System.out.println("DEBUG : Detect Collision: " + detectCollision(monster, this.playerCharacter));
-                    ((Monster)monster).holdMove();
-                } else {
-                    System.out.println("DEBUG: Monster Moving");
-                    if (monster.getSprite().getGridX() < targetX - 1) {
-                        monster.getSprite().moveColumn(1);
-                    } else if (monster.getSprite().getGridX()> targetX + 1) {
+                if (!checkCollisionMap(monster)) {
+                    if (monster.getColumn() > playerCharacter.getColumn()){
                         monster.getSprite().moveColumn(-1);
-                    } else if (monster.getSprite().getGridY() < targetY - 1) {
-                        monster.getSprite().moveRow(1);
-                    } else if (monster.getSprite().getGridY() > targetY + 1) {
+                    } else if (monster.getColumn() < playerCharacter.getColumn()){
+                        monster.getSprite().moveColumn(1);
+                    } else if (monster.getRow() > playerCharacter.getRow()){
                         monster.getSprite().moveRow(-1);
+                    } else if (monster.getRow() < playerCharacter.getRow()) {
+                        monster.getSprite().moveRow(1);
                     }
                     monster.decMovePoints();
+                } else {
+                    ((Monster)monster).holdMove();
                 }
+
                 try {
                     Thread.currentThread().sleep(1000);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
+
             }
+
         }
     }
-    public boolean detectCollision(Entity mover, Entity target){
-        boolean collision = false;
-        if (mover.getSprite().getGridX() -1 == target.getSprite().getX()) collision = true;
-        if (mover.getSprite().getGridX() +1 == target.getSprite().getX()) collision = true;
-        if (mover.getSprite().getGridY() -1 == target.getSprite().getY()) collision = true;
-        if (mover.getSprite().getGridY() +1 == target.getSprite().getY()) collision = true;
-        return collision;
+    public boolean checkCollisionMap(Entity mover){
+        System.out.println("\nChecking Collision");
+        if (this.pGrid.checkCollision(mover.getColumn()+1, mover.getRow()+1)) {
+            System.out.println("DEBUG - Check collision map: 1");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn()+1, mover.getRow()-1)){
+            System.out.println("DEBUG - Check collision map: 2");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn(), mover.getRow()+1)) {
+            System.out.println("DEBUG - Check collision map: 3");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn(), mover.getRow()-1)) {
+            System.out.println("DEBUG - Check collision map: 4");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn()-1, mover.getRow()+1)) {
+            System.out.println("DEBUG - Check collision map: 5");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn()-1, mover.getRow()-1)){
+            System.out.println("DEBUG - Check collision map: 6");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn()+1, mover.getRow())) {
+            System.out.println("DEBUG - Check collision map: 7");
+            return true;
+        } else if (this.pGrid.checkCollision(mover.getColumn()-1, mover.getRow())) {
+            System.out.println("DEBUG - Check collision map: 8");
+            return true;
+        } else {
+            System.out.println("\nDEBUG - Check collision map: no collision");
+            return false;
+        }
     }
 
     public void resetAllMovePoints(){
@@ -143,6 +173,20 @@ public class GameController{
         return str;
     }
 
+    public CharacterEntity createDebugChar(){
+        CharacterEntity c = new CharacterEntity();
+        c.setName("TEST");
+        c.setDescription("TEST DESC");
+        List<Integer> a = new ArrayList<Integer>();
+        for (int i = 0; i < 6; i++){
+            a.add(10);
+        }
+        c.setRace(Race.DRAGONBORN);
+        c.setAbilityScores(AbilityScoreFactory.createAbilityScores(a, c.getRace()));
+        c.setCClass(CClass.FIGHTER);
+        c.setBackground(Background.ACOLYTE);
+        return c;
+    }
 
 
 
