@@ -28,6 +28,10 @@ public class EncounterRoom implements Room {
 
     }
 
+    public PointGrid getGrid(){
+        return this.grid;
+    }
+
     @Override
     public List<Entity> getEntities() {
         return this.monsters;

@@ -40,6 +40,10 @@ public class PointGrid{
         System.out.println(toString());
     }
 
+    public Point2D[][] getGrid(){
+        return this.grid;
+    }
+
     public void initGrid(){
         for (int row = 0; row < this.rows; row++){
             for (int column = 0; column < this.columns; column++) {
@@ -56,68 +60,50 @@ public class PointGrid{
         }
     }
 
-    /**
-     * @param rows the rows to set
-     */
-    public void setHeight(int rows) {
-        this.rows = rows;
-    }
-    /**
-     * @param columns the width to set
-     */
-    public void setWidth(int columns) {
-        this.columns = columns;
-    }
-    /**
-     * @param xOffset the xOffset to set
-     */
-    public void setxOffset(int xOffset) {
-        this.xOffset = xOffset;
-    }
-    /**
-     * @param yOffset the yOffset to set
-     */
-    public void setyOffset(int yOffset) {
-        this.yOffset = yOffset;
-    }
     public int getWidth(){
         return this.grid[0].length;
     }
     public int getHeight(){
         return this.grid.length;
-        //return this.rows;
     }
     public int getCellSize(){
         return this.cellSize;
     }
 
     public Point2D getPoint2D(int row, int column){
-        System.out.println("\n getting pt2d");
-        System.out.println("DEBUG this.grid[row]" + Arrays.deepToString(this.grid[row]));
-        System.out.println("DEBUG this.grid[row][column]" + this.grid[row][column]);
+        //System.out.println("getting pt2d at row " + row + " column " + column + " P2D " + this.grid[row][column]);
         return this.grid[row][column];
     }
 
     public void setCollisionTrue(int row, int column, Sprite sprite){
+        System.out.println("\nSetting Collision - in PointGrid");
         this.collisionMap.put(getPoint2D(row, column), sprite);
+        System.out.println("Setting collision at row " + row + " column " + column + " sprite " + getSpriteAtPosition(row, column) + " check sprite " + sprite );
+        System.out.println("DEBUG Collision confirmation: " + checkCollision(row, column));
     }
+    public void clearCollision(int row, int column){
+        System.out.println("Clearing collision - in point grid - at row " + row + " column " + column);
+        this.collisionMap.put(getPoint2D(row, column), null);
+    }
+    public boolean checkCollision(int row, int column){
+        System.out.println("\nChecking Collision - in PointGrid");
+        try {
+            System.out.println("DEBUG - SPRITE AT row " + row + " column " + column + " : " + getSpriteAtPosition(row, column));
+            return getSpriteAtPosition(row, column) != null;
+            //return this.collisionMap.get(getPoint2D(row, column)) != null;
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Exception caught in io.javasmithy.view.Sprite: Sprite on edge of grid");
+            return false;
+        }
+    }
+
+
     public Sprite getSpriteAtPosition(int row, int column){
         try {
             return this.collisionMap.get(getPoint2D(row, column));
         } catch (IndexOutOfBoundsException e){
             System.out.println("Exception caught in io.javasmithy.view.Sprite: Sprite on edge of grid");
             return null;
-        }
-    }
-    public void clearCollision(int row, int column){
-        this.collisionMap.put(getPoint2D(row, column), null);
-    }
-    public boolean checkCollision(int row, int column){
-        try {
-            return this.collisionMap.get(getPoint2D(row, column)) != null;
-        } catch (IndexOutOfBoundsException e){
-            System.out.println("Exception caught in io.javasmithy.view.Sprite: Sprite on edge of grid");
-            return false;
         }
     }
 

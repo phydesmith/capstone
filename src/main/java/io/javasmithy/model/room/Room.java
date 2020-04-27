@@ -1,6 +1,7 @@
 package io.javasmithy.model.room;
 
 import io.javasmithy.model.entity.Entity;
+import io.javasmithy.model.position.PointGrid;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ public interface Room {
     public void setEntities(List<Entity> entityList);
     public void setInitiativeOrder();
     public Entity getNextEntity();
+    public PointGrid getGrid();
 }

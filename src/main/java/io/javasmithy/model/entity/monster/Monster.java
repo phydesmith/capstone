@@ -207,6 +207,7 @@ public class Monster implements Entity {
     public void resetMovePoints(){
         this.movePoints = this.speed;
     }
+    public int getMovePoints() {return this.movePoints;}
 
     public Monster copy(){
         Monster monster = new Monster();

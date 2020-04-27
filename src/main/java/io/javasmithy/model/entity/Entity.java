@@ -17,6 +17,7 @@ public interface Entity{
     public boolean canMove();
     public void decMovePoints();
     public void resetMovePoints();
+    public int getMovePoints();
     public void move(int deltaX, int deltaY);
     public int getColumn();
     public int getRow();

@@ -46,6 +46,7 @@ public class Sprite extends ImageView {
 
     public void moveRow(int delta){
         clearCollision();
+        System.out.println("\nMoving Sprite - row wise - up down");
         if (row + delta < 0 || row + delta > this.grid.getHeight()-1) {
             return;
         } else {row+=delta;}
@@ -53,28 +54,23 @@ public class Sprite extends ImageView {
     }
     public void moveColumn(int delta){
         clearCollision();
-        if (column + delta < 0 || column + delta > this.grid.getWidth()-2) {
+        System.out.println("\nMoving Sprite - columnwise - left right");
+        if (column + delta < 0 || column + delta > this.grid.getWidth()-1) {
             return;
         } else {column+=delta;}
         setPos();
     }
-
     private void clearCollision(){
-        System.out.println("\nClearing Collisions" + this);
-        System.out.println("DEBUG-Sprite-SetPos() map before collision clear: " + this.grid.getSpriteAtPosition(row, column));
-        this.grid.clearCollision(column, row);
-        System.out.println("DEBUG-Sprite-SetPos() map after collision clear: " + this.grid.getSpriteAtPosition(row, column));
+        this.grid.clearCollision(row, column);
     }
     private void setPos(){
         System.out.println("\nSetting Sprite Position" + this);
-        System.out.println("Sprite Column(X): " + this.getColumn());
-        System.out.println("Sprite Row(Y): " + this.row);
         this.setX(grid.getPoint2D(row, column).getX());
         this.setY(grid.getPoint2D(row, column).getY());
 
-        System.out.println("DEBUG-Sprite-SetPos() map before set new collision: " + this.grid.getSpriteAtPosition(row, column));
-        this.grid.setCollisionTrue(column, row, this);
-        System.out.println("DEBUG-Sprite-SetPos() map after set new collision: " + this.grid.getSpriteAtPosition(row, column));
+        this.grid.setCollisionTrue(row, column, this);
+        //System.out.println("Setting collision at row " + row + " column " + column + " sprite " + this.grid.getSpriteAtPosition(row, column) + " check sprite " + this );
+        //System.out.println("DEBUG Collision confirmation: " + this.grid.checkCollision(row, column));
     }
     public Point2D getPos(){
         return this.grid.getPoint2D(row, column);
@@ -90,6 +86,10 @@ public class Sprite extends ImageView {
     }
     public int getRow(){
         return this.row;
+    }
+
+    public PointGrid getGrid(){
+        return this.grid;
     }
 
 
