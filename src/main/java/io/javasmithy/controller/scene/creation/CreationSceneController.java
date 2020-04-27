@@ -52,7 +52,7 @@ public class CreationSceneController implements Initializable, SceneController {
 
     @FXML
     public void showAbilityGeneration(ActionEvent actionEvent) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AbilityGeneration.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AbilityGeneration.fxml"));
         /*
          * this.centerChangePane.getChildren().clear();
          * this.centerChangePane.getChildren().add(loader.load());
@@ -64,27 +64,27 @@ public class CreationSceneController implements Initializable, SceneController {
 
     @FXML
     public void showRaceChoice(ActionEvent actionEvent) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/RaceChoice.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RaceChoice.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((RaceChoiceController)loader.getController()).setGameController(this.gc);
     }
 
     @FXML
     public void showBackgroundChoice(ActionEvent actionEvent) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/BackgroundChoice.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BackgroundChoice.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((BackgroundChoiceController)loader.getController()).setGameController(this.gc);
     }
     @FXML
     public void showCClassChoice(ActionEvent actionEvent) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CClassChoice.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CClassChoice.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((CClassChoiceController)loader.getController()).setGameController(this.gc);
     }
     @FXML
     public void showCharacterSheet(ActionEvent actionEvent) throws Exception {
         //System.out.println(this.gc);
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CharacterSheet.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CharacterSheet.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((CharacterSheetController)loader.getController()).setGameController(this.gc);
         ((CharacterSheetController)loader.getController()).populate();
@@ -93,7 +93,7 @@ public class CreationSceneController implements Initializable, SceneController {
     @FXML
     public void showCharacterInformation(ActionEvent actionEvent) throws Exception {
         System.out.println(this.gc);
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/CharacterInformation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CharacterInformation.fxml"));
         this.centerChangePane.getChildren().set(0, loader.load());
         ((CharacterInformationController)loader.getController()).setGameController(this.gc);
     }

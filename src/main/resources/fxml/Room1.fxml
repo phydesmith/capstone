@@ -11,7 +11,7 @@
             fx:id="gamePane"
             fx:controller="io.javasmithy.controller.scene.game.GamePaneController"
             prefHeight="600.0" prefWidth="800.0"
-            stylesheets="@/style/GamePaneStyle.css"
+            stylesheets="@../style/GamePaneStyle.css"
             styleClass="background">
 
 <children>

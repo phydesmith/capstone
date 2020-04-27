@@ -10,7 +10,7 @@
 <GridPane fx:id="cClassChoiceGridPane" 
 xmlns:fx="http://javafx.com/fxml"
 fx:controller="io.javasmithy.controller.scene.creation.CClassChoiceController"
-stylesheets="@/style/RaceChoice.css"
+stylesheets="@../style/RaceChoice.css"
 styleClass="root">
     
     <ListView fx:id="listView" 

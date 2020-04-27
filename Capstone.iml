@@ -8,13 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/classes" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/assets" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/assets/img" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/assets/img/raw" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/data" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/fxml" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/style" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/style/img" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
