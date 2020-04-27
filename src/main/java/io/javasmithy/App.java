@@ -30,8 +30,11 @@ public class App extends Application{
         Scene menuScene, creationScene, gameScene;
 
         menuSceneLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml\\MenuSceneLayout.fxml"));
+        menuSceneLoader.setLocation(getClass().getClassLoader().getResource("fxml\\MenuSceneLayout.fxml"));
         creationSceneLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml\\CreationSceneLayout.fxml"));
+        creationSceneLoader.setLocation(getClass().getClassLoader().getResource("fxml\\CreationSceneLayout.fxml"));
         gameSceneLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml\\GameSceneLayout.fxml"));
+        gameSceneLoader.setLocation(getClass().getClassLoader().getResource("fxml\\GameSceneLayout.fxml"));
 
         menuSceneLayout = menuSceneLoader.load();
         creationSceneLayout = creationSceneLoader.load();
