@@ -48,8 +48,8 @@ public class GameController{
         this.currentRoom = room;
         playerCharacter.getSprite().setGrid(room.getGrid());
         this.pGrid = room.getGrid();
-        //System.out.println("DEBUG - GC PGRID" + this.pGrid);
-        //((EncounterRoom)this.currentRoom).setMonsterSpriteGrid();
+        ((EncounterRoom)this.currentRoom).randomizeMonsterStarts();
+
     }
     public Room getCurrentRoom(){
         return this.currentRoom;
@@ -77,6 +77,8 @@ public class GameController{
             handlePlayerMovement();
             handleMonsterMovement();
             resetAllMovePoints();
+            //handlePlayerAttacks();
+            //handleMonsterAttacks();
         }
     }
 
@@ -187,10 +189,6 @@ public class GameController{
                 entity.attack(this.playerCharacter);
             }
         }
-    }
-
-    public void processMonsterMoves(){
-
     }
 
     public String toString(){

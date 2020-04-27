@@ -285,9 +285,11 @@ public class CharacterEntity implements Entity{
     public int getColumn() {
         return this.sprite.getColumn();
     }
+    public void setColumn(int column){this.sprite.setColumn(column);}
     public int getRow(){
         return this.sprite.getRow();
     }
+    public void setRow(int row){this.sprite.setRow(row);}
 
 
     public boolean isDead(){
@@ -319,6 +321,7 @@ public class CharacterEntity implements Entity{
     public int getMovePoints(){
         return this.movePoints;
     }
+    public void holdMove(){this.movePoints = 0;}
 
     public String toStringNoName(){
         String str = "";

@@ -89,6 +89,11 @@ public class GameSceneController implements Initializable, SceneController {
         gCtrInc();
     }
 
+    @FXML
+    public void holdPlayerMove(){
+        this.gc.getPlayerCharacter().holdMove();
+    }
+
     public void setEncounterRoom(){
         if (gCtr == 0){
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));

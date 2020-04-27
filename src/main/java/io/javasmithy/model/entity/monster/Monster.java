@@ -95,7 +95,11 @@ public class Monster implements Entity {
     public int getColumn() {
         return this.sprite.getColumn();
     }
-    public int getRow(){ return this.sprite.getRow(); }
+    public void setColumn(int column){this.sprite.setColumn(column);}
+    public int getRow(){
+        return this.sprite.getRow();
+    }
+    public void setRow(int row){this.sprite.setRow(row);}
 
     @Override
     public boolean isDead(){

@@ -17,6 +17,7 @@ fx:controller="io.javasmithy.controller.scene.game.GameSceneController"
         <Button fx:id="gCtrPress" text="inc Ctr" onAction="#gCtrInc" AnchorPane.leftAnchor="800" AnchorPane.topAnchor="800" focusTraversable="false"/>
         <Button fx:id="menuButton" text="mainMenu" onAction="#openMenuScene" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10" focusTraversable="false"/>
         <Button fx:id="nextRoomButton" text="Next Room" onAction="#setGamePane" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="600" focusTraversable="false"/>
+        <Button fx:id="holdMove" text="Hold Move" onAction="#holdPlayerMove" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="100" focusTraversable="false"/>
     </children>
 
 </AnchorPane>

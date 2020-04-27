@@ -20,7 +20,9 @@ public interface Entity{
     public int getMovePoints();
     public void move(int deltaX, int deltaY);
     public int getColumn();
+    public void setColumn(int column);
     public int getRow();
+    public void setRow(int row);
 
     public void setSprite(Sprite sprite);
     public Sprite getSprite();

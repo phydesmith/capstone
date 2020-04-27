@@ -3,6 +3,7 @@ package io.javasmithy.model.room;
 import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.entity.monster.Monster;
 import io.javasmithy.model.position.PointGrid;
+import io.javasmithy.util.Generator;
 
 import java.util.List;
 import java.util.Queue;
@@ -59,6 +60,15 @@ public class EncounterRoom implements Room {
         System.out.println("DEBUG - SETTING SPRITE GRID");
         for (int i = 0 ; i < monsters.size(); i++){
             ((Monster)this.monsters.get(i)).setSpriteGrid(this.grid);
+        }
+    }
+    public void randomizeMonsterStarts(){
+        for (int i = 0 ; i < monsters.size(); i++){
+            ((Monster)this.monsters.get(i)).setColumn(Generator.generate(this.grid.getWidth(), 1));
+            ((Monster)this.monsters.get(i)).setRow(Generator.generate(this.grid.getHeight(), 1));
+            this.monsters.get(i).getSprite().setPos();
+            System.out.println("ROW: " + this.monsters.get(i).getRow() + " COLUMN: " + this.monsters.get(i).getColumn());
+
         }
     }
 

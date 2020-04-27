@@ -63,7 +63,7 @@ public class Sprite extends ImageView {
     private void clearCollision(){
         this.grid.clearCollision(row, column);
     }
-    private void setPos(){
+    public void setPos(){
         System.out.println("\nSetting Sprite Position" + this);
         this.setX(grid.getPoint2D(row, column).getX());
         this.setY(grid.getPoint2D(row, column).getY());
@@ -80,9 +80,14 @@ public class Sprite extends ImageView {
         this.grid = grid;
     }
 
-
+    public void setColumn(int column){
+        this.column = column;
+    }
     public int getColumn(){
         return this.column;
+    }
+    public void setRow(int row){
+        this.row = row;
     }
     public int getRow(){
         return this.row;
