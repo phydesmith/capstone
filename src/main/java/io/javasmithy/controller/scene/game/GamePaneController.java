@@ -33,6 +33,7 @@ public class GamePaneController implements Initializable {
         this.gc = gc;
         initPlayerSprite();
         initMonsterSprites();
+        setUserTargetClicks();
     }
 
     public void initPlayerSprite(){
@@ -70,6 +71,17 @@ public class GamePaneController implements Initializable {
                     charSprite.moveColumn(1);
                 }
                 playerCharacter.decMovePoints();
+            }
+        });
+    }
+
+    public void setUserTargetClicks(){
+        this.gamePane.setOnMouseClicked( e-> {
+            try {
+                Sprite target = (Sprite) e.getTarget();
+                gc.setPlayerTarget(target.getEntity());
+            } catch (ClassCastException cce){
+                System.out.println("Player clicked on AnchorPane and not sprite");
             }
         });
     }

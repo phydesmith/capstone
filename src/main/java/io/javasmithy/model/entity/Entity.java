@@ -27,4 +27,8 @@ public interface Entity{
     public void setSprite(Sprite sprite);
     public Sprite getSprite();
 
+    public boolean canUseAction();
+    public void resetAction();
+    public void useAction();
+
 }

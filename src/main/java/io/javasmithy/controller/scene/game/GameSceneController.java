@@ -93,6 +93,18 @@ public class GameSceneController implements Initializable, SceneController {
     public void holdPlayerMove(){
         this.gc.getPlayerCharacter().holdMove();
     }
+    @FXML
+    public void attack(){
+        System.out.println("LOG: Player attacking target");
+        useAction();
+    }
+    @FXML
+    public void holdAttack(){
+        System.out.println("LOG: Player holding attack");
+        useAction();
+    }
+    public void useAction(){ this.gc.getPlayerCharacter().useAction(); }
+
 
     public void setEncounterRoom(){
         if (gCtr == 0){

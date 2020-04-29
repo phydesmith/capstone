@@ -37,9 +37,9 @@ public class App extends Application{
         creationSceneLayout = creationSceneLoader.load();
         gameSceneLayout = gameSceneLoader.load();
 
-        menuScene = new Scene(menuSceneLayout, 1080, 720);
-        creationScene = new Scene(creationSceneLayout, 1080, 720);
-        gameScene = new Scene(gameSceneLayout, 1080, 720);
+        menuScene = new Scene(menuSceneLayout, 1440, 900);
+        creationScene = new Scene(creationSceneLayout, 1440, 900);
+        gameScene = new Scene(gameSceneLayout, 1440, 900);
 
         MenuSceneController menu = (MenuSceneController) menuSceneLoader.getController();
         menu.setGameController(gc);

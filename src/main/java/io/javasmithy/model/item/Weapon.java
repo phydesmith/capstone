@@ -58,7 +58,9 @@ public class Weapon implements Item, Equippable {
 
     public int getAtkRange(){
         return this.atkRange;
-    };
+    }
+
+    public void setAtkRange(int r){ this.atkRange = r;}
 
     @Override
     public int getValue() {

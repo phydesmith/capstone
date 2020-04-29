@@ -1,5 +1,6 @@
 package io.javasmithy.view;
 
+import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.position.PointGrid;
 
 import javafx.geometry.Point2D;
@@ -10,6 +11,8 @@ import java.util.Random;
 
 public class Sprite extends ImageView {
     private static final Random random = new Random();
+
+    private Entity entity;
 
     private int row;
     private int column;
@@ -38,6 +41,13 @@ public class Sprite extends ImageView {
         this.setFitWidth(50.0);
 
         setFocusTraversable(true);
+    }
+
+    public void setEntity(Entity e){
+        this.entity = e;
+    }
+    public Entity getEntity(){
+        return this.entity;
     }
 
     public void setSpriteParent(Pane pane){

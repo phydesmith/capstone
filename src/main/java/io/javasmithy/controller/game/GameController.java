@@ -24,7 +24,9 @@ import java.util.List;
 public class GameController{
     Room currentRoom;
     Entity playerCharacter;
+    Entity playerTarget;
     PointGrid pGrid;
+
     
     public GameController(){
         this.pGrid = new PointGrid(16, 16, 0, 0,  50);
@@ -75,9 +77,9 @@ public class GameController{
         while (!this.playerCharacter.isDead()) {
             System.out.println("Running");
             handlePlayerMovement();
+            handlePlayerAttacks();
             handleMonsterMovement();
             resetAllMovePoints();
-            //handlePlayerAttacks();
             //handleMonsterAttacks();
         }
     }
@@ -91,6 +93,20 @@ public class GameController{
             System.out.print("");
         }
         System.out.println("Reset Player MovePoints");
+    }
+    public void handlePlayerAttacks(){
+        System.out.println("\n-------------------------------");
+        System.out.println("DEBUG Handling Player Attacks");
+        System.out.println("-------------------------------");
+        playerCharacter.resetAction();
+        while (this.playerCharacter.canUseAction()){
+            System.out.print("");
+        }
+        if (playerTarget != null && this.playerCharacter.canAttackTarget(playerTarget)) {this.playerCharacter.attack(playerTarget);}
+    }
+    public void setPlayerTarget(Entity target){
+        this.playerTarget = target;
+        System.out.println("DEBUG - TARGET: " + this.playerTarget);
     }
     public void handleMonsterMovement(){
         System.out.println("\n-------------------------------");

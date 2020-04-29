@@ -27,6 +27,7 @@ public class Monster implements Entity {
     private int dmgDieQty;
     private int dmgBonus;
     private boolean isDead = false;
+    private boolean standardAction = true;
     private int xPos, yPos;
     private int xpValue;
     private int atkBonus;
@@ -192,6 +193,7 @@ public class Monster implements Entity {
     }
     public void setSprite(Sprite sprite){
         this.sprite = sprite;
+        this.sprite.setEntity(this);
     }
     public void setSpriteGrid(PointGrid grid){
         this.sprite.setGrid(grid);
@@ -212,6 +214,16 @@ public class Monster implements Entity {
         this.movePoints = this.speed;
     }
     public int getMovePoints() {return this.movePoints;}
+
+    public boolean canUseAction(){
+        return this.standardAction;
+    };
+    public void resetAction(){
+        this.standardAction = true;
+    };
+    public void useAction(){
+        this.standardAction = false;
+    };
 
     public Monster copy(){
         Monster monster = new Monster();

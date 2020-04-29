@@ -43,6 +43,7 @@ public class CharacterEntity implements Entity{
     private int gold;
 
     //  Character Static Combat Mechanics
+    boolean standardAction = true;
     
     //  Character Calculated Interaction and Combat Mechanics
     //  saving throws
@@ -72,6 +73,9 @@ public class CharacterEntity implements Entity{
     private void init(){
         initLevel();
         this.items = new ArrayList<Item>();
+
+        //  Testing
+        initTestWeapon();
     }
 
     public void setAbilityScores(AbilityScores abilityScores){
@@ -301,7 +305,10 @@ public class CharacterEntity implements Entity{
 
     public Sprite getSprite(){ return this.sprite;}
     @Override
-    public void setSprite(Sprite sprite){ this.sprite = sprite;}
+    public void setSprite(Sprite sprite){
+        this.sprite = sprite;
+        this.sprite.setEntity(this);
+    }
     public void setSpriteImage(Image image){
         this.sprite.setImage(image);
     }
@@ -323,6 +330,17 @@ public class CharacterEntity implements Entity{
     }
     public void holdMove(){this.movePoints = 0;}
 
+
+    public boolean canUseAction(){
+        return this.standardAction;
+    };
+    public void resetAction(){
+        this.standardAction = true;
+    };
+    public void useAction(){
+        this.standardAction = false;
+    };
+
     public String toStringNoName(){
         String str = "";
         str += "\n Alignment: " + this.alignment
@@ -340,5 +358,18 @@ public class CharacterEntity implements Entity{
         str += "\n Name: \t" + this.charName 
             + toStringNoName();
         return str;
+    }
+
+    // TESTING
+    public void initTestWeapon(){
+        this.weapon = new Weapon();
+        this.weapon.setType(WeaponType.MELEE);
+        this.weapon.setAtkRange(1);
+        this.weapon.setDmgDie(6);
+        this.weapon.setDmgDieQty(1);
+        this.weapon.setEquipped(true);
+        this.weapon.setOwner(this);
+        this.weapon.setValue(100);
+        this.weapon.setName("Long Sword");
     }
 }
