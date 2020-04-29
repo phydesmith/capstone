@@ -6,13 +6,10 @@ import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  *  source http://tutorials.jenkov.com/java-json/boon-objectmapper.html

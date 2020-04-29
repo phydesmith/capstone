@@ -56,7 +56,6 @@ public class Sprite extends ImageView {
 
     public void moveRow(int delta){
         clearCollision();
-        System.out.println("\nMoving Sprite - row wise - up down");
         if (row + delta < 0 || row + delta > this.grid.getHeight()-1) {
             return;
         } else {row+=delta;}
@@ -64,7 +63,6 @@ public class Sprite extends ImageView {
     }
     public void moveColumn(int delta){
         clearCollision();
-        System.out.println("\nMoving Sprite - columnwise - left right");
         if (column + delta < 0 || column + delta > this.grid.getWidth()-1) {
             return;
         } else {column+=delta;}
@@ -74,13 +72,11 @@ public class Sprite extends ImageView {
         this.grid.clearCollision(row, column);
     }
     public void setPos(){
-        System.out.println("\nSetting Sprite Position" + this);
+        System.out.println("Log: Setting Sprite Position");
         this.setX(grid.getPoint2D(row, column).getX());
         this.setY(grid.getPoint2D(row, column).getY());
 
         this.grid.setCollisionTrue(row, column, this);
-        //System.out.println("Setting collision at row " + row + " column " + column + " sprite " + this.grid.getSpriteAtPosition(row, column) + " check sprite " + this );
-        //System.out.println("DEBUG Collision confirmation: " + this.grid.checkCollision(row, column));
     }
     public Point2D getPos(){
         return this.grid.getPoint2D(row, column);
@@ -107,12 +103,4 @@ public class Sprite extends ImageView {
         return this.grid;
     }
 
-
-    public void moveRandomly(){
-        int axis = random.nextInt(2);
-        int direction = random.nextInt(2);
-        int delta = 1;
-        if (direction == 0) delta = -delta;
-        if (axis ==0 ) {moveRow(delta);} else {moveColumn(delta);}
-    }
 }

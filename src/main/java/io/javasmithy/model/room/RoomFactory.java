@@ -23,6 +23,8 @@ public class RoomFactory {
         List<Entity> monsters = new ArrayList<Entity>();
         for(int i =0; i < 2; i++){ // set to 1 for debug
             monsters.add(MonsterFactory.createMonster(MonsterType.ZOMBIE));
+            String name = monsters.get(i).getName() + " " + i;
+            ((Monster) monsters.get(i)).setName( name);
         }
         room.setEntities(monsters);
         ((EncounterRoom)room).setGrid(RoomType.ROOM_1.getGrid());
@@ -35,6 +37,8 @@ public class RoomFactory {
         List<Entity> monsters = new ArrayList<Entity>();
         for(int i =0; i < 2; i++){
             monsters.add(MonsterFactory.createMonster(MonsterType.GOBLIN));
+            String name = monsters.get(i).getName() + " " + i;
+            ((Monster) monsters.get(i)).setName( name);
         }
         room.setEntities(monsters);
         ((EncounterRoom)room).setGrid(RoomType.ROOM_2.getGrid());

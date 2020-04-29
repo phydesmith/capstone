@@ -29,9 +29,6 @@ public class PointGrid{
         this.yOffset = yOffset;
         this.xOffset = xOffset;
 
-        System.out.println("DEBUG rows grid length: " + this.grid.length);
-        System.out.println("DEBUG columns grid[] : " + this.grid[0].length);
-
         this.rows = rows;
         this.columns = columns;
 
@@ -76,23 +73,19 @@ public class PointGrid{
     }
 
     public void setCollisionTrue(int row, int column, Sprite sprite){
-        System.out.println("\nSetting Collision - in PointGrid");
+        System.out.println("Log: Setting Collision");
         this.collisionMap.put(getPoint2D(row, column), sprite);
-        System.out.println("Setting collision at row " + row + " column " + column + " sprite " + getSpriteAtPosition(row, column) + " check sprite " + sprite );
-        System.out.println("DEBUG Collision confirmation: " + checkCollision(row, column));
     }
     public void clearCollision(int row, int column){
-        System.out.println("Clearing collision - in point grid - at row " + row + " column " + column);
+        System.out.println("Log: Clearing collision - in point grid - at row " + row + " column " + column);
         this.collisionMap.put(getPoint2D(row, column), null);
     }
     public boolean checkCollision(int row, int column){
-        System.out.println("\nChecking Collision - in PointGrid");
+        System.out.println("Log: Checking Collision");
         try {
-            System.out.println("DEBUG - SPRITE AT row " + row + " column " + column + " : " + getSpriteAtPosition(row, column));
             return getSpriteAtPosition(row, column) != null;
-            //return this.collisionMap.get(getPoint2D(row, column)) != null;
         } catch (IndexOutOfBoundsException e){
-            System.out.println("Exception caught in io.javasmithy.view.Sprite: Sprite on edge of grid");
+            System.out.println("Log: Exception caught in point grid -> Sprite on edge of grid");
             return false;
         }
     }
@@ -102,7 +95,7 @@ public class PointGrid{
         try {
             return this.collisionMap.get(getPoint2D(row, column));
         } catch (IndexOutOfBoundsException e){
-            System.out.println("Exception caught in io.javasmithy.view.Sprite: Sprite on edge of grid");
+            System.out.println("Log: Exception caught in point grid -> Sprite on edge of grid");
             return null;
         }
     }

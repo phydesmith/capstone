@@ -15,17 +15,6 @@ public class EncounterRoom implements Room {
     private PointGrid grid;
 
     public EncounterRoom(){
-        initEntities();
-    }
-
-    @Override
-    public void initEntities() {
-        //  load entities
-
-    }
-
-    @Override
-    public void setPlayerEntity(Entity player) {
 
     }
 
@@ -47,17 +36,12 @@ public class EncounterRoom implements Room {
 
     }
 
-    @Override
-    public Entity getNextEntity() {
-        return null;
-    }
-
     public void setGrid(PointGrid grid) {
         this.grid = grid;
     }
 
     public void setMonsterSpriteGrid(){
-        System.out.println("DEBUG - SETTING SPRITE GRID");
+        System.out.println("Log: setting monster sprite grid.");
         for (int i = 0 ; i < monsters.size(); i++){
             ((Monster)this.monsters.get(i)).setSpriteGrid(this.grid);
         }
@@ -67,7 +51,7 @@ public class EncounterRoom implements Room {
             ((Monster)this.monsters.get(i)).setColumn(Generator.generate(this.grid.getWidth(), 1)-1);
             ((Monster)this.monsters.get(i)).setRow(Generator.generate(this.grid.getHeight(), 1)-1);
             this.monsters.get(i).getSprite().setPos();
-            System.out.println("ROW: " + this.monsters.get(i).getRow() + " COLUMN: " + this.monsters.get(i).getColumn());
+            System.out.println("Log: " + monsters.get(i).getName() + " position set to ROW: " + this.monsters.get(i).getRow() + " COLUMN: " + this.monsters.get(i).getColumn());
 
         }
     }

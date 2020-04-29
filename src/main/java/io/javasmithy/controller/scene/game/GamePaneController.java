@@ -38,13 +38,10 @@ public class GamePaneController implements Initializable {
 
     public void initPlayerSprite(){
         this.gc.getPlayerCharacter().getSprite().setSpriteParent(this.gamePane);
-        // this could be gc.getPcSprite.setSpriteParent()
         setUserKeyInput(this.gc.getPlayerCharacter());
     }
 
     public void initMonsterSprites(){
-        System.out.println("DEBUG - CURRENT ROOM" + this.gc.getCurrentRoom());
-        System.out.println("DEBUG - ROOM ENTITIES" + this.gc.getCurrentRoom().getEntities());
         List<Entity> monsters = this.gc.getCurrentRoom().getEntities();
         for (int i = 0; i < monsters.size(); i++){
             monsters.get(i).getSprite().setSpriteParent(this.gamePane);
@@ -54,20 +51,18 @@ public class GamePaneController implements Initializable {
     public void setUserKeyInput(CharacterEntity playerCharacter){
         Sprite charSprite = playerCharacter.getSprite();
         this.gamePane.setOnKeyPressed(e -> {
-            System.out.println("DEBUG - Game Pane Controller- CAN MOVE: " + playerCharacter.canMove());
-            System.out.println("DEBUG - Game Pane Controller- PLAYER MOVE POINTS: " + playerCharacter.getMovePoints());
             if (playerCharacter.canMove()) {
                 if (e.getCode() == KeyCode.UP) {
-                    System.out.println("UP");
+                    System.out.println("Log: Player moved up.");
                     charSprite.moveRow(-1);
                 } else if (e.getCode() == KeyCode.DOWN) {
-                    System.out.println("down");
+                    System.out.println("Log: Player moved down.");
                     charSprite.moveRow(1);
                 } else if (e.getCode() == KeyCode.LEFT) {
-                    System.out.println("left");
+                    System.out.println("Log: Player moved left.");
                     charSprite.moveColumn(-1);
                 } else {//(e.getCode() == KeyCode.RIGHT){
-                    System.out.println("right");
+                    System.out.println("Log: Player moved right.");
                     charSprite.moveColumn(1);
                 }
                 playerCharacter.decMovePoints();
@@ -81,7 +76,7 @@ public class GamePaneController implements Initializable {
                 Sprite target = (Sprite) e.getTarget();
                 gc.setPlayerTarget(target.getEntity());
             } catch (ClassCastException cce){
-                System.out.println("Player clicked on AnchorPane and not sprite");
+                System.out.println("Log: Player clicked on AnchorPane and not sprite");
             }
         });
     }

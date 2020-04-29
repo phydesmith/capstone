@@ -250,7 +250,9 @@ public class CharacterEntity implements Entity{
     }
 
     public boolean canAttackTarget(Entity entity){
-        return Distance.compute(getColumn(), getRow(), entity.getColumn(), getRow()) <= this.weapon.getAtkRange();
+        double dist = Distance.compute(getColumn(), getRow(), entity.getColumn(), getRow());
+        System.out.println("Log: distance to attack " + dist);
+        return dist <= this.weapon.getAtkRange();
     }
 
     public void addItem(Item item){

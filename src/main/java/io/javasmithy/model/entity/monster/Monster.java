@@ -69,6 +69,8 @@ public class Monster implements Entity {
 
     @Override
     public boolean canAttackTarget(Entity entity) {
+        double dist = Distance.compute(getColumn(), getRow(), entity.getColumn(), getRow());
+        System.out.println("Log: distance " + dist);
         return Distance.compute(getColumn(), getRow(), entity.getColumn(), getRow()) <= this.atkRange;
     }
 

@@ -21,9 +21,7 @@ public class App extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         GameController gc = new GameController();
-        gc.init();
         GameThread gameThread = new GameThread(gc);
-        //gameThread.start();
 
         FXMLLoader menuSceneLoader, creationSceneLoader, gameSceneLoader;
         Parent menuSceneLayout, creationSceneLayout, gameSceneLayout;
