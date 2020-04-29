@@ -42,7 +42,7 @@ public class MonsterFactory {
     public static Monster createMonster(MonsterType type){
         Monster monster = monsterMap.get(type).generate();
         monster.setSprite(new Sprite());
-        monster.getSprite().setImage(new Image(MonsterFactory.class.getClassLoader().getResource( type.getImgPath() ).toExternalForm()) );
+        monster.getSprite().setImage(new Image(MonsterFactory.class.getResource( type.getImgPath() ).toExternalForm()) );
         monster.initHP();
         return monster;
     }

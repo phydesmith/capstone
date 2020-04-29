@@ -19,7 +19,7 @@ prefWidth="1080"
 prefHeight="720"
 xmlns:fx="https://javafx.com/"
 fx:controller="io.javasmithy.controller.scene.creation.CreationSceneController"
-stylesheets="@/style/CreationStyle.css"
+stylesheets="@../style/CreationStyle.css"
 styleClass="creationPane">
 
     <children>

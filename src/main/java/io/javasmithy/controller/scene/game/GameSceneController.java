@@ -24,7 +24,7 @@ public class GameSceneController implements Initializable, SceneController {
     private GameController gc;
     private GameThread gameThread;
     private Scene menuScene;
-    private String[] panePaths = {"fxml/Room1.fxml", "fxml/Room2.fxml", "fxml/Room3.fxml"};
+    private String[] panePaths = {"/fxml/Room1.fxml", "/fxml/Room2.fxml", "/fxml/Room3.fxml"};
     private String[] roomConfig = {"room1.json", "room2.json", "room3.json"};
 
     // testing
@@ -77,7 +77,7 @@ public class GameSceneController implements Initializable, SceneController {
     public void setGamePane(ActionEvent actionEvent) throws IOException {
         setEncounterRoom();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(panePaths[this.gCtr]));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(panePaths[this.gCtr]));
         this.gamePane.getChildren().set(0, loader.load());
 
         ((GamePaneController)loader.getController()).setGameController(this.gc);

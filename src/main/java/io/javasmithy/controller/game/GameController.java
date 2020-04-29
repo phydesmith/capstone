@@ -33,8 +33,8 @@ public class GameController{
         //this.playerCharacter = new CharacterEntity();
         //  FOR DEBUGGING
         this.playerCharacter = createDebugChar();
-        this.playerCharacter.setSprite(new Sprite(pGrid));
-        this.playerCharacter.getSprite().setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
+        //this.playerCharacter.setSprite(new Sprite(pGrid));
+        //this.playerCharacter.getSprite().setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
     }
 
     public PointGrid getPointGrid(){
@@ -47,11 +47,12 @@ public class GameController{
     }
 
     public void setCurrentRoom(Room room){
+        this.playerCharacter.setSprite(new Sprite(room.getGrid()));
+        this.playerCharacter.getSprite().setImage(new Image (getClass().getResource( "/assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
         this.currentRoom = room;
         playerCharacter.getSprite().setGrid(room.getGrid());
         this.pGrid = room.getGrid();
         ((EncounterRoom)this.currentRoom).randomizeMonsterStarts();
-
     }
     public Room getCurrentRoom(){
         return this.currentRoom;
