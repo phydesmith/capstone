@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 
 <AnchorPane
 prefWidth="1080"            
@@ -20,6 +20,14 @@ fx:controller="io.javasmithy.controller.scene.game.GameSceneController"
         <Button fx:id="holdMove" text="Hold Move" onAction="#holdPlayerMove" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="100" focusTraversable="false"/>
         <Button fx:id="attack" text="Attack Target" onAction="#attack" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="150" focusTraversable="false"/>
         <Button fx:id="holdAttack" text="Hold Attack" onAction="#holdAttack" AnchorPane.leftAnchor="1000" AnchorPane.topAnchor="150" focusTraversable="false"/>
+        <ListView fx:id="gameLogView"
+                  AnchorPane.leftAnchor="100"
+                  AnchorPane.topAnchor="700"
+                  focusTraversable="false"
+                  editable="false"
+                  prefWidth="800"
+                  prefHeight="100"
+        />
     </children>
 
 </AnchorPane>

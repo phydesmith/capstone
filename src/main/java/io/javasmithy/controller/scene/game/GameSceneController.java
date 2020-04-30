@@ -3,7 +3,9 @@ package io.javasmithy.controller.scene.game;
 import io.javasmithy.controller.scene.SceneController;
 import io.javasmithy.model.room.RoomFactory;
 import io.javasmithy.model.room.RoomType;
+import io.javasmithy.util.GameLog;
 import io.javasmithy.util.GameThread;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -34,10 +36,13 @@ public class GameSceneController implements Initializable, SceneController {
     Button nextRoomButton;
     @FXML
     AnchorPane gamePane;
+    @FXML
+    ListView gameLogView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gamePane.getChildren().add(new Region()); // this group
+        gameLogView.setItems(GameLog.getLogList());
     }
 
 

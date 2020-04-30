@@ -11,7 +11,9 @@ import io.javasmithy.model.entity.monster.Monster;
 import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.model.room.EncounterRoom;
 import io.javasmithy.model.room.Room;
+import io.javasmithy.util.GameLog;
 import io.javasmithy.view.Sprite;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -26,11 +28,7 @@ public class GameController{
     
     public GameController(){
         this.pGrid = new PointGrid(16, 16, 0, 0,  50);
-        //this.playerCharacter = new CharacterEntity();
-        //  FOR DEBUGGING
         this.playerCharacter = createDebugChar();
-        //this.playerCharacter.setSprite(new Sprite(pGrid));
-        //this.playerCharacter.getSprite().setImage(new Image (getClass().getClassLoader().getResource( "assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
     }
 
     public CharacterEntity getPlayerCharacter(){
@@ -52,18 +50,26 @@ public class GameController{
 
     public void run(){
         while (!this.playerCharacter.isDead()) {
-            System.out.println("Starting Room Combat");
 
+
+            GameLog.addEntry(this.playerCharacter.getName() + " Move Phase.");
+            System.out.println("Log: Player Move Phase");
             handlePlayerMovement();
+            GameLog.addEntry(this.playerCharacter.getName() + " Attack Phase.");
+            System.out.println("Log: Player Attack Phase");
             handlePlayerAttacks();
 
-            System.out.println("Monster");
+            GameLog.addEntry("Monster Move Phase.");
+            System.out.println("Log: Monster Move Phase");
             handleMonsterMovement();
+            GameLog.addEntry("Monster Attack Phase.");
+            System.out.println("Log: Monster Attack Phase");
             handleMonsterAttacks();
 
             resetAllMovePoints();
         }
         System.out.println("Log: character is dead -> " + this.playerCharacter.isDead());
+        GameLog.addEntry("Character Died - Game Over!");
     }
 
     public void handlePlayerMovement(){
@@ -80,6 +86,7 @@ public class GameController{
             System.out.print("");
         }
         if (playerTarget != null && this.playerCharacter.canAttackTarget(playerTarget)) {this.playerCharacter.attack(playerTarget);}
+        GameLog.addEntry(this.playerCharacter.getName() + " attacked " +  playerTarget);
         System.out.println("Log: Player Attack finished.");
     }
     public void setPlayerTarget(Entity target){

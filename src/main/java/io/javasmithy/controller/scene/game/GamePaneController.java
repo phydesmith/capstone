@@ -4,13 +4,9 @@ import io.javasmithy.controller.game.GameController;
 import io.javasmithy.model.entity.CharacterEntity;
 import io.javasmithy.model.entity.Entity;
 import io.javasmithy.view.Sprite;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;

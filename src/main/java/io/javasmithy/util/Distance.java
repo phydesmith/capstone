@@ -6,8 +6,11 @@ public class Distance {
         double yDiff = targetY - sourceY;
         double xDiffSquared = xDiff * xDiff;
         double yDiffSquared = yDiff * yDiff;
-        double radicand = xDiffSquared - yDiffSquared;
-        double result = Math.sqrt(radicand);
+        double radicand = xDiffSquared + yDiffSquared;
+        double result = Math.sqrt(Math.abs(radicand));
+        GameLog.addEntry("Distance sqart: " + Math.abs(radicand));
+        System.out.println("DEBUG: Sqrt( " + (targetX + "-" + sourceX) + "^2 + " + (targetY + "-" + sourceY) + "^2)");
+        System.out.println("DEBUG: Sqrt( " + (targetX - sourceX) + "^2 + " + (targetY - sourceY) + "^2)");
         return result;
     }
 }
