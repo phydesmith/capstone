@@ -5,6 +5,7 @@ import io.javasmithy.model.room.RoomFactory;
 import io.javasmithy.model.room.RoomType;
 import io.javasmithy.util.GameLog;
 import io.javasmithy.util.GameThread;
+import javafx.collections.ListChangeListener;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -43,6 +44,7 @@ public class GameSceneController implements Initializable, SceneController {
     public void initialize(URL location, ResourceBundle resources) {
         gamePane.getChildren().add(new Region()); // this group
         gameLogView.setItems(GameLog.getLogList());
+        enableGameLogAutoScroll();
     }
 
 
@@ -116,6 +118,16 @@ public class GameSceneController implements Initializable, SceneController {
         } else {
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
         }
+    }
+
+    public void enableGameLogAutoScroll(){
+        this.gameLogView.getItems().addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(Change change) {
+                gameLogView.scrollTo(gameLogView.getItems().size());
+            }
+        });
+
     }
 
 }
