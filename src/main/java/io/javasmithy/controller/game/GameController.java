@@ -8,14 +8,10 @@ import io.javasmithy.model.entity.*;
 
 //  Testing Purposes
 import io.javasmithy.model.entity.monster.Monster;
-import io.javasmithy.model.entity.monster.MonsterFactory;
-import io.javasmithy.model.entity.monster.MonsterType;
 import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.model.room.EncounterRoom;
 import io.javasmithy.model.room.Room;
-import io.javasmithy.util.Direction;
 import io.javasmithy.view.Sprite;
-import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -67,6 +63,7 @@ public class GameController{
 
             resetAllMovePoints();
         }
+        System.out.println("Log: character is dead -> " + this.playerCharacter.isDead());
     }
 
     public void handlePlayerMovement(){

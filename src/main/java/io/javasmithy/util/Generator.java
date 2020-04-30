@@ -12,7 +12,7 @@ public class Generator{
             total += random.nextInt(bound)+1; 
         }
         return total;
-        //  Post-Condtion
+        //  Post-Condition
         //  Generates a random number between 1 and Bound
     }
 

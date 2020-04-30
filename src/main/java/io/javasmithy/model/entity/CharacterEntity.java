@@ -79,7 +79,6 @@ public class CharacterEntity implements Entity{
     }
 
     public void setAbilityScores(AbilityScores abilityScores){
-        System.out.println("DEBUG " + abilityScores);
         this.abilityScores = abilityScores;
     }
     public AbilityScores getAbilityScores(){
@@ -185,7 +184,6 @@ public class CharacterEntity implements Entity{
         this.race = race;
         this.speed = race.getSpeed();
         this.movePoints = this.speed;
-        System.out.println("DEBUG SETTING MOVE POINTS: " + this.movePoints);
     }
 
     @Override
@@ -200,13 +198,6 @@ public class CharacterEntity implements Entity{
         }  else {
             System.out.println("Miss!");
         }
-
-        /*
-        int atkRoll = Generator.generate(20, 1);
-        if (atkRoll+getAttackBonus() >= entity.getArmorClass()){
-            entity.takeDamage(this.getDamage());
-        }
-        */
     }
     public int getArmorClass(){
         return 10 + this.abilityScores.getModifier(Ability.DEXTERITY);

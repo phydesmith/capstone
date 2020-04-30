@@ -12,8 +12,6 @@ public class GameThread extends Thread {
 
     @Override
     public void run() {
-        // operate on mSomeClass
-        System.out.println("DEBUG - In Game Thread");
         this.gc.run();
     }
 }

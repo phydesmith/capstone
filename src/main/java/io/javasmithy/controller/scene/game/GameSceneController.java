@@ -25,7 +25,6 @@ public class GameSceneController implements Initializable, SceneController {
     private GameThread gameThread;
     private Scene menuScene;
     private String[] panePaths = {"/fxml/Room1.fxml", "/fxml/Room2.fxml", "/fxml/Room3.fxml"};
-    private String[] roomConfig = {"room1.json", "room2.json", "room3.json"};
 
     // testing
     int gCtr = 0;
@@ -81,8 +80,6 @@ public class GameSceneController implements Initializable, SceneController {
         this.gamePane.getChildren().set(0, loader.load());
 
         ((GamePaneController)loader.getController()).setGameController(this.gc);
-
-        System.out.println("DEBUG - : " + this.gc);
 
         this.gameThread.start();
 

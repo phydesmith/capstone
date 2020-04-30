@@ -34,7 +34,6 @@ public class PointGrid{
 
         initGrid();
         initCollisionMap();
-        System.out.println(toString());
     }
 
     public Point2D[][] getGrid(){
@@ -68,7 +67,6 @@ public class PointGrid{
     }
 
     public Point2D getPoint2D(int row, int column){
-        //System.out.println("getting pt2d at row " + row + " column " + column + " P2D " + this.grid[row][column]);
         return this.grid[row][column];
     }
 

@@ -37,10 +37,17 @@ public class MonsterFactory {
     }
 
     public static Monster createMonster(MonsterType type){
+        /**
+         * This method uses the monster map to get a monster template and create a new instance of the monster.
+         * @param type The type of monster to create.
+         */
         Monster monster = monsterMap.get(type).generate();
         monster.setSprite(new Sprite());
         monster.getSprite().setImage(new Image(MonsterFactory.class.getResource( type.getImgPath() ).toExternalForm()) );
         monster.initHP();
         return monster;
+        /**
+         * @return a new instance of monster based on the parameter type.
+         */
     }
 }

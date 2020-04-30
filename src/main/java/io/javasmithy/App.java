@@ -13,11 +13,13 @@ import javafx.scene.Parent;
 
 import javafx.fxml.FXMLLoader;
 
-//  testing and debugging imports
-
 
 public class App extends Application{
-
+    /**
+     * The main entry point for the program.
+     * @param stage JavaFX stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception{
         GameController gc = new GameController();
@@ -30,9 +32,6 @@ public class App extends Application{
         menuSceneLoader = new FXMLLoader(getClass().getResource("/fxml/MenuSceneLayout.fxml"));
         creationSceneLoader = new FXMLLoader(getClass().getResource("/fxml/CreationSceneLayout.fxml"));
         gameSceneLoader = new FXMLLoader(getClass().getResource("/fxml/GameSceneLayout.fxml"));
-
-
-        System.out.println("DEBUG MENU SCENE LOADER LOCATION: " + menuSceneLoader.getLocation());
 
         menuSceneLayout = menuSceneLoader.load();
         creationSceneLayout = creationSceneLoader.load();
@@ -63,7 +62,11 @@ public class App extends Application{
     }
 
     public static void main( String[] args ) {
-
+        /**
+         * Main method calls the launch() method to start the JavaFX app
+         * @param args Args for program
+         *
+         */
         launch();
     }
 }
