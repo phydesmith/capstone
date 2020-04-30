@@ -1,7 +1,9 @@
-package io.javasmithy.model.item;
+package io.javasmithy.model.item.weapons;
 
 import io.javasmithy.model.component.Attack.AttackType;
 import io.javasmithy.model.entity.Entity;
+import io.javasmithy.model.item.Equippable;
+import io.javasmithy.model.item.Item;
 
 public class Weapon implements Item, Equippable {
     private String name;

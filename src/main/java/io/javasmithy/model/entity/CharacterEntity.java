@@ -10,6 +10,12 @@ import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
 import io.javasmithy.model.item.*;
+import io.javasmithy.model.item.armor.Armor;
+import io.javasmithy.model.item.armor.ArmorFactory;
+import io.javasmithy.model.item.armor.ArmorType;
+import io.javasmithy.model.item.weapons.Weapon;
+import io.javasmithy.model.item.weapons.WeaponFactory;
+import io.javasmithy.model.item.weapons.WeaponType;
 import io.javasmithy.util.Distance;
 import io.javasmithy.util.Generator;
 import io.javasmithy.view.Sprite;
@@ -74,6 +80,7 @@ public class CharacterEntity implements Entity{
 
         //  Testing
         initTestWeapon();
+        initTestArmor();
     }
 
     public void setAbilityScores(AbilityScores abilityScores){
@@ -198,7 +205,7 @@ public class CharacterEntity implements Entity{
         }
     }
     public int getArmorClass(){
-        return 10 + this.abilityScores.getModifier(Ability.DEXTERITY);
+        return 10 + this.abilityScores.getModifier(Ability.DEXTERITY) + this.armor.getAcVal();
         // get armor AC modifiers
     }
 
@@ -353,21 +360,14 @@ public class CharacterEntity implements Entity{
 
     // TESTING
     public void initTestWeapon(){
-        /*
-        this.weapon = new Weapon();
-        this.weapon.setAttackType(AttackType.MELEE);
-        this.weapon.setWeaponType(WeaponType.LONGSWORD);
-        this.weapon.setAtkRange(1);
-        this.weapon.setDmgDie(6);
-        this.weapon.setDmgDieQty(1);
-        this.weapon.setEquipped(true);
-        this.weapon.setOwner(this);
-        this.weapon.setValue(100);
-        this.weapon.setName("Long Sword");
-         */
-
         this.weapon = WeaponFactory.createWeapon(WeaponType.SPEAR);
         this.weapon.setOwner(this);
         this.weapon.setEquipped(true);
+    }
+
+    public void initTestArmor(){
+        this.armor = ArmorFactory.createArmor(ArmorType.PLATE);
+        this.armor.setOwner(this);
+        this.armor.setEquipped(true);
     }
 }

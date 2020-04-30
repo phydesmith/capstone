@@ -1,8 +1,11 @@
-package io.javasmithy.model.item;
+package io.javasmithy.model.item.armor;
 
 import io.javasmithy.model.entity.Entity;
+import io.javasmithy.model.item.Equippable;
+import io.javasmithy.model.item.Item;
 
 public class Armor implements Item, Equippable {
+    private ArmorType armorType;
     private String name;
     private int acVal;
     private Entity owner;
@@ -14,6 +17,8 @@ public class Armor implements Item, Equippable {
         this.acVal = acVal;
         this.owner = owner;
     }
+
+    public Armor(){};
 
     public Armor (String name, int acVal){
         this(name, acVal, null);
@@ -62,6 +67,14 @@ public class Armor implements Item, Equippable {
 
     public void setAcVal(int acVal) {
         this.acVal = acVal;
+    }
+
+    public void setArmorType(ArmorType type){
+        this.armorType = type;
+    }
+
+    public ArmorType getArmorType(){
+        return this.armorType;
     }
 
     @Override

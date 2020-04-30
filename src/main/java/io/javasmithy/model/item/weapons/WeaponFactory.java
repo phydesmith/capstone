@@ -1,4 +1,4 @@
-package io.javasmithy.model.item;
+package io.javasmithy.model.item.weapons;
 
 import com.google.gson.Gson;
 

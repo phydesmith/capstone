@@ -1,7 +1,6 @@
-package io.javasmithy.model.item;
+package io.javasmithy.model.item.weapons;
 
 import io.javasmithy.model.component.Attack.AttackType;
-import io.javasmithy.model.entity.Entity;
 
 
 public class WeaponConfig {

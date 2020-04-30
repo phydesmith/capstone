@@ -1,0 +1,20 @@
+[
+  {
+    "armorType": "LEATHER",
+    "name":"Leather Armor",
+    "acVal": 2,
+    "value": 20
+  },
+  {
+    "armorType": "CHAINMAIL",
+    "name":"Chainmail",
+    "acVal": 3,
+    "value": 100
+  },
+  {
+    "armorType": "PLATE",
+    "name":"Plate Armor",
+    "acVal": 5,
+    "value": 900
+  }
+]
