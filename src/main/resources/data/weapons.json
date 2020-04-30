@@ -1,8 +1,17 @@
 [
   {
-
+    "name": "Longsword",
+    "dmgDie": 6,
+    "dmgDieQty": 2,
+    "WeaponType": LONGSWORD,
+    "value": 15,
+    "atkRange": 1
+  }
   },
   {
 
   }
 ]
+
+
+

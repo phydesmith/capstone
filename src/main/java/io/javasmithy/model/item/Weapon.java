@@ -1,12 +1,14 @@
 package io.javasmithy.model.item;
 
+import io.javasmithy.model.component.Attack.AttackType;
 import io.javasmithy.model.entity.Entity;
 
 public class Weapon implements Item, Equippable {
     private String name;
     private int dmgDie;
     private int dmgDieQty;
-    private WeaponType type;
+    private WeaponType weaponType;
+    private AttackType attackType;
     private Entity owner;
     private boolean isEquipped;
     private int value;
@@ -16,11 +18,11 @@ public class Weapon implements Item, Equippable {
         this("", 1, 1, 1, WeaponType.MELEE);
     }
 
-    public Weapon(String name, int dmgDie, int dmgDieQty, int atkRange, WeaponType type){
+    public Weapon(String name, int dmgDie, int dmgDieQty, int atkRange, WeaponType weaponType){
         this.name = name;
         this.dmgDie = dmgDie;
         this.dmgDieQty = dmgDieQty;
-        this.type = type;
+        this.weaponType = type;
         this.atkRange = atkRange;
     }
 
