@@ -15,14 +15,15 @@ public class Weapon implements Item, Equippable {
     private int atkRange;
 
     public Weapon(){
-        this("", 1, 1, 1, WeaponType.MELEE);
+        this("", 1, 1, 1, WeaponType.LONGSWORD, AttackType.MELEE);
     }
 
-    public Weapon(String name, int dmgDie, int dmgDieQty, int atkRange, WeaponType weaponType){
+    public Weapon(String name, int dmgDie, int dmgDieQty, int atkRange, WeaponType weaponType, AttackType attackType){
         this.name = name;
         this.dmgDie = dmgDie;
         this.dmgDieQty = dmgDieQty;
-        this.weaponType = type;
+        this.weaponType = weaponType;
+        this.attackType = attackType;
         this.atkRange = atkRange;
     }
 
@@ -50,12 +51,19 @@ public class Weapon implements Item, Equippable {
         this.dmgDieQty = dmgDieQty;
     }
 
-    public WeaponType getType() {
-        return type;
+    public AttackType getAttackType() {
+        return attackType;
     }
 
-    public void setType(WeaponType type) {
-        this.type = type;
+    public void setAttackType(AttackType type) {
+        this.attackType = type;
+    }
+
+    public WeaponType getWeaponType(){
+        return this.weaponType;
+    }
+    public void setWeaponType(WeaponType weaponType){
+        this.weaponType = weaponType;
     }
 
     public int getAtkRange(){
@@ -96,7 +104,7 @@ public class Weapon implements Item, Equippable {
     public String toString() {
         return "\n" + this.name
                 + "\n" + this.dmgDieQty + "d" + dmgDie
-                + "\n" + this.type;
+                + "\n" + this.attackType;
     }
 
 }

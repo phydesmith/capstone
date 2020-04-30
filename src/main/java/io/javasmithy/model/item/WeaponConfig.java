@@ -1,16 +1,15 @@
 package io.javasmithy.model.item;
 
+import io.javasmithy.model.component.Attack.AttackType;
 import io.javasmithy.model.entity.Entity;
 
 
 public class WeaponConfig {
     private WeaponType weaponType;
+    private AttackType attackType;
     private String name;
     private int dmgDie;
     private int dmgDieQty;
-    private WeaponType type;
-    private Entity owner;
-    private boolean isEquipped;
     private int value;
     private int atkRange;
 
@@ -19,7 +18,8 @@ public class WeaponConfig {
         weapon.setName(this.name);
         weapon.setDmgDie(dmgDie);
         weapon.setDmgDieQty(dmgDieQty);
-        weapon.setType(type);
+        weapon.setWeaponType(weaponType);
+        weapon.setAttackType(attackType);
         weapon.setValue(value);
         weapon.setAtkRange(atkRange);
         return weapon;

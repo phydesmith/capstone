@@ -1,5 +1,6 @@
 package io.javasmithy.model.entity;
 
+import io.javasmithy.model.component.Attack.AttackType;
 import io.javasmithy.model.component.level.*;
 import io.javasmithy.model.component.ability.Ability;
 import io.javasmithy.model.component.ability.AbilityScores;
@@ -8,10 +9,7 @@ import io.javasmithy.model.component.cclass.CClass;
 import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
-import io.javasmithy.model.item.Armor;
-import io.javasmithy.model.item.Item;
-import io.javasmithy.model.item.Weapon;
-import io.javasmithy.model.item.WeaponType;
+import io.javasmithy.model.item.*;
 import io.javasmithy.util.Distance;
 import io.javasmithy.util.Generator;
 import io.javasmithy.view.Sprite;
@@ -207,7 +205,7 @@ public class CharacterEntity implements Entity{
     @Override
     public int getAttackBonus(){
         if (this.weapon != null){
-            if (this.weapon.getType() == WeaponType.MELEE){
+            if (this.weapon.getAttackType() == AttackType.MELEE){
                 return getMeleeAttackBonus();
             } else {
                 return getRangedAttackBonus();
@@ -355,8 +353,10 @@ public class CharacterEntity implements Entity{
 
     // TESTING
     public void initTestWeapon(){
+        /*
         this.weapon = new Weapon();
-        this.weapon.setType(WeaponType.MELEE);
+        this.weapon.setAttackType(AttackType.MELEE);
+        this.weapon.setWeaponType(WeaponType.LONGSWORD);
         this.weapon.setAtkRange(1);
         this.weapon.setDmgDie(6);
         this.weapon.setDmgDieQty(1);
@@ -364,5 +364,10 @@ public class CharacterEntity implements Entity{
         this.weapon.setOwner(this);
         this.weapon.setValue(100);
         this.weapon.setName("Long Sword");
+         */
+
+        this.weapon = WeaponFactory.createWeapon(WeaponType.SPEAR);
+        this.weapon.setOwner(this);
+        this.weapon.setEquipped(true);
     }
 }

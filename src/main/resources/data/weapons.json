@@ -1,15 +1,30 @@
 [
   {
     "name": "Longsword",
+    "weaponType": "LONGSWORD",
+    "attackType": "MELEE",
     "dmgDie": 6,
     "dmgDieQty": 2,
-    "WeaponType": LONGSWORD,
     "value": 15,
     "atkRange": 1
-  }
   },
   {
-
+    "name": "Spear",
+    "weaponType": "SPEAR",
+    "attackType": "MELEE",
+    "dmgDie": 10,
+    "dmgDieQty": 1,
+    "value": 5,
+    "atkRange": 2
+  },
+  {
+    "name": "Axe",
+    "weaponType": "AXE",
+    "attackType": "MELEE",
+    "dmgDie": 12,
+    "dmgDieQty": 1,
+    "value": 8,
+    "atkRange": 1
   }
 ]
 

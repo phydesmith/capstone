@@ -7,10 +7,14 @@ module Capstone {
 
 
     opens io.javasmithy to javafx.fxml;
+
     opens io.javasmithy.model.entity.monster to com.google.gson;
     opens io.javasmithy.model.component.hitpoints to com.google.gson;
     opens io.javasmithy.model.position to com.google.gson;
     opens io.javasmithy.view to com.google.gson;
+
+    opens io.javasmithy.model.item;
+    opens io.javasmithy.model.component.Attack to com.gooogle.gson;
 
     opens io.javasmithy.controller.scene.main;
     opens io.javasmithy.controller.scene.creation;
