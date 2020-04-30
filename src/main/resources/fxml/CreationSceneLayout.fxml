@@ -59,11 +59,6 @@ styleClass="creationPane">
                 <Button
                     prefHeight="20"
                     prefWidth="80"  
-                    text="Class"
-                    onAction="#showCClassChoice"/>
-                <Button
-                    prefHeight="20"
-                    prefWidth="80"  
                     text="Background"
                     onAction="#showBackgroundChoice"/>
                 <Button 
@@ -76,6 +71,16 @@ styleClass="creationPane">
                     prefWidth="120"
                     text="Information"
                     onAction="#showCharacterInformation"/>
+                <Button
+                        prefHeight="20"
+                        prefWidth="80"
+                        text="Class"
+                        onAction="#showCClassChoice"/>
+                <Button
+                        prefHeight="20"
+                        prefWidth="80"
+                        text="Skills"
+                        onAction="#showSkillChoices"/>
                 <Button
                     prefHeight="20"
                     prefWidth="80"

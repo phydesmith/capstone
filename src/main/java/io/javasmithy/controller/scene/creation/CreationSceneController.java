@@ -97,6 +97,14 @@ public class CreationSceneController implements Initializable, SceneController {
         this.centerChangePane.getChildren().set(0, loader.load());
         ((CharacterInformationController)loader.getController()).setGameController(this.gc);
     }
+    @FXML
+    public void showSkillChoices(ActionEvent actionEvent) throws Exception {
+        System.out.println(this.gc);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SkillChoices.fxml"));
+        this.centerChangePane.getChildren().set(0, loader.load());
+        ((SkillChoiceController)loader.getController()).setGameController(this.gc);
+        ((SkillChoiceController)loader.getController()).initSkillEnums();
+    }
 
     @Override
     public void setGameController(GameController gc) {

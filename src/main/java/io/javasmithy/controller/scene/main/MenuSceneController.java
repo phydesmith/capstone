@@ -1,6 +1,7 @@
 package io.javasmithy.controller.scene.main;
 
 import io.javasmithy.controller.scene.SceneController;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Node;
@@ -24,6 +25,8 @@ public class MenuSceneController implements Initializable, SceneController {
     private Button newGameBtn;
     @FXML
     private Button continueBtn;
+    @FXML
+    private Button exit;
 
     public void setCreationScene(Scene scene) {
         this.creationScene = scene;
@@ -58,5 +61,10 @@ public class MenuSceneController implements Initializable, SceneController {
     @Override
     public void setGameController(GameController gc) {
         this.gc = gc;
+    }
+
+    @FXML
+    public void exitGame(){
+        Platform.exit();
     }
 }

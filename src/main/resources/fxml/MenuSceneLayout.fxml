@@ -30,7 +30,7 @@ fx:controller="io.javasmithy.controller.scene.main.MenuSceneController">
                     <Button text = "Continue" fx:id="continueBtn" onAction="#openGameScene"/>
                     <Button text="Load"/>
                     <Button text="Save"/>
-                    <Button text="Exit"/>
+                    <Button text="Exit" fx:id="exit" onAction="#exitGame"/>
                 </children>
 
             </VBox>

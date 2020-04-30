@@ -55,7 +55,6 @@ public class CharacterInformationController implements Initializable, SceneContr
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Alignment>() {
             @Override
             public void changed(ObservableValue<? extends Alignment> observable, Alignment oldValue, Alignment newValue) {
-                System.out.println("DEBUG -> in selection listener");
                 alignmentDescription.setText(newValue.getDescription());
                 currentSelection=newValue;
             }
@@ -85,7 +84,7 @@ public class CharacterInformationController implements Initializable, SceneContr
     @FXML
     public void submitAlignment(){
         this.gc.getPlayerCharacter().setAlignment(this.currentSelection);
-        System.out.println("DEBUG -> submitAlignment() currentSelection: " + this.currentSelection);
+        System.out.println("Log: alignment selection " + this.currentSelection + " submitted.");
     }
 
 }

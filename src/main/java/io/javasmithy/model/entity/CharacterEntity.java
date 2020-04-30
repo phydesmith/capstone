@@ -9,6 +9,7 @@ import io.javasmithy.model.component.cclass.CClass;
 import io.javasmithy.model.component.background.Background;
 import io.javasmithy.model.component.hitpoints.*;
 import io.javasmithy.model.component.race.Race;
+import io.javasmithy.model.component.skill.Skill;
 import io.javasmithy.model.item.*;
 import io.javasmithy.model.item.armor.Armor;
 import io.javasmithy.model.item.armor.ArmorFactory;
@@ -53,7 +54,9 @@ public class CharacterEntity implements Entity{
     //  saving throws
     //  attack rolls bonus
     //  initiative bonus
-    //  skill modifiers
+
+    //  Skills
+    private List<Skill> skillList;
 
     //  Inventory and Items
     private List<Item> items;
@@ -339,6 +342,19 @@ public class CharacterEntity implements Entity{
         this.standardAction = false;
     };
 
+    public void setSkillList(List<Skill> skillList){
+        this.skillList = skillList;
+    }
+    public int getSkillModifier(Skill skill){
+        if (this.skillList.contains(skill)){
+            System.out.println("DEBUG: SKILL IN LIST");
+            return this.abilityScores.getModifier(skill.getAbility());
+        } else {
+            return 0;
+        }
+    }
+
+
     public String toStringNoName(){
         String str = "";
         str += "\n Alignment: " + this.alignment
@@ -347,8 +363,16 @@ public class CharacterEntity implements Entity{
             + "\n Class: \t" + this.cClass
             + "\n\n HP: " + this.hp
             + "\n" + this.abilityScores
+            + "\nSkills: \n" + getFormattedSkillList()
             + "\n\n\tDescription:\n" + this.description;
         return str;
+    }
+    private String getFormattedSkillList(){
+        String skills = "";
+        for (int i = 0; i < this.skillList.size(); i++){
+            skills += this.skillList.get(i).getName() + "\n";
+        }
+        return skills;
     }
 
     public String toString(){

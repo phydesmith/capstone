@@ -45,15 +45,6 @@ public class CharacterSheetController implements Initializable, SceneController 
     public void populate(){
         name.setText(gc.getPlayerCharacter().getName());
         characterSheet.setText(gc.getPlayerCharacter().toStringNoName());
-
-        /*
-        race.setText(this.gc.getPlayerCharacter().getRace().toString());
-        cClass.setText(this.gc.getPlayerCharacter().getCClass().toString());
-        level.setText(this.gc.getPlayerCharacter().getLevel().toString());
-        alignment.setText(this.gc.getPlayerCharacter().getAlignment().toString());
-        background.setText(this.gc.getPlayerCharacter().getBackground().toString());
-        experience.setText("" + this.gc.getPlayerCharacter().getCurrentXP());
-        */
     }
 
 

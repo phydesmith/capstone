@@ -60,13 +60,12 @@ public class CClassChoiceController implements Initializable, SceneController {
     @FXML
     public void handleCClassSelection(ActionEvent actionEvent) throws Exception{
         this.currentSelection= (CClass)listView.getSelectionModel().getSelectedItem();
-        System.out.println("DEBUG -> handleCCLassSelection() currentSelection: " + this.currentSelection);
         this.cClassDescription.setText(this.currentSelection.getDescription());
     }
     @FXML
     public void submitCClass(){
         this.gc.getPlayerCharacter().setCClass(this.currentSelection);
-        System.out.println("DEBUG -> submitCCLass() currentSelection: " + this.currentSelection);
+        System.out.println("Log: class selection " + this.currentSelection + " submitted.");
     }
 
 }

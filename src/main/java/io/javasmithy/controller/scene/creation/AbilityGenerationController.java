@@ -46,11 +46,8 @@ public class AbilityGenerationController implements Initializable, SceneControll
     private void submitScores(ActionEvent e) {
         if (compareInputAndScoreBank()) {
             System.out.println(getScoreInputs());
-            System.out.println(this.gc.getPlayerCharacter());
-            System.out.println("DEBUG 1");
             this.gc.getPlayerCharacter().setAbilityScores(AbilityScoreFactory.createAbilityScores(getScoreInputs(), this.gc.getPlayerCharacter().getRace() ));
             this.warningLabel.setText("Scores Saved!");
-            System.out.println(this.gc.getPlayerCharacter());
         } else {
             System.out.println("Incorrect Scores: " + getScoreInputs());
             System.out.println("Score Array: " + listView.getItems().toString());
