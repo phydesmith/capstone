@@ -3,27 +3,50 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="gamePane"
-            fx:controller="io.javasmithy.controller.scene.game.GamePaneController"
+            fx:controller="io.javasmithy.controller.scene.game.ShopPaneController"
             prefHeight="600.0" prefWidth="800.0"
             stylesheets="@../style/GamePaneStyle.css"
             styleClass="room0">
 
     <ListView fx:id="storeInventory"
-              AnchorPane.topAnchor="100"
-              AnchorPane.leftAnchor="100"
-              prefHeight="250"
-              prefWidth="200"
-    />
+              AnchorPane.topAnchor="50"
+              AnchorPane.leftAnchor="50"
+              prefHeight="200"
+              prefWidth="200"/>
 
     <ListView fx:id="playerInventory"
               AnchorPane.topAnchor="300"
-              AnchorPane.leftAnchor="100"
-              prefHeight="250"
-              prefWidth="200"
+              AnchorPane.leftAnchor="50"
+              prefHeight="200"
+              prefWidth="200"/>
 
-    />
+    <Button fx:id="buyItem"
+            text=" Buy "
+            AnchorPane.topAnchor="260"
+            AnchorPane.leftAnchor="50"
+            prefWidth="50"
+            prefHeight="30"
+            onAction="#buyItem"/>
+
+
+    <Button fx:id="sellItem"
+            text=" Sell "
+            AnchorPane.topAnchor="260"
+            AnchorPane.leftAnchor="175"
+            prefWidth="50"
+            prefHeight="30"
+            onAction="#sellItem"/>
+
+    <Button fx:id="stealItem"
+            text="Steal"
+            AnchorPane.topAnchor="260"
+            AnchorPane.leftAnchor="115"
+            prefWidth="50"
+            prefHeight="30"
+            onAction="#stealItem"/>
 
 </AnchorPane>

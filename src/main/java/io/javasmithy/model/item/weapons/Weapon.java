@@ -104,9 +104,10 @@ public class Weapon implements Item, Equippable {
 
     @Override
     public String toString() {
-        return "\n" + this.name
+        return "" + this.name + " (" + this.value + "gp)"
                 + "\n" + this.dmgDieQty + "d" + dmgDie
-                + "\n" + this.attackType;
+                + "\n" + this.attackType
+                + "\n" + this.isEquipped;
     }
 
 }

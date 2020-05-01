@@ -79,7 +79,8 @@ public class Armor implements Item, Equippable {
 
     @Override
     public String toString(){
-        return this.name
-                + "\n+" + this.acVal;
+        return this.name + " (" + this.value + "gp)"
+                + "\nAC Bonus: +" + this.acVal
+                + "\nEquipped: " + this.isEquipped;
     }
 }

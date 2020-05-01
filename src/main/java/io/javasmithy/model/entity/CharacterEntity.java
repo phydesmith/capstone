@@ -59,7 +59,7 @@ public class CharacterEntity implements Entity{
     private List<Skill> skillList;
 
     //  Inventory and Items
-    private List<Item> items;
+    private List<Item> inventory;
     private Armor armor;
     private Weapon weapon;
 
@@ -79,7 +79,7 @@ public class CharacterEntity implements Entity{
 
     private void init(){
         initLevel();
-        this.items = new ArrayList<Item>();
+        this.inventory = new ArrayList<Item>();
 
         //  Testing
         initTestWeapon();
@@ -254,11 +254,12 @@ public class CharacterEntity implements Entity{
         return dist <= this.weapon.getAtkRange();
     }
 
-    public void addItem(Item item){
-        this.items.add(item);
+    public void addItemToInventory(Item item){
+        this.inventory.add(item);
     }
+    public List<Item> getInventory() { return this.inventory;}
     public Item getItem(int index){
-        return this.items.get(index);
+        return this.inventory.get(index);
     }
 
     public Armor getArmor(){
@@ -266,12 +267,14 @@ public class CharacterEntity implements Entity{
     }
     public void setArmor(Armor armor){
         this.armor = armor;
+        this.armor.setEquipped(true);
+        this.armor.setOwner(this);
     }
-    public Weapon getWeapon(){
-        return this.weapon;
-    }
+    public Weapon getWeapon(){ return this.weapon; }
     public void setWeapon(Weapon weapon){
         this.weapon = weapon;
+        this.weapon.setEquipped(true);
+        this.weapon.setOwner(this);
     }
 
     @Override
@@ -315,10 +318,7 @@ public class CharacterEntity implements Entity{
     }
 
     @Override
-    public boolean canMove(){
-        //System.out.println("Player can move: " + (this.movePoints > 0));
-        return this.movePoints > 0;
-    }
+    public boolean canMove(){ return this.movePoints > 0;}
     @Override
     public void decMovePoints(){
         this.movePoints--;
@@ -353,6 +353,9 @@ public class CharacterEntity implements Entity{
             return 0;
         }
     }
+    public int skillCheck(Skill skill){
+        return Generator.generate(20,1) + getSkillModifier(skill);
+    }
 
 
     public String toStringNoName(){
@@ -385,14 +388,10 @@ public class CharacterEntity implements Entity{
 
     // TESTING
     public void initTestWeapon(){
-        this.weapon = WeaponFactory.createWeapon(WeaponType.SPEAR);
-        this.weapon.setOwner(this);
-        this.weapon.setEquipped(true);
+        setWeapon(WeaponFactory.createWeapon(WeaponType.SPEAR));
     }
 
     public void initTestArmor(){
-        this.armor = ArmorFactory.createArmor(ArmorType.PLATE);
-        this.armor.setOwner(this);
-        this.armor.setEquipped(true);
+        setArmor(ArmorFactory.createArmor(ArmorType.PLATE));
     }
 }

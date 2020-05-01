@@ -1,5 +1,6 @@
 package io.javasmithy.controller.scene.game;
 
+import io.javasmithy.controller.scene.PaneController;
 import io.javasmithy.controller.scene.SceneController;
 import io.javasmithy.model.room.RoomFactory;
 import io.javasmithy.model.room.RoomType;
@@ -31,13 +32,17 @@ public class GameSceneController implements Initializable, SceneController {
     private int roomCounter = 0;
 
     @FXML
-    Button gCtrPress;
-    @FXML
     Button nextRoomButton;
     @FXML
     AnchorPane gamePane;
     @FXML
     ListView gameLogView;
+    @FXML
+    Button holdMove;
+    @FXML
+    Button attack;
+    @FXML
+    Button holdAttack;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,20 +86,11 @@ public class GameSceneController implements Initializable, SceneController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(panePaths[this.roomCounter]));
         this.gamePane.getChildren().set(0, loader.load());
-        ((GamePaneController)loader.getController()).setGameController(this.gc);
+        ((PaneController)loader.getController()).setGameController(this.gc);
 
 
         this.gameThread = new GameThread(this.gc);
         this.gameThread.start();
-
-        /*
-        if (this.gameThread.isAlive()){
-            this.gameThread.run();
-        } else{
-            this.gameThread.start();
-        }
-        */
-
 
         incRoomCounter();
     }
@@ -119,12 +115,17 @@ public class GameSceneController implements Initializable, SceneController {
     public void setEncounterRoom(){
         System.out.println("Log: setting room to type " + this.roomCounter);
         if (roomCounter == 0){
+            setCombatButtonsVisible(false);
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_0));
-        } else if (roomCounter ==1){
-            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
         } else {
+            setCombatButtonsVisible(true);
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
         }
+    }
+    private void setCombatButtonsVisible(Boolean state){
+        holdMove.setVisible(state);
+        holdAttack.setVisible(state);
+        attack.setVisible(state);
     }
 
     public void enableGameLogAutoScroll(){

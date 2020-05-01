@@ -1,6 +1,7 @@
 package io.javasmithy.controller.scene.game;
 
 import io.javasmithy.controller.game.GameController;
+import io.javasmithy.controller.scene.PaneController;
 import io.javasmithy.model.entity.CharacterEntity;
 import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.room.EncounterRoom;
@@ -15,7 +16,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GamePaneController implements Initializable {
+public class GamePaneController implements Initializable, PaneController {
 
     private GameController gc;
 
@@ -28,7 +29,6 @@ public class GamePaneController implements Initializable {
     }
 
     public void setGameController(GameController gc) {
-
         this.gc = gc;
         if (((EncounterRoom)this.gc.getCurrentRoom()).getRoomType()== RoomType.ROOM_0) return;
         initPlayerSprite();

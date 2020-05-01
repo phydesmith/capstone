@@ -8,6 +8,12 @@ import io.javasmithy.model.entity.*;
 
 //  Testing Purposes
 import io.javasmithy.model.entity.monster.Monster;
+import io.javasmithy.model.item.armor.Armor;
+import io.javasmithy.model.item.armor.ArmorFactory;
+import io.javasmithy.model.item.armor.ArmorType;
+import io.javasmithy.model.item.weapons.Weapon;
+import io.javasmithy.model.item.weapons.WeaponFactory;
+import io.javasmithy.model.item.weapons.WeaponType;
 import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.model.room.EncounterRoom;
 import io.javasmithy.model.room.Room;
@@ -186,6 +192,13 @@ public class GameController{
         c.setAbilityScores(AbilityScoreFactory.createAbilityScores(a, c.getRace()));
         c.setCClass(CClass.FIGHTER);
         c.setBackground(Background.ACOLYTE);
+
+        Weapon weapon = WeaponFactory.createWeapon(WeaponType.SPEAR);
+        Armor armor = ArmorFactory.createArmor(ArmorType.LEATHER);
+        c.setWeapon(weapon);
+        c.setArmor(armor);
+        c.addItemToInventory(weapon);
+        c.addItemToInventory(armor);
         return c;
     }
 
