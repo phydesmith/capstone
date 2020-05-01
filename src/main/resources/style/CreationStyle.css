@@ -1,3 +1,15 @@
 .creationPane{
     -fx-background-color: rgb(192, 192, 192);
+    -fx-background-image: url('../assets/img/creation-pane-1440-900.png');
+    -fx-background-size: 100% 100%;
+}
+.gameScene{
+    -fx-background-color: rgb(192, 192, 192);
+    -fx-background-image: url('../assets/img/game-pane-background-1440-900.png');
+    -fx-background-size: 100% 100%;
+}
+.mainMenuScene{
+    -fx-background-color: rgb(192, 192, 192);
+    -fx-background-image: url('../assets/img/menu-pane-1440-810.png');
+    -fx-background-size: 100% 100%;
 }

@@ -7,6 +7,10 @@ json - https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gs
 
 imageview sprite - https://stackoverflow.com/questions/29057870/in-javafx-how-do-i-move-a-sprite-across-the-screen
 fantasy store art - https://kinnebrand.artstation.com/projects/Wxn4y
+creation scene background - https://www.worldanvil.com/w/arryn-balorden/search?string=
+main menu background - https://hdwallsbox.com/wallpapers/l/1920x1080/25/dark-stones-fantasy-art-digital-1920x1080-24464.jpg
+game pane - http://www.artofmtg.com/art/swamp-10/
+
 
 source http://tutorials.jenkov.com/java-json/boon-objectmapper.html
 https://attacomsian.com/blog/gson-read-json-file#   <---- this has how to create a map

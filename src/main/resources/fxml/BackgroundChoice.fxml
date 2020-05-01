@@ -28,7 +28,8 @@ styleClass="root">
     <TextArea fx:id="backgroundDescription"
     GridPane.rowIndex="0"
     GridPane.columnIndex="3"
-    GridPane.rowSpan="5"/>
+    GridPane.rowSpan="5"
+    wrapText="true"/>
 
     <Button fx:id="submitBtn"
     text="Submit"
