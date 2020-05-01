@@ -1,4 +1,8 @@
 package io.javasmithy.controller.game;
+/** Non-Gui controller that controls game logic
+ * @author Peter Hyde-Smith
+ *
+ */
 
 import io.javasmithy.model.component.ability.AbilityScoreFactory;
 import io.javasmithy.model.component.background.Background;
@@ -6,7 +10,6 @@ import io.javasmithy.model.component.cclass.CClass;
 import io.javasmithy.model.component.race.Race;
 import io.javasmithy.model.entity.*;
 
-//  Testing Purposes
 import io.javasmithy.model.entity.monster.Monster;
 import io.javasmithy.model.item.armor.Armor;
 import io.javasmithy.model.item.armor.ArmorFactory;
@@ -26,9 +29,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController{
+    /**
+     * Current room configurations loaded into controller. Contains things like size and monster count.
+     */
     private Room currentRoom;
+
+    /**
+     * Player character object
+     */
     private Entity playerCharacter;
+
+    /**
+     * Entity that is target of player, set by GUI and used to attack targets.
+     */
     private Entity playerTarget;
+
+    /**
+     * Current Grid used by Controller - used to check collisions, loaded from room grid.
+     */
     private PointGrid pGrid;
 
     
@@ -37,10 +55,16 @@ public class GameController{
         this.playerCharacter = createDebugChar();
     }
 
+    /**
+     * @return CharacterEntity that represents player
+     */
     public CharacterEntity getPlayerCharacter(){
         return (CharacterEntity)this.playerCharacter;
     }
 
+    /** Sets current room for game controller to load correct elements and set the correct PGrid to.
+     * @param room room config to load
+     */
     public void setCurrentRoom(Room room){
         this.playerCharacter.setSprite(new Sprite(room.getGrid()));
         this.playerCharacter.getSprite().setImage(new Image (getClass().getResource( "/assets/img/m-warrior-sprite-50px.png").toExternalForm()) );
@@ -53,7 +77,9 @@ public class GameController{
         return this.currentRoom;
     }
 
-
+    /** Main game loop, consists of move and attack phase, used for rooms containing combat
+     *  is run on a different thread to prevent GUI from locking.
+     */
     public void run(){
         if (((EncounterRoom)this.currentRoom).getRoomType()== RoomType.ROOM_0) return;
         while (!this.playerCharacter.isDead()) {
@@ -79,6 +105,9 @@ public class GameController{
         GameLog.addEntry("Character Died - Game Over!");
     }
 
+    /** Handles player movements - loop runs until player's move points have run out.
+     *
+     */
     public void handlePlayerMovement(){
         System.out.println("Log: Handling Player Movement");
         while (this.playerCharacter.canMove()){
@@ -86,6 +115,11 @@ public class GameController{
         }
         System.out.println("Log: Player move finished.");
     }
+
+    /**Handles player attacks, loop runs until player's actions have run out
+     * also checks that player target an attk range are valid.
+     *
+     */
     public void handlePlayerAttacks(){
         if (!playerCharacter.canUseAction()) return;
         System.out.println("Log: Handling Player Attacks");
@@ -96,10 +130,16 @@ public class GameController{
         System.out.println("Log: Player attack finished.");
         playerCharacter.resetAction();
     }
+    /** Sets player target to entity parameter to allow attacks.
+     * @param target Entity to set target to.
+     */
     public void setPlayerTarget(Entity target){
         this.playerTarget = target;
         System.out.println("Log: Player target set to " + this.playerTarget);
     }
+    /** Loop through room monsters and process their movement.
+     *
+     */
     public void handleMonsterMovement(){
         System.out.println("Log: Handling Monster Movement");
         for (Entity monster : this.currentRoom.getEntities()){
@@ -133,6 +173,9 @@ public class GameController{
 
         }
     }
+    /** Before each move, monster checks all surrounding squares for collision and will not move if it detects one.
+     * @param mover the entity that needs to move
+     */
     public boolean checkCollisionMap(Entity mover){
         System.out.println("Log: checking " + mover.getName() + " collisions.");
         if (this.pGrid.checkCollision(mover.getRow(), mover.getColumn()+1)) {
@@ -155,7 +198,9 @@ public class GameController{
             return false;
         }
     }
-
+    /** Loops through room monsters and checks for and process valid attacks
+     *
+     */
     public void handleMonsterAttacks(){
         for (Entity entity : this.currentRoom.getEntities()) {
             if(entity.canAttackTarget(playerCharacter)){
@@ -163,7 +208,9 @@ public class GameController{
             }
         }
     }
-
+    /** When round is completed reset all move points. Checks for entities death-state.
+     *
+     */
     public void resetAllMovePoints(){
         if (playerCharacter.isDead()) return;
         playerCharacter.resetMovePoints();
@@ -176,10 +223,12 @@ public class GameController{
     //  Debugging
     public String toString(){
         String str = "";
-        //str += this.playerCharacter.toString();
-        //str += this.currentRoom.toString();
         return str;
     }
+
+    /** Automatically generates a debugging character for testing on GUI without having to recreate a character through character creation.
+     *
+     */
     public CharacterEntity createDebugChar(){
         CharacterEntity c = new CharacterEntity();
         c.setName("TEST");
