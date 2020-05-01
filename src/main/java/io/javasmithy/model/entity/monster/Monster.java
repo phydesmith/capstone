@@ -4,6 +4,7 @@ import io.javasmithy.model.component.hitpoints.HitPoints;
 import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.util.Distance;
+import io.javasmithy.util.GameLog;
 import io.javasmithy.util.Generator;
 import io.javasmithy.view.Sprite;
 
@@ -44,10 +45,10 @@ public class Monster implements Entity {
     public void attack(Entity entity) {
         int atkRoll = Generator.generate(20, 1);
         atkRoll += getAttackBonus();
-        System.out.println(this.name + " rolled a " + atkRoll + ".");
+        GameLog.addEntry(this.name + " rolled a " + atkRoll + ".");
         if (atkRoll+getAttackBonus() >= entity.getArmorClass()){
             int dmg = this.getDamage();
-            System.out.println("Hit! " + entity.getName() + " takes " + dmg + " damage!");
+            GameLog.addEntry("Hit! " + entity.getName() + " takes " + dmg + " damage!");
             entity.takeDamage(dmg);
         } else {
             System.out.println("Miss!");
@@ -250,6 +251,10 @@ public class Monster implements Entity {
 
     @Override
     public String toString() {
+        return this.name;
+    }
+
+    public String debugToString(){
         return "Monster{" +
                 "monsterType=" + monsterType +
                 ", name='" + name + '\'' +

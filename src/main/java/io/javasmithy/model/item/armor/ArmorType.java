@@ -1,6 +1,8 @@
 package io.javasmithy.model.item.armor;
 
-public enum ArmorType {
+import io.javasmithy.model.item.ItemType;
+
+public enum ArmorType implements ItemType {
     LEATHER,
     CHAINMAIL,
     PLATE;

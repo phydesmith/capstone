@@ -94,7 +94,6 @@ public class GameController{
             System.out.print("");
         }
         if (playerTarget != null && this.playerCharacter.canAttackTarget(playerTarget)) {this.playerCharacter.attack(playerTarget);}
-        GameLog.addEntry(this.playerCharacter.getName() + " attacked " +  playerTarget);
         System.out.println("Log: Player Attack finished.");
     }
     public void setPlayerTarget(Entity target){

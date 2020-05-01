@@ -28,7 +28,7 @@ public class GameSceneController implements Initializable, SceneController {
     private GameController gc;
     private GameThread gameThread;
     private Scene menuScene;
-    private String[] panePaths = {"/fxml/Room0.fxml", "/fxml/Room1.fxml", "/fxml/Room2.fxml", "/fxml/Room3.fxml"};
+    private String[] panePaths = {"/fxml/Room0.fxml", "/fxml/Room1.fxml"};
     private int roomCounter = 0;
 
     @FXML
@@ -59,7 +59,7 @@ public class GameSceneController implements Initializable, SceneController {
 
     @FXML
     public void incRoomCounter() {
-        if (roomCounter < 2){
+        if (roomCounter < panePaths.length-1){
             roomCounter++;
         } else {
             roomCounter = 0;
@@ -83,8 +83,8 @@ public class GameSceneController implements Initializable, SceneController {
     @FXML
     public void setGamePane(ActionEvent actionEvent) throws IOException {
         setEncounterRoom();
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource(panePaths[this.roomCounter]));
+        
         this.gamePane.getChildren().set(0, loader.load());
         ((PaneController)loader.getController()).setGameController(this.gc);
 
@@ -93,6 +93,7 @@ public class GameSceneController implements Initializable, SceneController {
         this.gameThread.start();
 
         incRoomCounter();
+
     }
 
     @FXML

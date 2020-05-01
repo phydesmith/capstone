@@ -49,4 +49,12 @@
             prefHeight="30"
             onAction="#stealItem"/>
 
+    <Button fx:id="equip"
+            text="Equip"
+            AnchorPane.topAnchor="510"
+            AnchorPane.leftAnchor="50"
+            prefWidth="50"
+            prefHeight="30"
+            onAction="#equipItem"/>
+
 </AnchorPane>

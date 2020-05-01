@@ -61,7 +61,7 @@ public class Weapon implements Item, Equippable {
         this.attackType = type;
     }
 
-    public WeaponType getWeaponType(){
+    public WeaponType getType(){
         return this.weaponType;
     }
     public void setWeaponType(WeaponType weaponType){

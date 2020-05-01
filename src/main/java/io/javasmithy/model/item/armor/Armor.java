@@ -73,7 +73,7 @@ public class Armor implements Item, Equippable {
         this.armorType = type;
     }
 
-    public ArmorType getArmorType(){
+    public ArmorType getType(){
         return this.armorType;
     }
 

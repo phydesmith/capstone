@@ -1,6 +1,8 @@
 package io.javasmithy.model.item.weapons;
 
-public enum WeaponType {
+import io.javasmithy.model.item.ItemType;
+
+public enum WeaponType implements ItemType {
     LONGSWORD,
     SPEAR,
     AXE;

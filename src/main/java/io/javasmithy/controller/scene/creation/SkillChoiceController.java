@@ -27,6 +27,7 @@ public class SkillChoiceController implements Initializable, SceneController {
     @FXML
     TextArea skillDescription;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setSkillSelectionsListener();
@@ -88,7 +89,6 @@ public class SkillChoiceController implements Initializable, SceneController {
         if (skillChoices.getSelectionModel().getSelectedItem()!=null ){
             skillSelections.getItems().add(skillChoices.getSelectionModel().getSelectedItem());
             skillChoices.getItems().remove(skillChoices.getSelectionModel().getSelectedItem());
-            sortListViews();
         }
     }
     @FXML
@@ -97,14 +97,9 @@ public class SkillChoiceController implements Initializable, SceneController {
         if (item != null && !this.gc.getPlayerCharacter().getBackground().getSkillList().contains(item)){
             skillChoices.getItems().add(skillSelections.getSelectionModel().getSelectedItem());
             skillSelections.getItems().remove(skillSelections.getSelectionModel().getSelectedItem());
-            sortListViews();
         } else {
             skillDescription.setText("Cannot remove background skill.");
         }
-    }
-    public void sortListViews(){
-        Collections.sort(skillChoices.getItems());
-        Collections.sort(skillSelections.getItems());
     }
 
 }

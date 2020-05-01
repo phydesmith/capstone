@@ -18,8 +18,11 @@ import io.javasmithy.model.item.weapons.Weapon;
 import io.javasmithy.model.item.weapons.WeaponFactory;
 import io.javasmithy.model.item.weapons.WeaponType;
 import io.javasmithy.util.Distance;
+import io.javasmithy.util.GameLog;
 import io.javasmithy.util.Generator;
 import io.javasmithy.view.Sprite;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -59,7 +62,7 @@ public class CharacterEntity implements Entity{
     private List<Skill> skillList;
 
     //  Inventory and Items
-    private List<Item> inventory;
+    private ObservableList<Item> inventory;
     private Armor armor;
     private Weapon weapon;
 
@@ -79,7 +82,8 @@ public class CharacterEntity implements Entity{
 
     private void init(){
         initLevel();
-        this.inventory = new ArrayList<Item>();
+        this.inventory = FXCollections.observableArrayList();
+        this.gold = 1000;
 
         //  Testing
         initTestWeapon();
@@ -184,6 +188,7 @@ public class CharacterEntity implements Entity{
     public void setGold(int gold) {
         this.gold = gold;
     }
+    public void changeGold(int delta) { this.gold += delta;}
 
     public Race getRace(){
         return this.race;
@@ -198,18 +203,18 @@ public class CharacterEntity implements Entity{
     public void attack(Entity entity){
         int atkRoll = Generator.generate(20, 1);
         atkRoll += getAttackBonus();
-        System.out.println(this.charName + " rolled a " + atkRoll + ".");
+        GameLog.addEntry(this.charName + " rolled a " + atkRoll + ".");
         if (atkRoll+getAttackBonus() >= entity.getArmorClass()){
             int dmg = this.getDamage();
-            System.out.println("Hit! " + entity.getName() + " takes " + dmg + " damage!");
+            GameLog.addEntry("Hit " + entity.getName() + " with " + this.weapon.getName() + ". Target takes " + dmg + " damage!");
             entity.takeDamage(dmg);
         }  else {
             System.out.println("Miss!");
         }
     }
     public int getArmorClass(){
-        return 10 + this.abilityScores.getModifier(Ability.DEXTERITY) + this.armor.getAcVal();
-        // get armor AC modifiers
+        int base = 10 + this.abilityScores.getModifier(Ability.DEXTERITY);
+        if (this.armor == null) {return base;} else return base + this.armor.getAcVal();
     }
 
     @Override
@@ -257,7 +262,7 @@ public class CharacterEntity implements Entity{
     public void addItemToInventory(Item item){
         this.inventory.add(item);
     }
-    public List<Item> getInventory() { return this.inventory;}
+    public ObservableList<Item> getInventory() { return this.inventory;}
     public Item getItem(int index){
         return this.inventory.get(index);
     }
@@ -347,14 +352,25 @@ public class CharacterEntity implements Entity{
     }
     public int getSkillModifier(Skill skill){
         if (this.skillList.contains(skill)){
-            System.out.println("DEBUG: SKILL IN LIST");
-            return this.abilityScores.getModifier(skill.getAbility());
+            System.out.println("Log: has proficiency, using ability modifier and proficiency bonus.");
+            return this.abilityScores.getModifier(skill.getAbility()) + this.level.getProfBonus();
         } else {
-            return 0;
+            System.out.println("Log: no proficiency, using ability modifier.");
+            return this.abilityScores.getModifier(skill.getAbility());
         }
     }
-    public int skillCheck(Skill skill){
-        return Generator.generate(20,1) + getSkillModifier(skill);
+    public boolean skillCheck(Skill skill, int difficultyCheck){
+        int roll = Generator.generate(20,1) + getSkillModifier(skill);
+        if (roll >= difficultyCheck){
+            GameLog.addEntry(this.charName + " rolled " + roll + " vs DC " + difficultyCheck + " on " + skill + " check, success!");
+            return true;
+        } else {
+            GameLog.addEntry(this.charName + " rolled " + roll + " vs DC " + difficultyCheck + " on " + skill + " check, failure!");
+            return false;
+        }
+    }
+    public boolean hasSkill(Skill skill){
+        return this.skillList.contains(skill);
     }
 
 
@@ -366,7 +382,7 @@ public class CharacterEntity implements Entity{
             + "\n Class: \t" + this.cClass
             + "\n\n HP: " + this.hp
             + "\n" + this.abilityScores
-            + "\nSkills: \n" + getFormattedSkillList()
+            + "\n\nSkills: \n" + getFormattedSkillList()
             + "\n\n\tDescription:\n" + this.description;
         return str;
     }
