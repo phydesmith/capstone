@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 public class MonsterFactory {
-    private static String path = "target\\classes\\data\\monsters.json";
+    private static String path = "target/classes/data/monsters.json";
     private static Gson gson = new Gson();
     private static Map<MonsterType, MonsterConfig> monsterMap;
     static {

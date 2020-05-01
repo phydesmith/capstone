@@ -16,7 +16,7 @@ import java.util.Map;
  */
 
 public class WeaponFactory {
-    private static String path = "target\\classes\\data\\weapons.json";
+    private static String path = "target/classes/data/weapons.json";
     private static Gson gson = new Gson();
     private static Map<WeaponType, WeaponConfig> weaponConfigMap;
     static {
