@@ -53,9 +53,11 @@ public class HitPoints{
 
     public void increaseMaximumHitPoints(int delta){
         this.maxHitPoints += delta;
+        this.currentHitPoints = this.maxHitPoints;
     }
     public void decreaseMaximumHitPoints(int delta){
         this.maxHitPoints -= delta;
+        this.currentHitPoints = this.maxHitPoints;
     }
 
     public void increaseCurrentHitPoints(int delta){

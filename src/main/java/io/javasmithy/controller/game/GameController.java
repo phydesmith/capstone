@@ -20,17 +20,16 @@ import io.javasmithy.model.room.Room;
 import io.javasmithy.model.room.RoomType;
 import io.javasmithy.util.GameLog;
 import io.javasmithy.view.Sprite;
-import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController{
-    Room currentRoom;
-    Entity playerCharacter;
-    Entity playerTarget;
-    PointGrid pGrid;
+    private Room currentRoom;
+    private Entity playerCharacter;
+    private Entity playerTarget;
+    private PointGrid pGrid;
 
     
     public GameController(){
@@ -63,15 +62,15 @@ public class GameController{
             GameLog.addEntry(this.playerCharacter.getName() + " Move Phase.");
             System.out.println("Log: Player Move Phase");
             handlePlayerMovement();
-            GameLog.addEntry(this.playerCharacter.getName() + " Attack Phase.");
-            System.out.println("Log: Player Attack Phase");
+            GameLog.addEntry(this.playerCharacter.getName() + " attack Phase.");
+            System.out.println("Log: Player attack Phase");
             handlePlayerAttacks();
 
             GameLog.addEntry("Monster Move Phase.");
             System.out.println("Log: Monster Move Phase");
             handleMonsterMovement();
-            GameLog.addEntry("Monster Attack Phase.");
-            System.out.println("Log: Monster Attack Phase");
+            GameLog.addEntry("Monster attack Phase.");
+            System.out.println("Log: Monster attack Phase");
             handleMonsterAttacks();
 
             resetAllMovePoints();
@@ -88,13 +87,14 @@ public class GameController{
         System.out.println("Log: Player move finished.");
     }
     public void handlePlayerAttacks(){
+        if (!playerCharacter.canUseAction()) return;
         System.out.println("Log: Handling Player Attacks");
-        playerCharacter.resetAction();
         while (this.playerCharacter.canUseAction()){
             System.out.print("");
         }
         if (playerTarget != null && this.playerCharacter.canAttackTarget(playerTarget)) {this.playerCharacter.attack(playerTarget);}
-        System.out.println("Log: Player Attack finished.");
+        System.out.println("Log: Player attack finished.");
+        playerCharacter.resetAction();
     }
     public void setPlayerTarget(Entity target){
         this.playerTarget = target;
@@ -165,6 +165,7 @@ public class GameController{
     }
 
     public void resetAllMovePoints(){
+        if (playerCharacter.isDead()) return;
         playerCharacter.resetMovePoints();
         for (Entity monster : this.currentRoom.getEntities()) {
             monster.resetMovePoints();
@@ -200,8 +201,6 @@ public class GameController{
         c.addItemToInventory(armor);
         return c;
     }
-
-
 
 }
 

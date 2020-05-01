@@ -48,7 +48,7 @@ public class AbilityScores{
     public String toString(){
         String str = "\n Ability Scores" + "\n ---------------- ";
         for(Ability ability : Ability.values() ){
-            str += "\n" + ability + " " + scores.get(ability) + " | " + getModifier(ability);
+            str += "\n" + ability.getShortName() + "\t " + scores.get(ability) + "\t| " + getModifier(ability);
         }
         return str;
     }

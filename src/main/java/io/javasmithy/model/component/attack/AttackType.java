@@ -1,4 +1,4 @@
-package io.javasmithy.model.component.Attack;
+package io.javasmithy.model.component.attack;
 
 public enum AttackType {
     RANGED,

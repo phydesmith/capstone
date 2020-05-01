@@ -53,10 +53,6 @@ public class CreationSceneController implements Initializable, SceneController {
     @FXML
     public void showAbilityGeneration(ActionEvent actionEvent) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AbilityGeneration.fxml"));
-        /*
-         * this.centerChangePane.getChildren().clear();
-         * this.centerChangePane.getChildren().add(loader.load());
-         */
         this.centerChangePane.getChildren().set(0, loader.load());
         ((AbilityGenerationController)loader.getController()).setGameController(this.gc);
         System.out.println(this.centerChangePane.getChildren());

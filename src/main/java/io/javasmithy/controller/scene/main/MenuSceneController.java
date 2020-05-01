@@ -50,11 +50,10 @@ public class MenuSceneController implements Initializable, SceneController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
-        //continueSetDisabled(true);
+
     }
 
-    public void continueSetDisabled(boolean state){
+    public void setContinueBtnDisable(boolean state){
         continueBtn.setDisable(state);
     }
 
@@ -67,4 +66,5 @@ public class MenuSceneController implements Initializable, SceneController {
     public void exitGame(){
         Platform.exit();
     }
+
 }

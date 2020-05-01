@@ -27,9 +27,9 @@ fx:controller="io.javasmithy.controller.scene.main.MenuSceneController">
                     fx:id="newGameBtn"
                     text="New"
                     onAction="#openCreationScene"/>
-                    <Button text = "Continue" fx:id="continueBtn" onAction="#openGameScene"/>
-                    <Button text="Load"/>
-                    <Button text="Save"/>
+                    <Button text = "Continue" fx:id="continueBtn" onAction="#openGameScene" disable="true"/>
+                    <Button text="Load" disable="true"/>
+                    <Button text="Save" disable="true"/>
                     <Button text="Exit" fx:id="exit" onAction="#exitGame"/>
                 </children>
 

@@ -15,7 +15,7 @@ module Capstone {
 
     opens io.javasmithy.model.item.weapons to com.google.gson;
     opens io.javasmithy.model.item.armor to com.google.gson;
-    opens io.javasmithy.model.component.Attack to com.gooogle.gson;
+    opens io.javasmithy.model.component.attack to com.gooogle.gson;
 
     opens io.javasmithy.controller.scene.main;
     opens io.javasmithy.controller.scene.creation;

@@ -1,6 +1,6 @@
 package io.javasmithy.model.entity;
 
-import io.javasmithy.model.component.Attack.AttackType;
+import io.javasmithy.model.component.attack.AttackType;
 import io.javasmithy.model.component.level.*;
 import io.javasmithy.model.component.ability.Ability;
 import io.javasmithy.model.component.ability.AbilityScores;
@@ -25,7 +25,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterEntity implements Entity{
@@ -120,6 +119,9 @@ public class CharacterEntity implements Entity{
     }
     public void initHP(){
         this.hp = new HitPoints(this.abilityScores.getModifier(Ability.CONSTITUTION), this.cClass.getHitDie());
+
+        // For Testing Balance Only
+        this.hp.increaseMaximumHitPoints(20);
     }
 
     public Background getBackground(){
@@ -249,14 +251,16 @@ public class CharacterEntity implements Entity{
     public void takeDamage(int dmg){
         this.hp.decreaseCurrentHitPoints(dmg);
         if (this.hp.getCurrentHP()<= 0){
-            this.isDead = true;
+            setIsDead(true);
         }
     }
 
     public boolean canAttackTarget(Entity entity){
         double dist = Distance.compute(getColumn(), getRow(), entity.getColumn(), entity.getRow());
         System.out.println("Log: distance to attack " + dist);
-        return dist <= this.weapon.getAtkRange();
+        return (!this.isDead() &&
+                !entity.isDead() &&
+                dist <= this.weapon.getAtkRange());
     }
 
     public void addItemToInventory(Item item){
@@ -310,6 +314,13 @@ public class CharacterEntity implements Entity{
     }
     public void setIsDead(Boolean status){
         this.isDead = status;
+        if (isDead()) {
+            GameLog.addEntry(this.getName() + " died!");
+            Image deathSprite = new Image (getClass().getResource( "/assets/img/death-sprite-50px.png").toExternalForm());
+            this.sprite.setImage(deathSprite);
+            this.movePoints = 0;
+            this.standardAction = false;
+        }
     }
 
     public Sprite getSprite(){ return this.sprite;}
@@ -383,6 +394,7 @@ public class CharacterEntity implements Entity{
             + "\n\n HP: " + this.hp
             + "\n" + this.abilityScores
             + "\n\nSkills: \n" + getFormattedSkillList()
+            + "\n Gold: " + this.gold
             + "\n\n\tDescription:\n" + this.description;
         return str;
     }

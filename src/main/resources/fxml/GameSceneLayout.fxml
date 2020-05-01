@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 
+<?import javafx.scene.control.TextArea?>
 <AnchorPane
 prefWidth="1080"            
 prefHeight="720"
@@ -19,6 +20,9 @@ fx:controller="io.javasmithy.controller.scene.game.GameSceneController"
         <Button fx:id="holdMove" text="Hold Move" onAction="#holdPlayerMove" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="100" focusTraversable="false"/>
         <Button fx:id="attack" text="Attack Target" onAction="#attack" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="150" focusTraversable="false"/>
         <Button fx:id="holdAttack" text="Hold Attack" onAction="#holdAttack" AnchorPane.leftAnchor="1000" AnchorPane.topAnchor="150" focusTraversable="false"/>
+        <Button fx:id="endTurnBtn" text="End Turn" onAction="#endTurn" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="200" focusTraversable="false"/>
+        <!--TextArea fx:id="characterSheet" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="250" focusTraversable="false" prefHeight="300" prefWidth="200" editable="false"/-->
+        <ListView fx:id="characterSheet" AnchorPane.leftAnchor="900" AnchorPane.topAnchor="250" focusTraversable="false" prefHeight="300" prefWidth="200" editable="false"/>
         <ListView fx:id="gameLogView"
                   AnchorPane.leftAnchor="100"
                   AnchorPane.topAnchor="700"

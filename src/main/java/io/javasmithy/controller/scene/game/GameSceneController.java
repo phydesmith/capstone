@@ -2,13 +2,24 @@ package io.javasmithy.controller.scene.game;
 
 import io.javasmithy.controller.scene.PaneController;
 import io.javasmithy.controller.scene.SceneController;
+import io.javasmithy.model.component.skill.Skill;
+import io.javasmithy.model.entity.CharacterEntity;
 import io.javasmithy.model.room.RoomFactory;
 import io.javasmithy.model.room.RoomType;
 import io.javasmithy.util.GameLog;
 import io.javasmithy.util.GameThread;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Node;
@@ -21,6 +32,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameSceneController implements Initializable, SceneController {
@@ -43,12 +55,18 @@ public class GameSceneController implements Initializable, SceneController {
     Button attack;
     @FXML
     Button holdAttack;
+    @FXML
+    Button endTurnBtn;
+    @FXML
+    ListView<CharacterEntity> characterSheet;
+    //TextArea characterSheet;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gamePane.getChildren().add(new Region()); // this group
         gameLogView.setItems(GameLog.getLogList());
         enableGameLogAutoScroll();
+        setCombatButtonsVisible(false);
     }
 
 
@@ -70,14 +88,48 @@ public class GameSceneController implements Initializable, SceneController {
     public void openMenuScene(ActionEvent actionEvent) {
         Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(menuScene);
+
+        enableContinueButton(primaryStage);
+    }
+    private void enableContinueButton(Stage stage){
+        ObservableList<Node> children = stage.getScene().getRoot().getChildrenUnmodifiable();
+        ObservableList<Node> targetChildren = null;
+        for (Node node : children){
+            if (node.getId() != null && node.getId().equals("menuButtons")){
+                targetChildren = ((VBox) node).getChildrenUnmodifiable();
+            }
+        }
+        for (Node child: targetChildren) {
+            if (child.getId() != null && child.getId().equals("continueBtn")){
+                child.setDisable(false);
+            }
+        }
     }
 
     @Override
     public void setGameController(GameController gc) {
         this.gc = gc;
+        setCharacterSheet();
     }
     public void setGameThread(GameThread gameThread){
         this.gameThread = gameThread;
+    }
+    private void setCharacterSheet(){
+        ObservableList<CharacterEntity> character = FXCollections.observableArrayList();
+        character.add(this.gc.getPlayerCharacter());
+        this.characterSheet.setItems(character);
+        setCharSheetChangeListener();
+    }
+    private void setCharSheetChangeListener(){
+
+        this.characterSheet.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(javafx.scene.input.MouseEvent mouseEvent) {
+                characterSheet.refresh();
+            }
+
+        });
+
     }
 
     @FXML
@@ -111,6 +163,12 @@ public class GameSceneController implements Initializable, SceneController {
         useAction();
     }
     public void useAction(){ this.gc.getPlayerCharacter().useAction(); }
+    @FXML
+    public void endTurn(){
+        GameLog.addEntry(this.gc.getPlayerCharacter().getName() + " ended turn.");
+        holdPlayerMove();
+        holdAttack();
+    }
 
 
     public void setEncounterRoom(){
@@ -127,6 +185,7 @@ public class GameSceneController implements Initializable, SceneController {
         holdMove.setVisible(state);
         holdAttack.setVisible(state);
         attack.setVisible(state);
+        endTurnBtn.setVisible(state);
     }
 
     public void enableGameLogAutoScroll(){

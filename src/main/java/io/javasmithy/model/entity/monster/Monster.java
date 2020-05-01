@@ -7,6 +7,7 @@ import io.javasmithy.util.Distance;
 import io.javasmithy.util.GameLog;
 import io.javasmithy.util.Generator;
 import io.javasmithy.view.Sprite;
+import javafx.scene.image.Image;
 
 
 public class Monster implements Entity {
@@ -64,7 +65,9 @@ public class Monster implements Entity {
     public void takeDamage(int damage) {
         this.hitPoints.decreaseCurrentHitPoints(damage);
         if (this.hitPoints.getCurrentHP() <= 0){
-            isDead = true;
+            setIsDead(true);
+            this.movePoints = 0;
+            this.standardAction = false;
         }
     }
 
@@ -72,7 +75,9 @@ public class Monster implements Entity {
     public boolean canAttackTarget(Entity entity) {
         double dist = Distance.compute(getColumn(), getRow(), entity.getColumn(), entity.getRow());
         System.out.println("Log: distance " + dist);
-        return dist <= this.atkRange;
+        return (!this.isDead() &&
+                !entity.isDead() &&
+                dist <= this.atkRange);
     }
 
     @Override
@@ -111,6 +116,13 @@ public class Monster implements Entity {
     }
     public void setIsDead(boolean status){
         this.isDead = status;
+        if (isDead()) {
+            GameLog.addEntry(this.getName() + " died!");
+            Image deathSprite = new Image (getClass().getResource( "/assets/img/death-sprite-50px.png").toExternalForm());
+            this.sprite.setImage(deathSprite);
+            this.movePoints = 0;
+            this.standardAction = false;
+        }
     }
 
     public int getXpValue(){

@@ -1,6 +1,6 @@
 package io.javasmithy.model.item.weapons;
 
-import io.javasmithy.model.component.Attack.AttackType;
+import io.javasmithy.model.component.attack.AttackType;
 import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.item.Equippable;
 import io.javasmithy.model.item.Item;
