@@ -1,9 +1,12 @@
 package io.javasmithy.model.item.armor;
 
 import com.google.gson.Gson;
+import io.javasmithy.model.item.weapons.WeaponFactory;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -16,12 +19,12 @@ import java.util.Map;
  */
 
 public class ArmorFactory {
-    private static String path = "target/classes/data/armors.json";
+    private static URL resource = WeaponFactory.class.getResource("/data/armors.json");
     private static Gson gson = new Gson();
     private static Map<ArmorType, ArmorConfig> armorConfigMap;
     static {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get(path));
+            Reader reader = Files.newBufferedReader(Paths.get(resource.toURI()));
             ArmorConfig[] armors = gson.fromJson(reader, ArmorConfig[].class);
             armorConfigMap = new HashMap<ArmorType, ArmorConfig>();
 
@@ -29,7 +32,7 @@ public class ArmorFactory {
                 armorConfigMap.put(armors[i].getArmorType(), armors[i] );
             }
 
-        } catch (IOException e){
+        } catch (IOException | URISyntaxException e){
             e.printStackTrace();
         }
     }
