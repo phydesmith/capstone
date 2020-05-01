@@ -13,9 +13,21 @@ public class EncounterRoom implements Room {
     private Queue<Entity> initiativeOrder;
     private List<Entity> monsters;
     private PointGrid grid;
+    private RoomType type;
 
     public EncounterRoom(){
 
+    }
+
+    public EncounterRoom(RoomType type){
+        this.type = type;
+    }
+
+    public void setRoomType(RoomType type){
+        this.type= type;
+    }
+    public RoomType getRoomType(){
+        return this.type;
     }
 
     public PointGrid getGrid(){
@@ -47,6 +59,7 @@ public class EncounterRoom implements Room {
         }
     }
     public void randomizeMonsterStarts(){
+        if (monsters == null) return;
         for (int i = 0 ; i < monsters.size(); i++){
             ((Monster)this.monsters.get(i)).setColumn(Generator.generate(this.grid.getWidth(), 1)-1);
             ((Monster)this.monsters.get(i)).setRow(Generator.generate(this.grid.getHeight(), 1)-1);

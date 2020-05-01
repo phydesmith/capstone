@@ -3,6 +3,8 @@ package io.javasmithy.controller.scene.game;
 import io.javasmithy.controller.game.GameController;
 import io.javasmithy.model.entity.CharacterEntity;
 import io.javasmithy.model.entity.Entity;
+import io.javasmithy.model.room.EncounterRoom;
+import io.javasmithy.model.room.RoomType;
 import io.javasmithy.view.Sprite;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +28,9 @@ public class GamePaneController implements Initializable {
     }
 
     public void setGameController(GameController gc) {
+
         this.gc = gc;
+        if (((EncounterRoom)this.gc.getCurrentRoom()).getRoomType()== RoomType.ROOM_0) return;
         initPlayerSprite();
         initMonsterSprites();
         setUserTargetClicks();

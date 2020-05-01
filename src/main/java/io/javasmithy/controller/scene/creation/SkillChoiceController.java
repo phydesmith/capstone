@@ -2,14 +2,11 @@ package io.javasmithy.controller.scene.creation;
 
 import io.javasmithy.controller.game.GameController;
 import io.javasmithy.controller.scene.SceneController;
-import io.javasmithy.model.component.race.Race;
 import io.javasmithy.model.component.skill.Skill;
 import io.javasmithy.model.entity.CharacterEntity;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;

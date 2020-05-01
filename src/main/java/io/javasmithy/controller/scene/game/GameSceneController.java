@@ -27,7 +27,7 @@ public class GameSceneController implements Initializable, SceneController {
     private GameController gc;
     private GameThread gameThread;
     private Scene menuScene;
-    private String[] panePaths = {"/fxml/Room1.fxml", "/fxml/Room2.fxml", "/fxml/Room3.fxml"};
+    private String[] panePaths = {"/fxml/Room0.fxml", "/fxml/Room1.fxml", "/fxml/Room2.fxml", "/fxml/Room3.fxml"};
 
     // testing
     int gCtr = 0;
@@ -55,7 +55,6 @@ public class GameSceneController implements Initializable, SceneController {
     //   TESTING
     @FXML
     public void gCtrInc() {
-        //gc.run();
         if (gCtr < 2){
             gCtr++;
         } else {
@@ -85,7 +84,6 @@ public class GameSceneController implements Initializable, SceneController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(panePaths[this.gCtr]));
         this.gamePane.getChildren().set(0, loader.load());
-
         ((GamePaneController)loader.getController()).setGameController(this.gc);
 
         this.gameThread.start();
@@ -111,10 +109,11 @@ public class GameSceneController implements Initializable, SceneController {
 
 
     public void setEncounterRoom(){
+        System.out.println("DEBUG: gctr " + this.gCtr);
         if (gCtr == 0){
-            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
+            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_0));
         } else if (gCtr ==1){
-            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_2));
+            gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
         } else {
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
         }

@@ -15,11 +15,11 @@ public class RoomFactory {
             return createRoom1();
         } else if (roomType == RoomType.ROOM_2){
             return createRoom2();
-        } else return null;
+        } else return new EncounterRoom(RoomType.ROOM_0);
     }
 
     private static Room createRoom1(){
-        Room room = new EncounterRoom();
+        Room room = new EncounterRoom(RoomType.ROOM_1);
         List<Entity> monsters = new ArrayList<Entity>();
         for(int i =0; i < 2; i++){ // set to 1 for debug
             monsters.add(MonsterFactory.createMonster(MonsterType.ZOMBIE));
@@ -33,7 +33,7 @@ public class RoomFactory {
     }
 
     private static Room createRoom2(){
-        Room room = new EncounterRoom();
+        Room room = new EncounterRoom(RoomType.ROOM_2);
         List<Entity> monsters = new ArrayList<Entity>();
         for(int i =0; i < 2; i++){
             monsters.add(MonsterFactory.createMonster(MonsterType.GOBLIN));
