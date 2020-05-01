@@ -369,6 +369,7 @@ public class CharacterEntity implements Entity{
     }
     private String getFormattedSkillList(){
         String skills = "";
+        if (this.skillList.isEmpty()) return skills;
         for (int i = 0; i < this.skillList.size(); i++){
             skills += this.skillList.get(i).getName() + "\n";
         }

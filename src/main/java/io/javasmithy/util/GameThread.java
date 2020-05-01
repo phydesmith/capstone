@@ -12,6 +12,7 @@ public class GameThread extends Thread {
 
     @Override
     public void run() {
+        System.out.println("Log: starting GC run thread.");
         this.gc.run();
     }
 }

@@ -28,9 +28,8 @@ public class GameSceneController implements Initializable, SceneController {
     private GameThread gameThread;
     private Scene menuScene;
     private String[] panePaths = {"/fxml/Room0.fxml", "/fxml/Room1.fxml", "/fxml/Room2.fxml", "/fxml/Room3.fxml"};
+    private int roomCounter = 0;
 
-    // testing
-    int gCtr = 0;
     @FXML
     Button gCtrPress;
     @FXML
@@ -52,17 +51,15 @@ public class GameSceneController implements Initializable, SceneController {
         this.menuScene = scene;
     }
 
-    //   TESTING
+
     @FXML
-    public void gCtrInc() {
-        if (gCtr < 2){
-            gCtr++;
+    public void incRoomCounter() {
+        if (roomCounter < 2){
+            roomCounter++;
         } else {
-            gCtr = 0;
+            roomCounter = 0;
         }
-        System.out.println(gCtr);
     }
-    //  TESTING
 
     @FXML
     public void openMenuScene(ActionEvent actionEvent) {
@@ -82,13 +79,24 @@ public class GameSceneController implements Initializable, SceneController {
     public void setGamePane(ActionEvent actionEvent) throws IOException {
         setEncounterRoom();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(panePaths[this.gCtr]));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(panePaths[this.roomCounter]));
         this.gamePane.getChildren().set(0, loader.load());
         ((GamePaneController)loader.getController()).setGameController(this.gc);
 
+
+        this.gameThread = new GameThread(this.gc);
         this.gameThread.start();
 
-        gCtrInc();
+        /*
+        if (this.gameThread.isAlive()){
+            this.gameThread.run();
+        } else{
+            this.gameThread.start();
+        }
+        */
+
+
+        incRoomCounter();
     }
 
     @FXML
@@ -109,10 +117,10 @@ public class GameSceneController implements Initializable, SceneController {
 
 
     public void setEncounterRoom(){
-        System.out.println("DEBUG: gctr " + this.gCtr);
-        if (gCtr == 0){
+        System.out.println("Log: setting room to type " + this.roomCounter);
+        if (roomCounter == 0){
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_0));
-        } else if (gCtr ==1){
+        } else if (roomCounter ==1){
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
         } else {
             gc.setCurrentRoom(RoomFactory.createRoom(RoomType.ROOM_1));
@@ -126,7 +134,6 @@ public class GameSceneController implements Initializable, SceneController {
                 gameLogView.scrollTo(gameLogView.getItems().size());
             }
         });
-
     }
 
 }

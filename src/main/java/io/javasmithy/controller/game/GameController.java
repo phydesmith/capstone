@@ -11,6 +11,7 @@ import io.javasmithy.model.entity.monster.Monster;
 import io.javasmithy.model.position.PointGrid;
 import io.javasmithy.model.room.EncounterRoom;
 import io.javasmithy.model.room.Room;
+import io.javasmithy.model.room.RoomType;
 import io.javasmithy.util.GameLog;
 import io.javasmithy.view.Sprite;
 import javafx.application.Platform;
@@ -49,6 +50,7 @@ public class GameController{
 
 
     public void run(){
+        if (((EncounterRoom)this.currentRoom).getRoomType()== RoomType.ROOM_0) return;
         while (!this.playerCharacter.isDead()) {
 
 

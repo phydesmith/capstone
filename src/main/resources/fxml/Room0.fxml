@@ -14,14 +14,14 @@
     <ListView fx:id="storeInventory"
               AnchorPane.topAnchor="100"
               AnchorPane.leftAnchor="100"
-              prefHeight="300"
+              prefHeight="250"
               prefWidth="200"
     />
 
     <ListView fx:id="playerInventory"
               AnchorPane.topAnchor="300"
               AnchorPane.leftAnchor="100"
-              prefHeight="300"
+              prefHeight="250"
               prefWidth="200"
 
     />
