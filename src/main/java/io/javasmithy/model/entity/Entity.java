@@ -2,6 +2,9 @@ package io.javasmithy.model.entity;
 
 import io.javasmithy.view.Sprite;
 
+/** Entity interface to ensure all sub types have same methods.
+ * @author Peter Hyde-Smith
+ */
 public interface Entity{
     public String getName();
 

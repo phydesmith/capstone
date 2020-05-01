@@ -2,6 +2,9 @@ package io.javasmithy.model.component.skill;
 
 import io.javasmithy.model.component.ability.Ability;
 
+/** Enums of skills used by characters for checks and in character creation
+ * @author Peter Hyde-Smith
+ */
 public enum Skill{
     //Strength
     ATHLETICS("Athletics", "Feats of general athleticism", Ability.STRENGTH),

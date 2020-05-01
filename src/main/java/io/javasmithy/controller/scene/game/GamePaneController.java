@@ -16,6 +16,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/** Controller for 'combat panes'
+ * @author Peter Hyde-Smith
+ */
 public class GamePaneController implements Initializable, PaneController {
 
     private GameController gc;
@@ -36,11 +39,17 @@ public class GamePaneController implements Initializable, PaneController {
         setUserTargetClicks();
     }
 
+    /**
+     * Adds character sprite to pane.
+     */
     public void initPlayerSprite(){
         this.gc.getPlayerCharacter().getSprite().setSpriteParent(this.gamePane);
         setUserKeyInput(this.gc.getPlayerCharacter());
     }
 
+    /**
+     * Adds all monster sprites to pane.
+     */
     public void initMonsterSprites(){
         List<Entity> monsters = this.gc.getCurrentRoom().getEntities();
         for (int i = 0; i < monsters.size(); i++){
@@ -48,6 +57,10 @@ public class GamePaneController implements Initializable, PaneController {
         }
     }
 
+    /**
+     * Sets user key input to move character sprite based on keycodes.
+     * @param playerCharacter
+     */
     public void setUserKeyInput(CharacterEntity playerCharacter){
         Sprite charSprite = playerCharacter.getSprite();
         this.gamePane.setOnKeyPressed(e -> {
@@ -61,15 +74,18 @@ public class GamePaneController implements Initializable, PaneController {
                 } else if (e.getCode() == KeyCode.LEFT) {
                     System.out.println("Log: Player moved left.");
                     charSprite.moveColumn(-1);
-                } else {//(e.getCode() == KeyCode.RIGHT){
+                } else if (e.getCode() == KeyCode.RIGHT){
                     System.out.println("Log: Player moved right.");
                     charSprite.moveColumn(1);
-                }
+                } else {}
                 playerCharacter.decMovePoints();
             }
         });
     }
 
+    /**
+     * Listener for character clicking on target sprite.
+     */
     public void setUserTargetClicks(){
         this.gamePane.setOnMouseClicked( e-> {
             try {

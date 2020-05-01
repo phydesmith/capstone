@@ -27,6 +27,10 @@ import javafx.scene.image.Image;
 
 import java.util.List;
 
+/**
+ * This class is used to hold all the things that represent the player character.
+ * @author Peter Hyde-Smith
+ */
 public class CharacterEntity implements Entity{
     
     //  Biographical Information
@@ -79,14 +83,17 @@ public class CharacterEntity implements Entity{
         init();
     }
 
+    /**
+     *Initiates a few things that are used by the system. Gold and weapons are for testing/debugging.
+     */
     private void init(){
         initLevel();
         this.inventory = FXCollections.observableArrayList();
-        this.gold = 1000;
 
         //  Testing
         initTestWeapon();
         initTestArmor();
+        this.gold = 1000;
     }
 
     public void setAbilityScores(AbilityScores abilityScores){
@@ -117,6 +124,9 @@ public class CharacterEntity implements Entity{
         this.cClass = cClass;
         initHP();
     }
+    /**
+     * Called during chracter Creation - uses ability mods fro constitution and class hit die to create a hitpoint object.
+     */
     public void initHP(){
         this.hp = new HitPoints(this.abilityScores.getModifier(Ability.CONSTITUTION), this.cClass.getHitDie());
 
@@ -201,6 +211,11 @@ public class CharacterEntity implements Entity{
         this.movePoints = this.speed;
     }
 
+    /**
+     * Simulates an attack roll vs entity armor class and also calls takeDamage()
+     * outputs entries to game log.
+     *@param entity the entity to attack
+     */
     @Override
     public void attack(Entity entity){
         int atkRoll = Generator.generate(20, 1);
@@ -219,6 +234,9 @@ public class CharacterEntity implements Entity{
         if (this.armor == null) {return base;} else return base + this.armor.getAcVal();
     }
 
+    /**
+     * This uses attack type to determine which attack bonus to use.
+     */
     @Override
     public int getAttackBonus(){
         if (this.weapon != null){
@@ -238,6 +256,9 @@ public class CharacterEntity implements Entity{
         return this.level.getProfBonus() + this.abilityScores.getModifier(Ability.DEXTERITY);
     }
 
+    /**
+     * Uses weapon dmg or what is equivalent to a 'fist' in dungeons and dragons if no weapon found.
+     */
     @Override
     public int getDamage(){
         if ( this.weapon != null){
@@ -248,6 +269,10 @@ public class CharacterEntity implements Entity{
 
     }
 
+    /**
+     * Decreases hitpoints by damage
+     * @param dmg the amount of damage to take
+     */
     public void takeDamage(int dmg){
         this.hp.decreaseCurrentHitPoints(dmg);
         if (this.hp.getCurrentHP()<= 0){
@@ -255,6 +280,10 @@ public class CharacterEntity implements Entity{
         }
     }
 
+    /**
+     * Checks for entity to be alive, in range and that this character is not dead.
+     * @param entity the target
+     */
     public boolean canAttackTarget(Entity entity){
         double dist = Distance.compute(getColumn(), getRow(), entity.getColumn(), entity.getRow());
         System.out.println("Log: distance to attack " + dist);
@@ -308,10 +337,18 @@ public class CharacterEntity implements Entity{
     }
     public void setRow(int row){this.sprite.setRow(row);}
 
-
+    /**
+     * Checks if character is considered 'dead'.
+     * @return true or false
+     */
     public boolean isDead(){
         return this.isDead;
     }
+
+    /**
+     * Used by take damage to set character death. Adds a GameLog entry, changes sprite and sets move and action points to zero.
+     * @param status boolean used to set death status
+     */
     public void setIsDead(Boolean status){
         this.isDead = status;
         if (isDead()) {
@@ -333,27 +370,49 @@ public class CharacterEntity implements Entity{
         this.sprite.setImage(image);
     }
 
+    /**
+     * Checks if move points are greater than zero.
+     */
     @Override
     public boolean canMove(){ return this.movePoints > 0;}
+
+    /**
+     * Decrease movement points by one.
+     */
     @Override
     public void decMovePoints(){
         this.movePoints--;
     }
+    /**
+     * Set movement points to speed (based on grid movement).
+     */
     public void resetMovePoints(){
         this.movePoints = this.speed;
     }
     public int getMovePoints(){
         return this.movePoints;
     }
+    /**
+     * Sets move points to zero.
+     */
     public void holdMove(){this.movePoints = 0;}
 
 
+    /**
+     * Checks if character can use a 'standard action'.
+     */
     public boolean canUseAction(){
         return this.standardAction;
     };
+    /**
+     * Resets action flag to true.
+     */
     public void resetAction(){
         this.standardAction = true;
     };
+    /**
+     * Sets action flag to false preventing further action til reset.
+     */
     public void useAction(){
         this.standardAction = false;
     };
@@ -361,6 +420,11 @@ public class CharacterEntity implements Entity{
     public void setSkillList(List<Skill> skillList){
         this.skillList = skillList;
     }
+    /**
+     * Gets the modifier of a skill based on prof bonus and abililty score modifier.
+     * @param skill skill to check and get modifier of
+     * @return int check mod
+     */
     public int getSkillModifier(Skill skill){
         if (this.skillList.contains(skill)){
             System.out.println("Log: has proficiency, using ability modifier and proficiency bonus.");
@@ -370,6 +434,13 @@ public class CharacterEntity implements Entity{
             return this.abilityScores.getModifier(skill.getAbility());
         }
     }
+
+    /**
+     * Initiates a skill check vs a Difficulty check and returns the result, also adds an entry to game log.
+     * @param skill skill to call get skill modifier on.
+     * @param difficultyCheck number to beat.
+     * @return true or false.
+     */
     public boolean skillCheck(Skill skill, int difficultyCheck){
         int roll = Generator.generate(20,1) + getSkillModifier(skill);
         if (roll >= difficultyCheck){
@@ -380,6 +451,12 @@ public class CharacterEntity implements Entity{
             return false;
         }
     }
+
+    /**
+     * Checks if player has skill in skill list.
+     * @param skill skill to check for
+     * @return true or false
+     */
     public boolean hasSkill(Skill skill){
         return this.skillList.contains(skill);
     }

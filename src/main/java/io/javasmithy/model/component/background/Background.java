@@ -4,9 +4,12 @@ import io.javasmithy.model.component.skill.Skill;
 
 import java.util.List;
 
+/** Enums of backgrounds - extra skills a character might game from background
+ * @author Peter Hyde-Smith
+ */
 public enum Background {
     SOLDIER("Soldier",
-            "A professional warrior, in service to a city guard, provincial regiment or some other organized fighting force.",
+            "A professional warrior, in service to a city guard, provincial regiment, or some other organized fighting force.",
             List.of(Skill.ATHLETICS,
                     Skill.INTIMIDATION)),
     ACOLYTE("Acolyte",

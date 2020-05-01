@@ -4,9 +4,18 @@ import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.item.Equippable;
 import io.javasmithy.model.item.Item;
 
+/** This class is used to represent armors that character objects use for protection against ttacks.
+ * @author Peter Hyde-Smith
+ */
 public class Armor implements Item, Equippable {
+    /**
+     * Type of armor
+     */
     private ArmorType armorType;
     private String name;
+    /**
+     * Modifier used in attack checks
+     */
     private int acVal;
     private Entity owner;
     private boolean isEquipped;

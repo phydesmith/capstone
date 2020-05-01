@@ -1,5 +1,7 @@
 package io.javasmithy.model.component.ability;
-
+/** Enums used to provide a friendly way to organize which scores are called in the code. Useful in Ability Scores object and with raw skill checks vs a particular ability score.
+ * @author Peter Hyde-Smith
+ */
 public enum Ability{
     STRENGTH("Strength", "Str"),
     DEXTERITY("Dexterity", "Dex"),

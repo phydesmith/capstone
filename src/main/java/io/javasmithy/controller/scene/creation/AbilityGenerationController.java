@@ -21,6 +21,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+/** Controller for a sub-pane that allows character to choose and roll ability scores.
+ * @author Peter Hyde-Smith
+ */
 public class AbilityGenerationController implements Initializable, SceneController {
 
     private GameController gc;
@@ -42,6 +45,10 @@ public class AbilityGenerationController implements Initializable, SceneControll
         listView.setItems(FXCollections.observableArrayList(15, 14, 13, 12, 10, 8));
     }
 
+    /**
+     * Submits scores to character object.
+     * Used by submit button.
+     */
     @FXML
     private void submitScores(ActionEvent e) {
         if (compareInputAndScoreBank()) {
@@ -55,6 +62,10 @@ public class AbilityGenerationController implements Initializable, SceneControll
         }
     }
 
+    /**
+     * Compares scores for accuracy.
+     * @return boolean whether or not the selections and inputs were the same.
+     */
     @FXML
     private boolean compareInputAndScoreBank() {
         int[] arr1 = listView.getItems().stream().mapToInt(i -> i).toArray(); // from SO
@@ -64,6 +75,10 @@ public class AbilityGenerationController implements Initializable, SceneControll
         return Arrays.equals(arr1, arr2);
     }
 
+    /**
+     * Gets score inputs from input fields.
+     * @return List of integers
+     */
     @FXML
     private List<Integer> getScoreInputs() {
         List<Integer> scoreList = new ArrayList<Integer>();
@@ -73,10 +88,14 @@ public class AbilityGenerationController implements Initializable, SceneControll
         return scoreList;
     }
 
+    /**
+     * Used by reroll button to get a set of new Scores.
+     */
     @FXML
     private void generateNewScores() {
         this.listView.setItems(FXCollections.observableArrayList(RawScoreFactory.generateValidScoreList()));
     }
+
 
     @Override
     public void setGameController(GameController gc) {

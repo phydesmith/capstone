@@ -22,6 +22,9 @@ import javafx.scene.control.TextArea;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+/** Controller for a sub-pane that allows character to choose character class.
+ * @author Peter Hyde-Smith
+ */
 public class CClassChoiceController implements Initializable, SceneController {
 
     private GameController gc;
@@ -42,6 +45,9 @@ public class CClassChoiceController implements Initializable, SceneController {
     private void initEnums(){
         this.cClassEnums = Arrays.asList(CClass.values());
     }
+    /**
+     * sets listener for Character Class Choice listview
+     */
     private void setListViewSelectionListener(){
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CClass>() {
             @Override
@@ -62,6 +68,9 @@ public class CClassChoiceController implements Initializable, SceneController {
         this.currentSelection= (CClass)listView.getSelectionModel().getSelectedItem();
         this.cClassDescription.setText(this.currentSelection.getDescription());
     }
+    /**
+     * Submits Character class and sets in character object.
+     */
     @FXML
     public void submitCClass(){
         this.gc.getPlayerCharacter().setCClass(this.currentSelection);

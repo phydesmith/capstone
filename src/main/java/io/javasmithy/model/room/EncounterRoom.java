@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.LinkedList;
 
+/** Main type of room aimed towards combat encounters.
+ * @author Peter Hyde-Smith
+ */
 public class EncounterRoom implements Room {
     private Queue<Entity> initiativeOrder;
     private List<Entity> monsters;
@@ -52,12 +55,18 @@ public class EncounterRoom implements Room {
         this.grid = grid;
     }
 
+    /** Sets pGrid for all monsters in the room
+     *
+     */
     public void setMonsterSpriteGrid(){
         System.out.println("Log: setting monster sprite grid.");
         for (int i = 0 ; i < monsters.size(); i++){
             ((Monster)this.monsters.get(i)).setSpriteGrid(this.grid);
         }
     }
+    /**Randomizes positions of monsters within bounds of pgrid
+     *
+     */
     public void randomizeMonsterStarts(){
         if (monsters == null) return;
         for (int i = 0 ; i < monsters.size(); i++){

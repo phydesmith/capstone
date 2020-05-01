@@ -1,5 +1,7 @@
 package io.javasmithy.model.component.race;
-
+/** Enums of races used in character creation, has grid movement value.
+ * @author Peter Hyde-Smith
+ */
 public enum Race{
     DRAGONBORN("Dragonborn", "Half-Man, Half-Dragon, charismatic with an affinity towards sorcery.", 6),
     DWARF("Dwarf", "Gruff and stout. Militant and industrious tendancies",5),
@@ -13,6 +15,9 @@ public enum Race{
 
     private String name;
     private String description;
+    /**
+     * Grid movement value
+     */
     private int speed;
 
     Race(String name, String description, int speed){

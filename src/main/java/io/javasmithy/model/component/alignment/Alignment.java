@@ -1,5 +1,7 @@
 package io.javasmithy.model.component.alignment;
-
+/** Enums of alignments - flavor mostly though can be used in certain checks
+ * @author Peter Hyde-Smith
+ */
 public enum Alignment{
     LG("Lawful Good", "Follows laws and what is morally right."),
     CG("Chaotic Good", "May bend the rules for the greater good rather than to the letter."),

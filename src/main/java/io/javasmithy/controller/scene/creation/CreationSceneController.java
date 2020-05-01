@@ -15,12 +15,18 @@ import java.util.ResourceBundle;
 import io.javasmithy.controller.game.GameController;
 import javafx.event.ActionEvent;
 
+/** Creation Scene controller - behaviors to load all sub panes with different aspects of character creation.
+ * @author Peter Hyde-Smith
+ */
 public class CreationSceneController implements Initializable, SceneController {
 
     private GameController gc;
     private Scene menuScene;
     private Scene gameScene;
 
+    /**
+     * This pane is where all sub-panes are contained and displayed.
+     */
     @FXML
     Pane centerChangePane;
 

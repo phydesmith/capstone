@@ -5,15 +5,30 @@ import io.javasmithy.model.entity.Entity;
 import io.javasmithy.model.item.Equippable;
 import io.javasmithy.model.item.Item;
 
+/** This class is used to represent weapons that character objects use for attacks.
+ * @author Peter Hyde-Smith
+ */
 public class Weapon implements Item, Equippable {
     private String name;
+    /** Represents sides of damage die
+     */
     private int dmgDie;
+    /** Represents qty of damage dice.
+     */
     private int dmgDieQty;
+    /** Type of weapon.
+     */
     private WeaponType weaponType;
+    /** Determines type of attack bonuses to use of weapon.
+     */
     private AttackType attackType;
     private Entity owner;
     private boolean isEquipped;
+    /** Currency value of weapon.
+     */
     private int value;
+    /** Range of weapon in grid spaces.
+     */
     private int atkRange;
 
     public Weapon(){

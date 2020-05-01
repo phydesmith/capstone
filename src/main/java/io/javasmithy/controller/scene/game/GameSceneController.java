@@ -35,12 +35,24 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/** Controller for Scene that holds the 'Game Panes'
+ * @author Peter Hyde-Smith
+ */
 public class GameSceneController implements Initializable, SceneController {
 
     private GameController gc;
+    /**
+     * Thread to start gc.run()
+     */
     private GameThread gameThread;
     private Scene menuScene;
+    /**
+     * Array of resource paths.
+     */
     private String[] panePaths = {"/fxml/Room0.fxml", "/fxml/Room1.fxml"};
+    /**
+     * Keeps track of room type.
+     */
     private int roomCounter = 0;
 
     @FXML
@@ -59,7 +71,6 @@ public class GameSceneController implements Initializable, SceneController {
     Button endTurnBtn;
     @FXML
     ListView<CharacterEntity> characterSheet;
-    //TextArea characterSheet;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,7 +85,9 @@ public class GameSceneController implements Initializable, SceneController {
         this.menuScene = scene;
     }
 
-
+    /**
+     * Used to get pane path - rolls to zero based on panePaths length.
+     */
     @FXML
     public void incRoomCounter() {
         if (roomCounter < panePaths.length-1){
@@ -91,6 +104,10 @@ public class GameSceneController implements Initializable, SceneController {
 
         enableContinueButton(primaryStage);
     }
+    /**
+     * Method to set continue button active in main menu (it is disabled by default).
+     * @param stage
+     */
     private void enableContinueButton(Stage stage){
         ObservableList<Node> children = stage.getScene().getRoot().getChildrenUnmodifiable();
         ObservableList<Node> targetChildren = null;
@@ -120,6 +137,10 @@ public class GameSceneController implements Initializable, SceneController {
         this.characterSheet.setItems(character);
         setCharSheetChangeListener();
     }
+
+    /**
+     * Sets a click listener that updates character sheet viewer
+     */
     private void setCharSheetChangeListener(){
 
         this.characterSheet.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -132,6 +153,12 @@ public class GameSceneController implements Initializable, SceneController {
 
     }
 
+    /**
+     * Sets active pane - used by nextRoom button
+     * starts the GC thread and calls increment counter so next room in panePaths can be loaded.
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     public void setGamePane(ActionEvent actionEvent) throws IOException {
         setEncounterRoom();
@@ -148,21 +175,36 @@ public class GameSceneController implements Initializable, SceneController {
 
     }
 
+    /**
+     * Used by hold move button to skip character move phase.
+     */
     @FXML
     public void holdPlayerMove(){
         this.gc.getPlayerCharacter().holdMove();
     }
+    /**
+     * Used by attack button to initiate character attack.
+     */
     @FXML
     public void attack(){
         System.out.println("LOG: Player attacking target");
         useAction();
     }
+    /**
+     * Used by hold move attack to skip character attack phase.
+     */
     @FXML
     public void holdAttack(){
         System.out.println("LOG: Player holding attack");
         useAction();
     }
+    /**
+     * Consumes the character action. Triggering attack phase to finish.
+     */
     public void useAction(){ this.gc.getPlayerCharacter().useAction(); }
+    /**
+     * Used by end turn  button to skip all character phases.
+     */
     @FXML
     public void endTurn(){
         GameLog.addEntry(this.gc.getPlayerCharacter().getName() + " ended turn.");

@@ -26,6 +26,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/** Controller to control behavior of Shop/Store panes
+ * @author Peter Hyde-Smith
+ */
 public class ShopPaneController implements Initializable, PaneController {
 
     private GameController gc;
@@ -43,32 +46,54 @@ public class ShopPaneController implements Initializable, PaneController {
     public void initialize(URL location, ResourceBundle resources) {
         populateStoreItems();
     }
+
+    /**
+     * populates Store List View with items
+     */
     private void populateStoreItems(){
         this.storeInventoryList = FXCollections.observableArrayList();
         storeInventory.setItems(this.storeInventoryList);
         addWeapons();
         addArmor();
     }
+    /**
+     * populates Store List View with weapons
+     */
     private void addWeapons(){
         for(int i = 0; i < WeaponType.values().length; i++){
             this.storeInventoryList.add(WeaponFactory.createWeapon(WeaponType.values()[i]));
         }
     }
+    /**
+     * populates Store List View with armors
+     */
     private void addArmor(){
         for(int i = 0; i < ArmorType.values().length; i++){
             this.storeInventoryList.add(ArmorFactory.createArmor(ArmorType.values()[i]));
         }
     }
+
+    /**
+     * Sets game controller.
+     * @param gc gamecontroller to set
+     */
     public void setGameController(GameController gc) {
         this.gc = gc;
         setPlayerInventory();
 
     }
+    /**
+     * Used to set items of listview that observes player inventory.
+     */
     public void setPlayerInventory(){
         this.playerInventory.setItems(this.gc.getPlayerCharacter().getInventory());
     }
 
 
+    /**
+     * Transfers items from Store to character -checks vs character gold.
+     * Subtracts value of item from character gold.
+     */
     @FXML
     public void buyItem(){
         CharacterEntity pc = this.gc.getPlayerCharacter();
@@ -82,6 +107,10 @@ public class ShopPaneController implements Initializable, PaneController {
         }
     }
 
+    /**
+     * Transfers items from character to store.
+     * Adds item value to character gold.
+     */
     @FXML void sellItem(){
         CharacterEntity pc = this.gc.getPlayerCharacter();
         Item item = this.playerInventory.getSelectionModel().getSelectedItem();
@@ -95,6 +124,9 @@ public class ShopPaneController implements Initializable, PaneController {
         }
     }
 
+    /**
+     * Transfers items from Store to character -checks vs sleight of hand skill.
+     */
     @FXML void stealItem(){
         CharacterEntity pc = this.gc.getPlayerCharacter();
         Item item = this.storeInventory.getSelectionModel().getSelectedItem();
@@ -106,6 +138,9 @@ public class ShopPaneController implements Initializable, PaneController {
         } else GameLog.addEntry(pc.getName() + " failed to steal " + item.getName());
     }
 
+    /**
+     * Allows selected item in inventory list view to be noted as equpped (which character can then use).
+     */
     @FXML void equipItem(){
         CharacterEntity pc = this.gc.getPlayerCharacter();
         Item item = this.playerInventory.getSelectionModel().getSelectedItem();

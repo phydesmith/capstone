@@ -14,15 +14,18 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *  source http://tutorials.jenkov.com/java-json/boon-objectmapper.html
- *  https://attacomsian.com/blog/gson-read-json-file#   <---- this has how to create a map
- *  https://futurestud.io/tutorials/gson-mapping-of-arrays-and-lists-of-objects
+/** Class that loads all monsters from mopnsters.json into memory in 'monster configs' that allow monsters to be created
+ * @author Peter Hyde-Smith
  */
-
 public class MonsterFactory {
     private static URL resource = WeaponFactory.class.getResource("/data/monsters.json");
+    /**
+     * GSON instance loads configs from json
+     */
     private static Gson gson = new Gson();
+    /**
+     * Map of types to configs
+     */
     private static Map<MonsterType, MonsterConfig> monsterMap;
     static {
         try {

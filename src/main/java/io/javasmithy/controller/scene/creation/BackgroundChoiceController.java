@@ -22,6 +22,9 @@ import javafx.scene.control.TextArea;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+/** Controller for a sub-pane that allows character to choose a background.
+ * @author Peter Hyde-Smith
+ */
 public class BackgroundChoiceController implements Initializable, SceneController {
 
     private GameController gc;
@@ -42,6 +45,9 @@ public class BackgroundChoiceController implements Initializable, SceneControlle
     private void initEnums(){
         this.bgEnums = Arrays.asList(Background.values());
     }
+    /**
+     * Sets listener for Background Choice listview.
+     */
     private void setListViewSelectionListener(){
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Background>() {
             @Override
@@ -63,6 +69,9 @@ public class BackgroundChoiceController implements Initializable, SceneControlle
         this.backgroundDescription.setText(this.currentSelection.getDescription());
     }
     @FXML
+    /**
+     * Submits background and sets in character object.
+     */
     public void submitBackground(){
         this.gc.getPlayerCharacter().setBackground(this.currentSelection);
     }

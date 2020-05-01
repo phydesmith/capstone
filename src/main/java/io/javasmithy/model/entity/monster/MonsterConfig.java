@@ -1,5 +1,7 @@
 package io.javasmithy.model.entity.monster;
-
+/** POJO GSON uses to store monster configurations.
+ * @author Peter Hyde-Smith
+ */
 
 public class MonsterConfig {
     private MonsterType monsterType;

@@ -22,6 +22,9 @@ import javafx.scene.control.TextArea;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+/** Controller for sub pane to choose race.
+ * @author Peter Hyde-Smith
+ */
 public class RaceChoiceController implements Initializable, SceneController {
 
     private GameController gc;
@@ -42,6 +45,9 @@ public class RaceChoiceController implements Initializable, SceneController {
     private void initRaceEnums(){
         this.raceEnums = Arrays.asList(Race.values());
     }
+    /**
+     * Sets selection listener and allows for description to be displayed.
+     */
     private void setListViewSelectionListener(){
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Race>() {
             @Override
@@ -62,6 +68,9 @@ public class RaceChoiceController implements Initializable, SceneController {
         this.currentSelection= (Race)listView.getSelectionModel().getSelectedItem();
         this.raceDescription.setText(this.currentSelection.getDescription());
     }
+    /**
+     * Submits race and sets in character object.
+     */
     @FXML
     public void submitRace(){
         this.gc.getPlayerCharacter().setRace(this.currentSelection);

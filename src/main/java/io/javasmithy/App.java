@@ -14,19 +14,40 @@ import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 
 
+/**
+ * Main App class.
+ * @author Peter Hyde-Smith
+ */
 public class App extends Application{
+
+
     /**
-     * The main entry point for the program.
-     * @param stage JavaFX stage
-     * @throws Exception
+     * The main entry point for the program. Loaders load fxml into layouts which are used by scenes and stage.
+     * Scenes have references to each other to allow child elements to initiate scene changes.
+     *
      */
     @Override
     public void start(Stage stage) throws Exception{
+        /**
+         * Game controller instance
+         */
         GameController gc = new GameController();
+        /**
+         * Game thread instance used to call run()
+         */
         GameThread gameThread = new GameThread(gc);
 
+        /**
+         * Scene loaders that load FXML documents
+         */
         FXMLLoader menuSceneLoader, creationSceneLoader, gameSceneLoader;
+        /**
+         *  Parents to load FXML scene graph into (basically the gui elements)
+         */
         Parent menuSceneLayout, creationSceneLayout, gameSceneLayout;
+        /**
+         * Scene objects used by stage to display scene layouts.
+         */
         Scene menuScene, creationScene, gameScene;
 
         menuSceneLoader = new FXMLLoader(getClass().getResource("/fxml/MenuSceneLayout.fxml"));

@@ -1,5 +1,7 @@
 package io.javasmithy.model.component.level;
-
+/** Enums used for progression and required xp. Also holds calculations for getting proficiency bonuses.
+ * @author Peter Hyde-Smith
+ */
 public enum Level{
     LEVEL_1(1, 0),
     LEVEL_2(2, 300),
@@ -29,6 +31,10 @@ public enum Level{
         this.reqExp = reqExp;
     }
 
+    /**
+     * Used to calculate a arbitrary modifier for 'skills' a character knows how to use professionally
+     * @return int bonus to 'checks'
+     */
     public int getProfBonus(){
         int profBonus = 0;
         profBonus = (int) Math.ceil(this.levelValue/4.0) +1;

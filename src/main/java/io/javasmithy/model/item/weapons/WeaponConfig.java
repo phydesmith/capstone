@@ -2,7 +2,9 @@ package io.javasmithy.model.item.weapons;
 
 import io.javasmithy.model.component.attack.AttackType;
 
-
+/** POJO for storing weapon configs for creation
+ * @author Peter Hyde-Smith
+ */
 public class WeaponConfig {
     private WeaponType weaponType;
     private AttackType attackType;

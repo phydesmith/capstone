@@ -15,6 +15,9 @@ import javafx.fxml.*;
 
 import javafx.scene.control.Button;
 
+/** Controller used to determine behavior for Main Menu
+ * @author Peter Hyde-Smith
+ */
 public class MenuSceneController implements Initializable, SceneController {
 
     private GameController gc;

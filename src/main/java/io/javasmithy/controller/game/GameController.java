@@ -1,8 +1,4 @@
 package io.javasmithy.controller.game;
-/** Non-Gui controller that controls game logic
- * @author Peter Hyde-Smith
- *
- */
 
 import io.javasmithy.model.component.ability.AbilityScoreFactory;
 import io.javasmithy.model.component.background.Background;
@@ -28,6 +24,10 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Non-Gui controller that controls game logic
+ * @author Peter Hyde-Smith
+ *
+ */
 public class GameController{
     /**
      * Current room configurations loaded into controller. Contains things like size and monster count.
@@ -175,6 +175,7 @@ public class GameController{
     }
     /** Before each move, monster checks all surrounding squares for collision and will not move if it detects one.
      * @param mover the entity that needs to move
+     * @return true or false
      */
     public boolean checkCollisionMap(Entity mover){
         System.out.println("Log: checking " + mover.getName() + " collisions.");
@@ -227,7 +228,7 @@ public class GameController{
     }
 
     /** Automatically generates a debugging character for testing on GUI without having to recreate a character through character creation.
-     *
+     * @return a new character entity set up for testing
      */
     public CharacterEntity createDebugChar(){
         CharacterEntity c = new CharacterEntity();

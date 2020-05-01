@@ -1,5 +1,7 @@
 package io.javasmithy.model.item.armor;
-
+/** POJO for GSON to store armor configs in
+ * @author Peter Hyde-Smith
+ */
 public class ArmorConfig {
     private ArmorType armorType;
     private String name;

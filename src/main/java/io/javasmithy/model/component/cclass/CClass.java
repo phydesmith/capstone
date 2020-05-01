@@ -6,6 +6,9 @@ import io.javasmithy.model.component.skill.Skill;
 
 import java.util.List;
 
+/** Enums used to store character creation templates for 'character classes'.
+ * @author Peter Hyde-Smith
+ */
 public enum CClass {
     CLERIC("Cleric", "A priestly champion who wields divine magic in service of a higher power", 8, 
             List.of(Ability.WISDOM, Ability.CHARISMA), 
@@ -59,7 +62,7 @@ public enum CClass {
      */
     private String name;
     /**
-     * Description of charater class.
+     * Description of character class.
      */
     private String description;
     /**

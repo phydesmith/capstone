@@ -15,13 +15,25 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.*;
 
+/** Loaded by creation scene to control Skill choice sub-scene.
+ * @author Peter Hyde-Smith
+ */
 public class SkillChoiceController implements Initializable, SceneController {
 
     private GameController gc;
+    /**
+     * Skills that are available to be chosen based on class - background.
+     */
     private List<Skill> availableSkills;
 
+    /**
+     * Listview for possible skill choices.
+     */
     @FXML
     ListView<Skill> skillChoices;
+    /**
+     * Listview for possible skill selections.
+     */
     @FXML
     ListView<Skill> skillSelections;
     @FXML
@@ -33,6 +45,10 @@ public class SkillChoiceController implements Initializable, SceneController {
         setSkillSelectionsListener();
         setSkillChoicesListener();
     }
+
+    /**
+     * This ensures the no overlap between class and background skills also populates the Skill choices listview.
+     */
     public void initSkillEnums(){
         CharacterEntity pc = this.gc.getPlayerCharacter();
         List<Skill> classSkills = pc.getCClass().getSkillList();
@@ -52,7 +68,9 @@ public class SkillChoiceController implements Initializable, SceneController {
         }
     }
 
-
+    /**
+     * Listener used to set skill description box from skill choices listview.
+     */
     private void setSkillChoicesListener(){
         skillChoices.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Skill>() {
             @Override
@@ -61,6 +79,9 @@ public class SkillChoiceController implements Initializable, SceneController {
             }
         });
     }
+    /**
+     * Listener used to set skill description box from skill selections listview.
+     */
     private void setSkillSelectionsListener(){
         skillSelections.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Skill>() {
             @Override
@@ -75,10 +96,17 @@ public class SkillChoiceController implements Initializable, SceneController {
         this.gc = gc;
     }
 
+    /**
+     * Submits skills and sets in character object.
+     */
     @FXML
     public void submitSkills(){
         this.gc.getPlayerCharacter().setSkillList(this.skillSelections.getItems());
     }
+
+    /**
+     * Adds a skill from choices to selections. Also checks for max skills selected.
+     */
     @FXML
     public void addSkill(){
         int backgroundSkillCount = this.gc.getPlayerCharacter().getBackground().getSkillList().size();
@@ -91,6 +119,10 @@ public class SkillChoiceController implements Initializable, SceneController {
             skillChoices.getItems().remove(skillChoices.getSelectionModel().getSelectedItem());
         }
     }
+
+    /**
+     * Removes a skill from selections and adds it back to choices. Does not allow background skills to be removed.
+     */
     @FXML
     public void removeSkill(){
         Skill item = skillSelections.getSelectionModel().getSelectedItem();

@@ -12,15 +12,19 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *  source http://tutorials.jenkov.com/java-json/boon-objectmapper.html
- *  https://attacomsian.com/blog/gson-read-json-file#   <---- this has how to create a map
- *  https://futurestud.io/tutorials/gson-mapping-of-arrays-and-lists-of-objects
- */
 
+/**Class that loads all armors from armors.json into memory in 'armor configs' that allow armors to be created
+ * @author Peter Hyde-Smith
+ */
 public class ArmorFactory {
     private static URL resource = WeaponFactory.class.getResource("/data/armors.json");
+    /**
+     * GSON instance loads configs from json
+     */
     private static Gson gson = new Gson();
+    /**
+     * Map of types to configs
+     */
     private static Map<ArmorType, ArmorConfig> armorConfigMap;
     static {
         try {

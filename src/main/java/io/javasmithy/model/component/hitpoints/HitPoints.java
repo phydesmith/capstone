@@ -2,9 +2,21 @@ package io.javasmithy.model.component.hitpoints;
 
 import io.javasmithy.util.Generator;
 
+/** Hit point class to represent the amount of damage a character can take before dying.
+ * @author Peter Hyde-Smith
+ */
 public class HitPoints{
+    /**
+     * Total hit points a character has, only raised by leveling up
+     */
     int maxHitPoints;
+    /**
+     * Current hit points the character has - can fluxuate based on damage/healing.
+     */
     int currentHitPoints;
+    /**
+     * Set by CClass type the amount of possible hitpoints gained per level.
+     */
     int hitDie;
 
     public HitPoints(int hitDie, int hitDieQty, int hitPointBonus){

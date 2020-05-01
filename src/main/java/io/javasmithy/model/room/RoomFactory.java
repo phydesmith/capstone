@@ -8,8 +8,15 @@ import io.javasmithy.model.entity.monster.MonsterType;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Depending on room type returns a room with a pgrid and monsters.
+ * @author Peter Hyde-Smith
+ */
 public class RoomFactory {
 
+    /** returns a room that based on room type
+     * @param roomType the type of room to return
+     * @return room to return
+     */
     public static Room createRoom(RoomType roomType){
         if (roomType == RoomType.ROOM_1){
             return createRoom1();

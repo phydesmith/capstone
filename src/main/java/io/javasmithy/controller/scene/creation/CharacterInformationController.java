@@ -21,6 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
+/** Controller for a sub-pane that allows character to choose alignment and set a description.
+ * @author Peter Hyde-Smith
+ */
 public class CharacterInformationController implements Initializable, SceneController {
 
     private GameController gc;
@@ -51,6 +54,9 @@ public class CharacterInformationController implements Initializable, SceneContr
     private void initEnums(){
         this.alignmentEnums = Arrays.asList(Alignment.values());
     }
+    /**
+     * sets listener for Background Choice listview
+     */
     private void setListViewSelectionListener(){
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Alignment>() {
             @Override
@@ -67,6 +73,9 @@ public class CharacterInformationController implements Initializable, SceneContr
         this.alignmentDescription.setText(this.currentSelection.getDescription());
     }
 
+    /**
+     * Submits name and bio and sets in character object.
+     */
     @FXML
     public void submitBio(){
         submitName();
@@ -81,6 +90,10 @@ public class CharacterInformationController implements Initializable, SceneContr
     public void submitName(){
         this.gc.getPlayerCharacter().setName(this.name.getText());
     }
+
+    /**
+     * Submits alignment and sets in character object.
+     */
     @FXML
     public void submitAlignment(){
         this.gc.getPlayerCharacter().setAlignment(this.currentSelection);

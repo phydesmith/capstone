@@ -11,6 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+/** Controller for sub-pane that displays a summary of the character sheet at end of creation.
+ * @author Peter Hyde-Smith
+ */
 public class CharacterSheetController implements Initializable, SceneController {
 
     private GameController gc;

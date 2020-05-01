@@ -9,12 +9,10 @@ import io.javasmithy.util.Generator;
 import io.javasmithy.view.Sprite;
 import javafx.scene.image.Image;
 
-
+/**
+ * @author Peter Hyde-Smith
+ */
 public class Monster implements Entity {
-    //  private String path = "\\data\\monsters.json
-    //  private static ObjectMapper mapper = JsonFactory.create();
-    //  private static MonsterList mList = mapper.fromJson(path, MonsterList.class);
-    //  private static final Map<Type, Monster> monsterMap = new
 
     private MonsterType monsterType;
     private String name;
@@ -42,6 +40,11 @@ public class Monster implements Entity {
     }
 
 
+    /**
+     * Simulates an attack roll vs entity armor class and also calls takeDamage()
+     * outputs entries to game log.
+     *@param entity the entity to attack
+     */
     @Override
     public void attack(Entity entity) {
         int atkRoll = Generator.generate(20, 1);
@@ -61,6 +64,10 @@ public class Monster implements Entity {
         return this.name;
     }
 
+    /**
+     * Decreases hitpoints by damage
+     * @param damage the amount of damage to take
+     */
     @Override
     public void takeDamage(int damage) {
         this.hitPoints.decreaseCurrentHitPoints(damage);
@@ -71,6 +78,10 @@ public class Monster implements Entity {
         }
     }
 
+    /**
+     * Checks for entity to be alive, in range and that this monster is not dead.
+     * @param entity the target
+     */
     @Override
     public boolean canAttackTarget(Entity entity) {
         double dist = Distance.compute(getColumn(), getRow(), entity.getColumn(), entity.getRow());
@@ -111,9 +122,17 @@ public class Monster implements Entity {
     public void setRow(int row){this.sprite.setRow(row);}
 
     @Override
+    /**
+     * Checks if monster is considered 'dead'.
+     * @return true or false
+     */
     public boolean isDead(){
         return isDead;
     }
+    /**
+     * Used by take damage to set monster death. Adds a GameLog entry, changes sprite and sets move and action points to zero.
+     * @param status boolean
+     */
     public void setIsDead(boolean status){
         this.isDead = status;
         if (isDead()) {
@@ -214,28 +233,49 @@ public class Monster implements Entity {
         this.sprite.setGrid(grid);
     }
 
+    /**
+     * Checks if move points are greater than zero.
+     */
     @Override
     public boolean canMove(){
         return this.movePoints > 0;
     }
+    /**
+     * Decrease movement points by one.
+     */
     @Override
     public void decMovePoints(){
         this.movePoints--;
     }
+    /**
+     * Sets move points to zero.
+     */
     public void holdMove(){
         this.movePoints = 0;
     }
+    /**
+     * Set movement points to speed (based on grid movement).
+     */
     public void resetMovePoints(){
         this.movePoints = this.speed;
     }
     public int getMovePoints() {return this.movePoints;}
 
+    /**
+     * Checks if monster can use a 'standard action'.
+     */
     public boolean canUseAction(){
         return this.standardAction;
     };
+    /**
+     * Resets action flag to true.
+     */
     public void resetAction(){
         this.standardAction = true;
     };
+    /**
+     * Sets action flag to false preventing further action til reset.
+     */
     public void useAction(){
         this.standardAction = false;
     };
